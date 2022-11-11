@@ -1,0 +1,79 @@
+﻿دة عبارة عن  كلاس كل المسد الى فية public
+ودة لو عاوز اعمل  نوع من المتغيرات براحتى
+
+struct point {
+	int x, y;
+};
+struct person {
+	string name;
+	int age;
+};
+///
+// decleartin and intialize struct 
+	point p;
+	p.x = 1;
+	p.y = 2;
+	// take from user 
+	cin >> p.x >> p.y;
+	cout << p.x << " " << p.y << endl;
+	// array of struct 
+	point arr[100];
+	for (int i = 0; i < 3; i++){
+		cin >> arr[i].x >> arr[i].y;
+	}
+	for (int i = 0; i < 3; i++){
+		cout << arr[i].x << " " << arr[i].y << endl;
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////// كود حلو 
+struct matrix
+{
+	vector<vector<int> > arr;
+	matrix(){
+		arr.resize(SZ, vector<int>(SZ,0));
+	}
+	void reset()
+	{
+		arr.resize(SZ, vector<int>(SZ,0));
+	}
+ 
+	void makeiden()
+	{
+		reset();
+		for(int i=0;i<SZ;i++)
+		{
+			arr[i][i] = 1;
+		}
+	}
+ 
+	matrix operator + (const matrix &o) const 
+	{
+		matrix res;
+		for(int i=0;i<SZ;i++)
+		{
+			for(int j=0;j<SZ;j++)
+			{
+				res.arr[i][j] = add(arr[i][j], o.arr[i][j]);
+			}
+		}
+		return res;
+	}
+ 
+	matrix operator * (const matrix &o) const 
+	{
+		matrix res;
+		for(int i=0;i<SZ;i++)
+		{
+			for(int j=0;j<SZ;j++)
+			{
+				res.arr[i][j] = 0;
+				for(int k=0;k<SZ;k++)
+				{
+					res.arr[i][j] = add(res.arr[i][j] , mult(arr[i][k] , o.arr[k][j]));
+				}
+			}
+		}
+		return res;
+	}
+}

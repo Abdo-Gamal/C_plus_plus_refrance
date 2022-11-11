@@ -1,0 +1,31 @@
+
+
+int Dijkstra1(vector< vi > adjMax, int src, int dest = -1)	// O(n^2)
+{
+	int n = sz(adjMax);
+	vi vis(n, 0), dist(n, OO), prev(n, -1);
+	dist[src] = 0;
+
+	while(true) {
+		int val = OO, idx = -1;
+		lp(i, n)
+			if(!vis[i] && dist[i] < val)	val = dist[i], idx = i;
+
+		if(idx == -1 || idx == dest)	break;
+		vis[idx] = 1;
+
+		lp(i, n)
+			if (dist[i] > (val=dist[idx] + adjMax[idx][i]) )
+				dist[i] = val, prev[i] = idx;	// Relax
+	}
+	return dest == -1 ? -1 : dist[dest];
+}
+
+
+
+
+
+
+
+
+

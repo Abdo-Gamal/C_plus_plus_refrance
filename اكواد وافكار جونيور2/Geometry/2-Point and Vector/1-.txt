@@ -1,0 +1,82 @@
+===============================Cartesian coordinate system
+decnace in 2D system 
+
+d=sqrt(   (x1-x2)^2 +(y1-y2)^2    );
+
+decnace in 3D system 
+d=sqrt(   (x1-x2)^2 +(y1-y2)^2  +(z1-z2)^2  );
+================================Polar coordinate system
+The r and θ coordinates of a point P measure respectively the distance from P to the origin O and the angle between the line OP and the polar axis.
+
+================================Cartesian ⇔ Polar Conversions 
+Cartesian from Conversions
+x=r cos (seta)
+y=r sin(seta)
+Conversions from Cartesian 
+r=sqrt(x^2+y^2)
+seta=atan2(y,x)
+================================Vector
+Vector = Direction + Magnitude
+For example, the line segment from a = (1,3) to b = (5,1) can be represented by the vector v = b - a = (4,-2)
+Magnitude = norm of the vector
+=================================Linear independence of vectors
+- a set of vectors is said to be linearly dependent if one of the vectors in the set can be defined as a linear combination of the others
+- e.v. u(1, 3)  and v = (2, 6)...notice: v = 2 u (dependent)
+- Recall cos(angle = 0) = 1
+
+dependent : يعنى واحد فيهم بيتجاب بمعلوميه الاول   زى ان اضرب الفكتور الاول ف  2  ف احصل على الفكترو التانى 
+
+======================================Perpendicular Vectors متعامدين 
+Two vectors are perpendicular if and only if their angle is a right angle "  زاويه قائمه   "
+cos(seta)=0;
+
+=====================================Orthogonal vectors
+Set of vectors is orthogonal if and only if they are pairwise perpendicular
+ لو كل  اتنين    فيكتور متعامدين مع بعض  
+====================================Normal Vector
+The normal vector to a surface is a vector which is perpendicular to the surface at a given point
+هو  فيكتور   بيكون    عمودى بس على نقطه ف سطح معين 
+
+====================================Vector Addition
+if a = (a1, a2) and b (b1, b2), then a + b = (a1+b1, a2+b2)
+
+====================================vector Subtraction
+c=a-b
+====================================Vector Dot/Scalar/Inner Product
+الناج هو قيمه واحدة 
+وهو بختصار  كل عنصر مقابل  لعنصر  اضربهم ف بعض  
+يعنى  
+x in vector1  * x in secont vector + as so as 
+
+A.B=|A|*|B| cos(seta);
+----------------------------
+if A and B are orthogonal, then the angle between them is 90° 
+then A.B=0;
+if they are codirectional, then the angle between them is 0°
+then A.B= |A|*|B| ;
+------------------------
+ف  النوع ده  بيديك   معلومات عن طبيعه الزاويه  الى بينن اتنين  فكتور  
+
+لو  الزاويه  بينهم 90  كدة  ال دوت  برودكت  بيساوى صفر  
+لو الزاويه بينهم قل من 90 كدة الدوت بروتدت بينهم اكبر من الصفر   
+لو الزاويه بينهم   اكبر من 90 كدة الدوت  برودكت  بينهم   اقل من الصفر 
+
+============================================Cross/Vector Product
+
+الناتج هو  فكتور  تانى  
+وبنستخدام قاعدة اليد اليومنا  عشان نجيب الفكتور الناتج شوف السليد لو حابب 
+والفكترو الناتج هو عمودى على الاتنين فكترو الى ضربتهم ف بعض 
+
+aX b=-bXa;
+
+|aXb|=|a| |b| sin(seta);
+من خلال الكروس برودكت  بيسعدنا عشان نجيب  المساحه بتاعه  ال  معين  ونص المساعه دى هى مساحه مثلص بين الاقواص 
+لو  الاتنين فكتور متعامدين فالناتح هو واحد  لو الفكتور هو فكتور الوحدة  ف   نقدر  نستنتج معلومات عن الزوايه  
+
+===============================================Standard basis
+
+
+
+
+
+

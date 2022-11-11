@@ -1,0 +1,39 @@
+﻿Long long s=0,e=arr.size();
+int ans=-1;
+While(s<=e)
+{
+   Long long mid=(s+e)/2;
+    if(arr[mid] == k)
+    {
+       ans=mid;
+       e=mid-1;
+     }
+     else if(arr[mid] > k)
+           e=mid-1;
+      else 
+            s=mid+1;
+}
+
+ده بيجيب الاندكس بتاع اخر رقم بيساوى ال k بعد الترتيب طبعل
+يعنى لو دخل
+Andrew
+12333456
+وبيدور على 3 الناتج هيكون 4
+------------------------------------------------------------------------
+Long long s=0,e=arr.size();
+While(s<=e)
+{
+   Long long mid=(s+e)/2;
+    if(arr[mid] == k)
+    {
+       ans=mid;
+       s=mid+1;
+     }
+     else if(arr[mid] > k)
+           e=mid-1;
+      else 
+            s=mid+1;
+}
+ده بيجيب اول واحد
+
+--------------------------------------------------------------------------

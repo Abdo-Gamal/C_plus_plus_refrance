@@ -1,0 +1,40 @@
+﻿
+======================================================================================================================================================
+int adjMatrix[N][N];                     // adjacency matrix for wight   //directed
+
+
+                                                                       /*
+	                                                               	3
+		                                                              0 10 5
+		                                                              2 7 9
+		                                                              3 2 0
+	                                                                   */
+	cin>>n;
+	lp(i, n) lp(j, n)	{
+		int b;
+		cin>>b;
+		adjMatrix[i][j] = b;
+	}
+======================================================================================================================================================
+                           //adjMatrix initialize with OO
+	int edges;
+	cin>>n>>edges;
+	/*     some point repaed
+	 	 3 5
+	 	 0 3 10
+	 	 1 5 2
+	 	 3 7 -2
+	 	 0 3 2
+	 	 2 4 6
+	 */
+	lp(i, edges)
+	{
+		int from, to, cost;
+		cin>>from>>to>>cost;                // min to take the smallest wight 
+		adjMatrix[from][to] = min(adjMatrix[from][to], cost);	// if directed
+
+		                               /////// if undirected: add following 
+		//adjMatrix[to][from] = adjMatrix[from][to];
+}
+
+======================================================================================================================================================

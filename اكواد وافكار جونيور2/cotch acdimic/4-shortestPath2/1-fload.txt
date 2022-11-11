@@ -1,0 +1,29 @@
+
+int main() {
+
+    Fast();
+  
+         int n, m,q;
+        cin >> n >> m>>q;
+        vector<vector<ll>>dis(n, vector<ll>(m, LOO));
+        for (int i = 0; i < n; i++)
+            dis[i][i] = 0;
+        for (int i = 0; i < m; i++) {
+            ll u, v, c;
+            cin >> u >> v >> c;
+            u--, v--;
+            dis[u][v] = min(dis[u][v], c);
+            dis[v][u] = min(dis[v][u], c);
+        }
+        for (int k = 0; k < n; k++)
+            for (int u = 0; u < n; u++)
+                for (int v = 0; v < n; v++)
+                    dis[u][v] = min(dis[u][v], dis[u][k] + dis[k][v]);
+        while (q--)
+        {
+            int u, v;
+            cin >> u >> v;
+            if (dis[u][v] >= LOO)cout << -1<<"\n";
+            else cout << dis[u][v] << "\n";
+        }
+}

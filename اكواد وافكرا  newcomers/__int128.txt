@@ -1,0 +1,134 @@
+﻿لسلام عليكم ورحمة الله وبركاته
+-مدة الپوست دقيقتين-
+النهاردة إن شاء الله هنتكلم عن نوعين من الداتا تايپ متاح إننا نستخدمهم علي مواقع زي
+ SPOJ, AtCoder ومؤخرًا CodeForces وهما :
+__uint128_t --> unsigned int 128-bit
+__int128      --> signed int 128-bit
+ايه النوعين دول؟ وليه نستخدمهم؟ وإزاي بيتم التعامل معاهم؟ 
+إيه هو ال __int128 ؟
+هو built-in integral
+ داتا تايپ مدعوم من مجموعة من أشهر الكومپايلرز زي 
+GCC & Clang يعني تقدر تستخدمه زي أي نوع تاني عادي بدون أي مكتبات إضافية طالما بتسخدم واحد من الكومپايلرز دي ..
+* فيچوال ستديو مش بيدعمه.
+إيه الرنچ بتاعه؟ أو قدر أخزن فيه لحد كام؟
+A 128-bit register can store 2^{128} (over 3.40 × 10^{38}) different values. 
+النوع الـ signed :
+__int128
+--> −170,141,183,460,469,231,731,687,303,715,884,105,728 (−2^{127}) through 170,141,183,460,469,231,731,687,303,715,884,105,727 (2^{127} − 1)
+النوع الـ unsigned :
+__uint128_t
+--> 0 through 340,282,366,920,938,463,463,374,607,431,768,211,455 (2^{128} − 1) 
+-----------------------------------------------
+ليه نستخدم حاجة بالحجم ده؟
+- في مسائل الـ Counting  أحيانا لما بنحسب فاكتوريال كبير ومبيكونش محتاج BigInteger ممكن نحتاجه..
+- في مسائل الـ Primality test & Factoring لرقم كبير..
+- في بعض المسائل اللي فيها Multiplication عشان ميحصلش أوڤر فلو.
+وغيرهم كتير هيقابلك وأنت بتحل وهيكون من المناسب استخدامه..
+-----------------------------------------------
+إزاي استخدمه وأتعامل معاه؟
+الـ __int128 يسري عليه ما يسري علي باقي الـ integers من ضرب وطرح وقسمة ومود وكمان الـ Functions يعني باختصار بيدعم معظم الـ Operators  المشهورة +,-,++,--,&,^,%....... عدا أشهر اتنين..
+1. extraction operator <<
+2. insertion operator  >>
+يعني لا بيتطّبع ولا بيتاخد كـ input ، بس إحنا ممكن نعمل الـ Operator overloading بتاعنا عشان يقبل الـ __int128 سواء كـ input or output ...
+في اللينك ده  https://ideone.com/VAxBJ8 هتلاقي الـ 2 Operators جاهزين حطهم دايما في الكود بتاعك وبكده تقدر تقرأ وتطبع بدون مشاكل..
+ملحوظة:
+#define   lll     __int128
+#define   ulll   __uint128_t
+ال 2-Operators اللي في الكود  لل signed..
+ لو حابب تقرأ أو تطبع النوع ال unsigned بدّل  كل lll خليها ulll وبس كده؛ أو ممكن تكتب ال  Overloading لل unsigned..
+تعديل ١. علشان نقدر نستخدمه علي كودفورسز لازم نستخدم كومپايلر C++17 64-bit
+أرجوا أن يكون في كلامي الإفادة..
+//////////////////////////////////////////////////////////////////////////////////////////////////////////الرابط 
+#include <bits/stdc++.h>
+
+#define  sz(a)               (int)a.size()
+#define  endl                '\n'
+
+using namespace std;
+
+typedef long long            ll;
+typedef __int128            lll;
+typedef __uint128_t        ulll;
+
+/**-------------------->> Conversions <<--------------------**/
+
+template <class T>
+string IntToStr(T x)
+{
+    int sn = 1;
+    if(x < 0) sn = -1, x *= sn;
+
+    string s = "";
+    do
+    {
+        s = "0123456789"[x % 10] + s, x /= 10;
+    } while(x);
+    return (sn == -1 ? "-" : "") + s;
+}
+
+lll StrTolll(string x)
+{
+    lll ret = (x[0] == '-' ? 0 : x[0] - '0');
+ 
+	for(int i = 1; i < sz(x); ++i) 
+		ret = ret * 10 + (x[i] - '0');
+	
+	return ret * (x[0] == '-' ? -1 : 1);
+}
+
+/** Overloading operator << & operator >> to accept an __int128 **/
+
+istream & operator >> (istream & in, lll & i) noexcept
+{
+    string s; in >> s;
+    i = StrTolll(s);
+    return in;
+}
+
+ostream & operator << (ostream & os, const lll i) noexcept
+{
+    os << IntToStr(i); return os;
+}
+
+/**------------------>>  Initialization gap  <<------------------**/
+
+int n;
+lll a[10000];
+
+void Solve()
+{
+    cin >> n;
+    for(int i = 0; i < n; ++i)
+        cin >> a[i];
+
+	
+    for(int i = 0; i < n; ++i)
+        cout << a[i] << " \n"[i == n - 1];
+
+    cout << "Size of __int128 = " << sizeof(__int128) << endl;
+    cout << "minimum between a[0] & a[3] = " <<  min(a[0], a[3])  << endl;
+    cout << "maximum between a[0] & a[3] = " <<  max(a[0], a[3])  << endl;
+    cout << "Maximum element in the Array a = "<< *max_element(a, a + 4) << endl;
+    cout << "2 raised to the power of 100 = " << (lll)powl(2, 100) << endl;
+    cout << fixed << setprecision(0) << "Square root of a[0] = " << (sqrtl(a[0])) << endl;
+    cout << "Gcd between a[0], a[1] = " << __gcd(a[0], a[1]) << endl;
+    
+    cout << "a[0] + 1 = " << ++a[0] << endl;
+    cout << "a[0] * 2 = " << 2 * a[0] << endl;
+    cout << "a[0] ÷ 10000 = " << a[0] / 10000 << endl;
+    cout << "a[0] % 10 = " << a[0] % 10 << endl;
+    cout << "a[0] - 1000000 = " << a[0] - 1000000 << endl;
+	cout << "a[0] / 2^(77) = " << (a[0] >> (lll)77) << endl;
+	cout << "a[0] > a[1]  = " << (a[0] > a[1]) << endl;
+	cout << "a[0] > a[3]  = " << (a[0] > a[3]) << endl;
+        
+    
+}
+
+/**------------------------->>  Main  <<-------------------------**/
+
+int main()
+{
+    Solve();
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,16 @@
+﻿int f(int mid) {
+}
+int BSFindLast(int start, int end, int val) {
+
+	while (start < end) {
+		int mid = start + (end - start+1) / 2;   // as  avoid  infint loop
+		if (f(mid) < val)
+			start = mid + 1;
+		else if (f(mid) > val)
+			end = mid - 1;
+		else
+			start = mid;
+	}
+return start;
+}
+--------------------------------------------------------------------

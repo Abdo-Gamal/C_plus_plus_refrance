@@ -1,0 +1,22 @@
+﻿
+===================================================================================not try
+int n, m;
+ll arr[11][11];
+bool valid(int i, int j) {
+	return i < n && j < m;
+}
+ll Solve(int i = 0, int j = 0) {
+
+	if (!valid(i, j))
+		return -1e10;
+	if (i == n - 1 && j == m - 1)
+		return arr[i][j];
+
+	int sum1 = Solve(i + 1, j);
+	int sum2 = Solve(i, j + 1);
+
+	int cur = arr[i][j] + max(sum1, sum2);
+	return cur;
+
+}
+===================================================================================or

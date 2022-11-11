@@ -1,0 +1,91 @@
+﻿
+struct DUS
+{
+    //size maxnode
+    //reank= groubsize
+    vector<int>  parent, groubSize;
+    int numGroub;
+
+
+    //  same as make_set
+    DUS(int  n) {
+        numGroub = n;
+        parent = vector<int>(n);
+        groubSize = vector<int>(n);;
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+            groubSize[i] = 1;
+        }
+    }
+
+
+    int find_set(int v) {
+        if (v == parent[v])
+            return v;
+        return parent[v] = find_set(parent[v]);
+    }
+    void link(int a, int b) {
+
+
+        if (groubSize[a] < groubSize[b])
+            swap(a, b);
+
+        parent[b] = a;
+        if (groubSize[b] == groubSize[a])
+            groubSize[b] ++;
+
+    }
+    int union_sets(int a, int b) {
+        a = find_set(a);
+        b = find_set(b);
+        if (a != b) {
+            link(a, b);
+            numGroub--;
+        }
+        return a != b;
+    }
+    ////////////////////////////////optianl func 
+
+
+    vector<vector<int>> connectedComponent() {
+        vector<vector<int>>  list(sz(parent));
+        for (int i = 0; i < sz(parent); i++) {
+            list[find_set(i)].push_back(i);
+        }
+        return list;
+    }
+
+};
+
+
+struct edge {
+    int from, to;
+    ll weight;
+    edge() {
+        from = to = weight = 0;
+    }
+    edge(int from, int to, ll weight) :
+        from(from), to(to), weight(weight) {
+    }
+    bool operator <(const edge& other) const {
+        return weight >other.weight;
+    }
+};
+
+vector<edge> edgeList;
+//O(edges*log(edges))
+pair<int, vector<edge>> MST_Kruskal(int n) {
+    DUS uf(n + 5);
+    vector < edge > edges;
+    int mstCost = 0;
+    sort(edgeList.begin(), edgeList.end());
+
+    for (auto e : edgeList)
+        if (uf.union_sets(e.from, e.to)) {
+            mstCost += e.weight;
+            edges.push_back(e);
+        }
+    if (edges.size() != n - 1)
+        return { INT_MAX,vector<edge>() };
+    return { mstCost,edges };
+}

@@ -1,0 +1,32 @@
+
+
+
+
+
+const ll OO = 1e8;
+
+const int MAX = 20;
+int adj[MAX][MAX];
+int dp[MAX+1][MAX][MAX]={OO};
+int n;
+
+*
+ * All Pairs Shortest path
+ */
+
+// This is memoized in O(n^3)
+
+void floyd1()
+{
+	lp(i, n)
+       lp(j, n)
+		dp[0][i][j] = adj[i][j];
+
+           //k ,form 1  ,i,j from start  0
+
+	lp(k, n) lp(i, n) lp(j, n)
+		if(dp[k][i][k] < OO && dp[k][k][j] < OO)
+			dp[k+1][i][j] = min(dp[k+1][i][j], dp[k][i][k]+dp[k][k][j]);
+
+	// dp[n] is the shortest path 2d array
+}

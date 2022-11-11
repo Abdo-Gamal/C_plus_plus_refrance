@@ -1,0 +1,15 @@
+﻿// pair 
+	pair<int, int> a; // a.first  a.second 
+	cin >> a.first >> a.second;
+	cout << a.first << " " << a.second << endl;
+ 
+	// array of pair
+	pair<int, int> arr1[100];
+	// int arr1[100];
+	for (int i = 0; i < 3; i++){
+		cin >> arr1[i].first >> arr1[i].second;
+	}
+	for (int i = 0; i < 3; i++){
+		cout << arr1[i].first << " " << arr1[i].second << endl;
+	}
+////////////////

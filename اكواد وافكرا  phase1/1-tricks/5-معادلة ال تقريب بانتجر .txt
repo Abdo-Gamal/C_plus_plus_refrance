@@ -1,0 +1,39 @@
+﻿- Floor of 2 (positive Integers)
+	a / b
+
+- Ceil of 2 (positive Integers)
+	(a + b-1) / b                         انا لو كان الناتج  عدد صحيح خلاص تمم اما لو كان فى  كسر  يعنى حاجة اقل من المقام  ف انا هضيف المقام ناقص واحد  عشان  فل كسر  الى هو اصلا باقى القسمة يمثل واحد ف انا اوزد واحد
+         ex* 5/2=(5+1)/2=2
+- Round of 2 (positive Integers)
+	(a + b/2) / b            انا كدة ضفت نص الرقم لو طلع معاية نص  على الاقل تانى  هيبقا واحد
+    ex* (5/2=5+1)/2=3     ---ex*6/2=(6+1)/2=3
+- What about negatives? Similar, but in careful way
+
+- Why care?
+	1) Nice tricks
+	2) Avoid Double problems
+	3) Faster
+
+- How to handle double problems(هااااام)
+	1- Awareness of double format is a must. Read Misof article in TC
+	2- In case lots of double calculations, do on the fly as much as possible (don't save in variables alot)
+	3- What do u expect?
+
+	for (double r=0.0; r!=1.0; r+=0.1)
+		printf("*");
+
+	After 10 times r won't be exact equal 1! Double compare should be in different way
+
+	int doubleCompare(double x, double y) {
+		if (fabs(x-y) <= EPS)	// Check equality first. EPS is ur define, e.g. 1e-8. BASED on problem requested precision.
+			return 0;
+
+		if(x < y)
+			return -1;
+
+		return 1;
+	}
+
+
+
+

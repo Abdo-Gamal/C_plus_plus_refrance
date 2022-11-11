@@ -1,0 +1,29 @@
+﻿priority_queue<ll, vector<ll>, greater<ll>> mn;
+	priority_queue<ll> mx;
+
+
+if (mn.size() == 0 || cur >= mn.top())
+			mn.push(cur);
+		else
+			mx.push(cur);
+
+if (mx.size() - mn.size() == 2) {
+mn.push(mx.top());
+mx.pop();
+
+} else if (mn.size() - mx.size() == 1) {
+mx.push(mn.top());
+mn.pop();
+}
+-------------------------------------------------
+انا دلوقتى هعمل 
+push رقم
+شوفه هو اكبر من اصغر واحد فى الاراى التانية(الى بترتب  تصاعدى) ولالا
+لو اه يبقى لزم اعمله 
+push فى التانية
+
+غير كدا هعمل push فى الاولى
+
+ انت عايز تخلى الاولى ديما يبقى هى اللى فيها الmid 
+يبقى لو الاراى التانيه فيها ارقام زيادة
+انقل من التانية للاولى

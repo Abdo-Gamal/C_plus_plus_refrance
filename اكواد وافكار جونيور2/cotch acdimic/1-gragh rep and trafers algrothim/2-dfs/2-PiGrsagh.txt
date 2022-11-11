@@ -1,0 +1,45 @@
+int n, m;
+vector<vector<int>>adjList;
+vector<int>vist;
+vector<int>color;
+bool ispi = 1;
+void dfs(int u) {
+    vist[u] = 1;
+
+    for (auto v : adjList[u]) {
+        if (vist[v] == 0) {
+            color[v] = !color[u];
+            dfs(v);
+        }
+        else if (color[v] == color[u]) {
+            ispi = 0;
+        }
+    }
+}
+
+int main() {
+    //connected commponent 
+    Fast();
+    int t,cnt=1;
+    cin >> t;
+    while (t--)
+    {
+        cin >> n >> m;
+        adjList = vector<vector<int>>(n+2);
+        color= vector<int>(n+2,-1);
+         vist= vector<int>(n+2,0);
+         ispi = 1;
+        for (int i = 0; i < m; i++) {
+            int u, v;       
+            cin >> u >> v;
+            adjList[u].push_back(v);
+            adjList[v].push_back(u);
+
+        }
+        for (int i = 1; i <= n&&ispi; i++) {
+            if (vist[i] == 0) {
+                color[i] = 0;
+                dfs(i);
+            }
+        }
+}

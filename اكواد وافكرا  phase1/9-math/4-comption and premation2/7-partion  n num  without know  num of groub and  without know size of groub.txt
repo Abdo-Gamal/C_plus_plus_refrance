@@ -1,0 +1,14 @@
+What if we want to partition n persons to whatever number of groups: ∑k stirling2(n, k)
+
+This is called Bell Number
+
+Its sequence: 1, 1, 2, 5, 15, 52, 203, 877, 4140, 21147
+◼ To partition 2 numbers => 2 ways {{1}, {2}}, {1,2}
+◼ To partition 3 numbers => 5 numbers
+◼ Note, unordered: {1, 2} same as {2, 1}
+
+==================================================================
+
+You can code Bell numbers using Bell Triangle or using Binomial Coefficients or simply using sum of stirling2
+
+==================================================================

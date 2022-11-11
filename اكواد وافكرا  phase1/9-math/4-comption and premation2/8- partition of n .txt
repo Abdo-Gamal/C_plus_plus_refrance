@@ -1,0 +1,19 @@
+If n is a positive integer, then a partition of n is a non-increasing sequence of positive integers
+p1, p2 ... pk whose sum is n
+◼ 5 has 7 partitions
+◼ F(n) = 1, 1, 2, 3, 5, 7, 11,
+15, 22, 30, 42, 56,
+77, 101, 135, 176
+
+◼ See sequence
+
+
+======================================== مش فاهم 
+Can we find recurrence for F(n)? Yes, in terms of summation...we can push the sum as index
+◼ Here is a trick: n should have some maximum
+value in its summation, the first one
+◼ Let F(n, k) = the number of integer partitions
+of n with largest part at most k
+◼ F(n, k) = F(n − k, k) + F(n, k − 1).
+◼ Basis: are F(1, 1) = 1 and F(n, k) = 0 whenever k > n.
+◼ Initial call: F(n, n)

@@ -1,0 +1,26 @@
+ف النوع دة من المسائل هتتخيل ان عندى  اررى  وكل  خانه ف الارى  هحط فيها  رقم من واحد لحاد    
+n
+بس  لازم الرقم الى هحطه ميكنش  متاخد قبل كدة  ف هعمل    اررى   اسمها  
+visti   
+==================================================================
+// print N choose M combinations
+void comb(int i, int n, int m, int cur[], int curLen)
+{
+	if(curLen == m)
+	{
+		for (int j = 0; j < m; ++j)
+			cout<<cur[j];
+		cout<<"\n";
+		return;
+	}
+
+	if(i == n)	// we reached end, and have current combination is not correct
+		return;
+
+	// take it
+	cur[curLen] = i;
+	comb(i+1, n, m, cur, curLen+1);
+
+	// don't take it
+	comb(i+1, n, m, cur, curLen);
+}

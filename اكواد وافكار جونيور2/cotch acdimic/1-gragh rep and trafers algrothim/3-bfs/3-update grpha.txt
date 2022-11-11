@@ -1,0 +1,45 @@
+int n, m;
+vector < vector<int>>adj;
+
+int BFS(int s,int t) {
+    queue<int>q;
+    vector<int>len(3 * n + 4,-1);
+    q.push(s);
+    len[s] = 0;
+    while (q.empty()==0)
+    {
+        int u = q.front(); q.pop();
+
+        if (u == t) 
+            return len[t]/3;
+        
+        for (auto v : adj[u]) {
+            if (len[v] == -1) {
+                q.push(v),len[v]=len[u]+1;
+            }
+        }
+    }
+    return -1;
+}
+
+int main() {
+               ///////////update graghe to  take  3  three step to  rech netex node
+
+    Fast();
+        cin >> n >> m;
+        adj = vector < vector<int>>(3*n+3);
+        int u, v;
+        for (int i = 0; i < m; i++) {
+            cin >>u>>v;
+            --u, --v;
+            adj[3 * u ].push_back(3 * v + 1);
+            adj[3 * u + 1].push_back(3 * v + 2);
+            adj[3 * u +2].push_back(3 * v);
+
+        }
+        int s, t;
+        cin >> s >> t;
+        --s, --t;
+       cout<< BFS(3*s,3*t)<<"\n";
+    
+}

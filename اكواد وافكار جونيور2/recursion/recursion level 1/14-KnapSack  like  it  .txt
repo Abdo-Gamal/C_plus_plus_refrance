@@ -1,0 +1,54 @@
+﻿int n, m;
+vector<int> v, cur;
+set<vector<int>> ans;
+
+void solve(int idx, int rem) {
+
+	if (idx == n) {
+
+		if (rem == 0) {
+			ans.insert(cur);
+		}
+		return;
+	}
+
+	if (v[idx] > rem)
+		solve(idx + 1, rem);
+
+	cur.push_back(v[idx]);
+	solve(idx + 1, rem - v[idx]);
+	cur.pop_back();
+	solve(idx + 1, rem);
+
+}
+/**------------------------->>  Main  <<------------------------**/
+
+int main() {
+	Fast();
+
+	int t;
+	cin >> t;
+	while (t--) {
+
+		cin >> n >> m;
+		v = vector<int>(n);
+		ans.clear();
+		for (int i = 0; i < n; i++)
+			cin >> v[i];
+		solve(0, m);
+
+		for (auto it : ans) {
+
+			vector<int> vv = it;
+			for (auto iv : vv)
+				cout << iv << " ";
+			cout << "\n";
+
+		}
+
+		if (ans.empty())
+			cout << "NONE\n";
+		cout << "\n";
+	}
+
+}

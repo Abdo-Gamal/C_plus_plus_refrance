@@ -1,0 +1,36 @@
+int main() {
+
+    Fast();
+
+        int n;
+        int cnt = 1;
+        while (cin >> n, n )
+        {
+            map<string, int>mp;
+            for (int i = 0; i < n; i++) {
+                string s; cin >> s;
+                mp[s] = i;
+
+            }
+            vector<vector<double>>Mx(n, vector<double>(n, 0));
+            for (int i = 0; i < n; i++) Mx[i][i] = 1;
+            int m; cin >> m;
+            for (int i = 0; i < m; i++) {
+                string a, b; 
+                double f;
+                cin >> a >> f >> b;
+                Mx[mp[a]][mp[b]] = max(Mx[mp[a]][mp[b]],f);
+            }
+            for (int k = 0; k < n; k++)
+                for (int u = 0; u < n; u++)
+                    for (int v = 0; v < n; v++)
+                        Mx[u][v] = max(Mx[u][v], Mx[u][k] *Mx[k][v]);
+
+            bool ans = 0;
+            for (int i = 0; i < n; i++)
+                if (Mx[i][i] > 1)ans = 1;  // if  i can  start from node and back to again with large than value ans=1
+         //Case 1: Yes
+            cout << "Case " << cnt++ << ": " << (ans == 1 ? "Yes\n" : "No\n");
+        }
+}
+

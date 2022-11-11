@@ -1,0 +1,26 @@
+void Solve() {
+ 
+	scanf("%d%d", &n, &k);
+	char a[(int) 1e6 + 9];
+	scanf("%s", &a);
+	string s = a;
+	set<char> se;
+	map<char, int> mp;
+	for (int i = 0; i < k; i++) {
+		se.insert(s[i]);
+		mp[s[i]]++;
+	}
+	int ans = se.size();
+	for (int i = 0, j = k; j < n; j++, i++) {
+		mp[s[i]]--;
+		if (mp[s[i]] == 0) {
+			se.erase(s[i]);
+		}
+		se.insert(s[j]);
+		ans = max(ans, sz(se));
+		mp[s[j]]++;
+ 
+	}
+	printf("%d\n", ans);
+}
+-----------------------------------------------------------------------

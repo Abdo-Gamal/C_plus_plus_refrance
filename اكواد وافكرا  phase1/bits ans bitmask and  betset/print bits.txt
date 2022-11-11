@@ -1,0 +1,10 @@
+﻿void printNumber(int n, int len)
+{
+	if(!len)
+		return ;
+
+	printNumber(n>>1, len-1);	// remove last bit
+	cout<<(n&1);						// print last bit
+}
+
+=============================================================

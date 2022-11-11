@@ -1,0 +1,14 @@
+﻿vector<int> lucky;
+void push_Lucky(ll num = 0) {    // O(2^9)
+	if (num > 1000 * 1000 * 1000)
+		return;
+
+	if (num) {
+		lucky.push_back(num);
+	}
+	push_Lucky(num * 10 + 4);
+	push_Lucky(num * 10 + 7);
+
+}
+
+===================================================================================

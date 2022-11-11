@@ -1,0 +1,48 @@
+﻿
+
+===================================================================================
+
+// Fibonacci Series: Fib(n) = fib(n-1) + fib(n-2).	Fib(0) = fib(1) = 1
+int fib(int n)
+{
+	if(n <= 1)
+		return 1;
+
+	return fib(n-2) + fib(n-1);
+}
+
+// what is search space? n
+// what is number of recursive calls? We are branching every time to 2 levels that differs in 1
+//										fib(5)
+//							fib(4)											fib(3)
+//				fib(3)					fib(2)						fib(2)			fib(1)
+//		fib(2)			fib(1)	fib(1)			fib(0)		fib(1)			fib(0)
+//	fib(1)	fib(1)
+//
+// We almost have 2^N calls
+
+// Wait, a space of N, is called 2^N times!
+// A fib of 50 do around ~1125899906842624 call!!!!!!
+//
+// Then, we must call a state more than once? and it too call other states, that already called!
+//
+// Check tree above, fib(3) called twice. Fib(2) called three times!
+//
+// Let's SAVE the answer, and let space of N is called 2N times!
+
+
+int savedAnswers[MAX];		/// Initialized to -1, means no answer
+int fibSave(int n)
+{
+	if(n <= 1)
+		return 1;
+
+	if(savedAnswers[n] != -1)
+		return savedAnswers[n];
+
+	return savedAnswers[n] = fib(n-2) + fib(n-1);
+}
+
+
+===================================================================================
+

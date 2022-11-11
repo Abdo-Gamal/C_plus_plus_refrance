@@ -1,0 +1,19 @@
+// What about LCM: Least common multiple
+// That is the first multiple of the 2 numbers.
+// Let's do some prime representation for numbers a, b
+// a = 2^3 * 7^6
+// b = 2^5 * 7^2
+//
+// to get gcd, we need min of powers of 2 and min of powers of 7
+// gcd = 2^min(3, 5) * 7^min(6, 2)
+//
+// what about lcm? we need max
+// lcm = 2^max(3, 5) * 7^max(6, 2)
+//
+// given a, b, and gcd(a, b) how to get lcm(a, b)
+//
+// what about 		a*b = 2^(3+5) 		* 7^(6+2)
+// and we know that gcd = 2^min(3, 5) 	* 7^min(6, 2)
+//
+// then lcm = a*b / gcd.
+

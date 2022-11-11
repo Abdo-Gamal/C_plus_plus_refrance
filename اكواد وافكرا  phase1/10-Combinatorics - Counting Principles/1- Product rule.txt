@@ -1,0 +1,19 @@
+◼ How many words of 3 letters of only B, C?
+char  letters[] = "bc";
+	char ans[4];
+	ans[3] = '\0';
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 2; j++) {
+			for (int k = 0; k < 2; k++) {
+				ans[0] = letters[i];
+				ans[1] = letters[j];
+				ans[2] = letters[k];
+				cout << ans<<"\n";
+			}
+		}
+	}
+=========
+ومعنى  ال    
+product rule  
+او هى بتعبر عن    كل ال   
+bure combination    

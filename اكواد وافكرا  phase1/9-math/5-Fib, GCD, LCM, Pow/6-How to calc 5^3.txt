@@ -1,0 +1,14 @@
+
+// Divide and Conquer
+// 10^16 = (10^8)^2
+// 10^17 = (10^8)^2 * 10
+int pow(int b, int p) {			// O(log(p) base 2)
+	if(p == 0)	return 1;
+	int sq = pow(b, p/2);
+	sq = sq*sq;
+
+	if(p%2 == 1)
+		sq = sq*b;
+
+	return sq;
+}

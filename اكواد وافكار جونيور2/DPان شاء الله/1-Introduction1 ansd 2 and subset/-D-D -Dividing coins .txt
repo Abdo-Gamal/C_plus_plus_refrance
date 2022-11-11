@@ -1,0 +1,22 @@
+﻿
+int n,sum=0;
+
+int Mem[104][50004];
+vector<int>v;
+int Solve(int i=0,int sum=0)
+{
+    if (i== n) {
+
+        return sum;
+    }
+    int& ret = Mem[i][sum];
+    if (~ret)
+        return ret;
+
+     int c1=  Solve(i + 1,sum+v[i]);
+      int c2= Solve(i + 1,sum-v[i]);
+
+    return ret= min( abs(c1),abs(c2) );
+    
+
+}

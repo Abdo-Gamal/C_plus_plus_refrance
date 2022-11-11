@@ -1,0 +1,26 @@
+﻿// generate all sequences of given length, of zeros and ones
+// E.g. for len = 3:	000, 001, 010, 011, 100, 101, 110, 111
+//								""												Count=1
+//					0								1							Count=2
+//			00 				01				10				11					Count=4
+//		000		001		010		011		100		101		110		11				Count=8
+//
+===================================================================================
+
+void generateBinary(int len, string cur = "")	// recursion state: integer, string
+{
+	if(len == 0)
+	{
+		cout<<cur<<"\n";
+		return;
+	}
+
+	// At each level, we branch twice...draw this tree
+	generateBinary(len-1, cur + "0");
+
+	generateBinary(len-1, cur + "1");
+}
+
+
+
+===================================================================================

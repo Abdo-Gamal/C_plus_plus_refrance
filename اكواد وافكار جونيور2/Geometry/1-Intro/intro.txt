@@ -1,0 +1,133 @@
+﻿All about angles and their measures=======================================
+Angles measure
+Radians: 0 - 2 π
+Degrees: 0 - 360
+Radians is better computationally - so libraries use that
+Right angle 90 degree or π/2 radians
+370 Degree = 10 Degree = 370 % 360
+
+========================================================================
+degree to redain
+
+redain =degree* (PI/180);
+
+ redain to degree
+degree =redain * (180/PI);
+
+code:
+
+cconst double PI = acos(-1);
+double toDegreeFromMinutes(double munuts) {
+    return (munuts / 60);
+}
+double toRedians(double degree) {
+    return (degree * PI/ 180);
+}
+double toDegree(double redians) {
+    if (redians < 0)redians += 2 * PI;
+    return (redians * 180/PI);
+}
+
+========================================================================
+sine low (for triangle)
+A captal is  angle , a somll is side 
+
+(sin A/a)=(sin B/b )=(sin C/c )
+
+cos low (for triangle)
+
+a^2=b^2+c^2 -2bc*cos(A);
+
+b^2=a^2+c^2 -2ac*cos(B);
+
+c^2=a^2+b^2 -2ab*cos(C);
+
+========================================================================
+Given A(angles) or S(sides) of triangle
+Find other missing values
+6 different cases!
+AAA, AAS, ASA, SAS, SSA, SSS
+الحاله الوحيدة الى مش هتقدر  تجيب بيها ال ناقص هى  اول حاله لما يديك تلت زوايه ويقلك هات اضلع مش  هتقدر  
+
+========================================================================
+atan2!=atan 
+atan2 take  side   " use it better " 
+atan take  angle 
+==============================
+تلت  دوال لحساب اى حاجة ناقصه ف المثلث  
+double fixedAngle(double A) {
+    return A > 1 ? 1 : (A < -1 ? -1 : A);
+}
+//(sin A/a)=(sin B/b )=(sin C/c )
+double getSide_a_bAB(double b,double A,double B) {
+    return (sin(A) * b)/sin(B);
+}
+double getAngle_A_abB(double a, double b, double B) {
+    return asin( fixedAngle(     a*sin(B)/b   )  );
+}
+// a ^ 2 = b ^ 2 + c ^ 2 - 2bc * cos(A);
+double getAngle_A_abc(double a, double b, double c) {
+    return acos(fixedAngle(       (b*b+c*c-a*a )/(2*a*b*c)   ));
+}
+
+==============================================================
+//Trigonometric functions
+
+sin (angle)=opposite/hypotnuse;
+cos(angle)=adjacent/hypotnuse;
+tan(angle)=opsite/adjacent;
+
+a^2+b^2=c^2;
+
+sin-1 ,cos-1 tan-1  function give angle
+
+with any two value ,you can find all side ans all angle ;
+
+==============================================================
+Triangle Area
+struct  point
+{
+    int a, b;
+};
+double lenght(point p1, point p2) {
+
+}
+double trangleArea(point p0,point p1,point p2) {
+
+    double a = lenght(p1, p0), b = lenght(p0, p2), c = lenght(p1, p2);
+    double s = (a + b + c) / 2;
+    return sqrt((s-a)*(s-b)*(s-c)*s);//Heron format 
+
+}
+//given the lenght of  three medain of  traingle ,find area
+double trangleArea(double m1, double m2, double m3) {
+    //area of traingle  using medain  as side =
+    // 3/4* (area of  original  traingle )
+    if (m1 <= 0 || m2 <= 0 || m3 <= 0) return -1;
+    // for area made  by side as medain 
+    double s = 0.5 * (m1+m2+m3);
+    double medains_area = (s*(s-m1)*(s-m2)*(s-m3));
+    double area = 4.0 / 3.0 * sqrt(medains_area);
+    if (medains_area <= 0 || area <= area) return -1;
+    return area;
+
+}
+======================================================================Circles
+//to  get x for given any y or  get x for any given 
+//(h,k) is  the original for circle 
+(x-h)^2+(y-k)^2=r^2;
+
+--------
+diameter =2*reduis;
+circumference of a circle= pi*diameter;
+---------
+area of circle =pi*reduis^2;
+-----------
+//area sector  of circle
+sectorArea=(Seta/360)*(pi*r^2);
+-----------
+//lenght of  Arch 
+lenght=(Seta/360)*(2*pi*r);
+
+
+

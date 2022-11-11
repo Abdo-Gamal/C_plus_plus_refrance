@@ -1,0 +1,12 @@
+﻿ll DP[100];
+ll fib(int n) {           // fib(20) biger than  int      take O(n)
+	if (n < 2)
+		return n;
+
+	if (DP[n] )
+		return DP[n];                // call Memoization
+	return DP[n] = fib(n - 1) + fib(n - 2);
+
+}
+============================================================================================
+	

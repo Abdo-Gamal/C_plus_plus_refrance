@@ -1,0 +1,23 @@
+﻿
+
+==============================================================================================
+vector<vector<int>>adjList;
+int vist[1000 * 1000];
+int cnt;
+int BFS(int s) {
+    queue<int> q;
+    q.push(s), vist[s] = 1;
+    cnt++;
+    while (q.empty()==0) {
+        int cur = q.front(); q.pop();
+        for (auto it : adjList[cur]) {
+            if (vist[it] == 0) {
+                q.push(it); vist[it] = 1; cnt++;
+            }
+        }
+    }
+
+    return cnt;	//cur is the furthest node from s with depth dep
+}
+
+==============================================================================================

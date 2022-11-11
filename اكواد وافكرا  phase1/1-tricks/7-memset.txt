@@ -1,0 +1,13 @@
+﻿memset: Sets the first num bytes of the block of memory pointed by ptr to the specified value (interpreted as an unsigned char
+
+SO fast: as it directly assign memory blocks.
+
+You could set with it chars in case string, 0 or 1 in case integers and -1 in case doubles.
+
+memset(vis, 0, sizeof(vis));    sizeof()= number of interger *size_in_byte                                                 
+memset (str,'-',6);                          string
+
+Related Memory methods                  حجات سريعة تانى  برضو
+memcpy    	Copy block of memory
+strncpy 	Copy characters from string
+memcmp	    Compare two blocks of memory

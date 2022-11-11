@@ -1,0 +1,19 @@
+﻿int sum_range1(int S, int E, vector<int> & cum_sum) {
+  if (S == 0)
+    return cum_sum[E];
+
+  return cum_sum[E] - cum_sum[S - 1];
+}
+
+void zero_based() {
+  vector<int> A = { 2, 1, 4, 5, 3, 7 };
+  vector<int> S(A.size(), 0);
+
+  //pre-processing: Compute cumulative sum array
+  for (int i = 0; i < (int) A.size(); i++)
+    S[i] += (i == 0) ? A[i] : A[i] + S[i - 1];
+
+  cout << sum_range1(0, 5, S) << "\n";
+  cout << sum_range1(1, 5, S) << "\n";
+  cout << sum_range1(2, 4, S) << "\n";
+}

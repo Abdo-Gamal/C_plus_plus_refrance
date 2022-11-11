@@ -1,0 +1,54 @@
+﻿
+int n;
+vector<int> ithRowqueen;
+vector<bool> vist_col, diag_right, diag_left;
+
+void QuenneN(int r=0) {
+
+    if (r == n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (ithRowqueen[i] == j)
+                    cout << "Q";
+                else
+                    cout << ".";
+
+            }
+            cout << "\n";
+
+        }
+        cout << "\n";
+        return;
+    }
+    for (int c = 0; c < n; c++) {
+
+        //r + c as  in all col the diag_right is const equal r+c
+        // c - r as  in all col the diag_left is const equal r-c and add n as not be munus
+
+        if (!vist_col[c] && !diag_right[r + c] && !diag_left[n + c - r]) {
+
+            ithRowqueen[r] = c;
+            vist_col[c] = diag_right[r + c] = diag_left[n + c - r] = 1;
+
+            QuenneN(r + 1);
+
+            vist_col[c] = diag_right[r + c] = diag_left[n + c - r] = 0;
+
+        }
+
+    }
+
+}
+/**------------------------->>  Main  <<------------------------**/
+
+int main() {
+    Fast();
+
+    cin >> n;
+
+    ithRowqueen.resize(n);
+     vist_col.resize(2*n+1), diag_right.resize( 2 * n + 1), diag_left.resize(2 * n + 1);
+
+     QuenneN();
+
+}

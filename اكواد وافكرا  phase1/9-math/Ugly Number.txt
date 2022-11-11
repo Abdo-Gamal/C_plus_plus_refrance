@@ -1,0 +1,90 @@
+﻿Ugly numbers are numbers whose only prime factors are 2, 3 or 5. The sequence 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, … shows the first 11 ugly numbers. By convention, 1 is included.
+
+Given a number n, the task is to find n’th Ugly number.
+=================================================
+83427429199218750
+
+ده ال ugly number رقم 9139
+============================================
+// كود بطئ
+//عشان   بياخد xlog(x)
+//  x=83427429199218750
+int fun(int a, int b) {
+	while (a % b == 0)
+		a = a / b;
+	return a;
+}
+
+bool isUgly(int x) {
+	x = fun(x, 2);
+	x = fun(x, 3);
+	x = fun(x, 5);
+
+	return x == 1;
+}
+
+int n;
+void Solve() {
+
+	scanf("%d", &n);
+
+	vector<int> ans;
+	for (int i = 1; sz(ans) < n; i++) {
+		int x = i;
+		if (isUgly(x))
+			ans.push_back(x);
+
+	}
+	for (int i = 0; i < n; i++)
+		cout << ans[i] << "\n";
+
+	printf("%d", ans[sz(ans) - 1]);
+}
+=======================================================================================
+// كود سريع
+ int n; cin >> n;
+    set<ll>st;
+    st.insert(1);
+    auto it = st.begin();
+    for (int i = 0; i < n; i++)
+    {
+        st.insert((*it) * 2);
+        st.insert((*it) * 3);
+        st.insert((*it) * 5);
+        it++;
+    }
+    it = st.begin();
+    for (auto it : st)
+    {
+        if (!(--n))cout << it << endl;
+    }
+==========================================================================
+int n;
+void Solve() {
+
+	int k;
+	cin >> k;
+	priority_queue<ll, vector<ll>, greater<ll> > x;
+	map<ll, bool> y;
+	x.push(1);
+	y[1] = 1;
+	for (int i = 1; i < k; i++) {
+		if (!y[x.top() * 2]) {
+			x.push(x.top() * 2);
+			y[x.top() * 2] = 1;
+		}
+		if (!y[x.top() * 3]) {
+			x.push(x.top() * 3);
+			y[x.top() * 3] = 1;
+		}
+		if (!y[x.top() * 5]) {
+			x.push(x.top() * 5);
+			y[x.top() * 5] = 1;
+		}
+		x.pop();
+	}
+	while (!x.empty()) {
+		cout << x.top() ;
+		x.pop();
+	}
+}

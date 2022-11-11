@@ -1,0 +1,8 @@
+struct Edge
+{
+    int from, to, weight;
+    bool operator<(Edge other) const
+    {
+        return weight > other.weight;
+    }
+};

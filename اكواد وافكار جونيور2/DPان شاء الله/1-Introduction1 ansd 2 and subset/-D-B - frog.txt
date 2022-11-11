@@ -1,0 +1,32 @@
+﻿int n;
+
+int v[(int)(1e5 + 1)];
+int Mem[(int)(1e5 + 1)];
+int Solve(int i) {
+
+    if (i == n-1)
+        return 0;
+    int& ret = Mem[i];
+    if (~ret)
+        return ret;
+    int mn = 0, x1 = OO, x2 = OO;
+
+    x1= Solve(i + 1) + abs(v[i]-v[i+1]);
+   if(i+2<n)
+    x2 = Solve(i + 2) + abs(v[i] - v[i + 2]);
+
+   return ret=min(x1, x2);
+}
+
+/**------------------------->>  Main  <<------------------------**/
+
+int main() {
+    Fast();
+
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    mem(Mem, -1);
+   cout<< Solve(0)<<"\n";
+}

@@ -1,0 +1,54 @@
+#define cost first
+#define  from second.first
+#define  to second.second
+
+int n, m;
+vector < pair<int, pair<int, int>>>edges;
+int ballman(int src,int tar) {
+    vector<int>dis(n, OO);
+    dis[0] = 0;
+    for (int i = 0; i < n-1; i++) {
+        bool isUpdated = 0;
+        for (auto e : edges) {
+            if (dis[e.to] > dis[e.from] + e.cost) {
+                dis[e.to] = dis[e.from] + e.cost;
+                isUpdated = 1;
+            }
+        }
+        if (isUpdated == 0)break;
+      
+    }
+    vector<int>hasCycle(n,0);
+    for (int i = 0; i < n - 1; i++) {
+        bool isUpdated = 0;
+        for (auto e : edges) {
+
+            if (dis[e.to] > dis[e.from] + e.cost) {//is there  are update node then its cycle node  
+                dis[e.to] = dis[e.from] + e.cost;
+                hasCycle[e.to] = 1;
+                isUpdated = 1;
+            }
+            if (hasCycle[e.from] ==1)// if  there are  negtive cycl  then all not after them in path is cycle node 
+                hasCycle[e.to] = 1;
+        }
+        if (isUpdated == 0)break;
+
+    }
+    if (hasCycle[tar])return -1;
+    else return dis[tar];
+}
+int main() {
+
+    Fast();
+
+    cin >> n >> m;
+    for (int i = 0; i < m; i++) {
+        int u, v, c;
+        cin >> u >> v >> c;
+        edges.push_back({ c,{--u,--v} });
+    }
+    int src, tar;
+    int ans = ballman(--src, --tar);
+    if (ans ==-1)cout << "has negtive cycle from src to destnation  \n";
+    else cout <<ans << "\n";
+}

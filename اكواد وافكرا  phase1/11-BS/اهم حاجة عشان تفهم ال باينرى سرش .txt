@@ -1,0 +1,27 @@
+
+ * 	2- In many problems, function F is boolean function could(int val).	
+                                     E.g. If we are given # of sandwiches to eat during trip. Using them you could reach your destination or die from starving as food ended.
+ * 			What is MIN # of sandwiches to finish trip and still alive?
+ *
+ * 		in this case space is like  0 0 0 0 0 0 1 1 1 1 1
+ *
+ * 			That is e.g. given up to 6 sandwiches u die, but more than that you could pass.
+ *
+ * 		Sometimes space is reverse 1 1 1 1 1 0 0 0 0 0 0
+ *
+ * 		Sometimes you are asked for first 1 (or) zero and some times you are asked for the last.
+ *
+ * 		For more understanding for first and last: Imagine array: 1 3 4 5 9 9 9 12 15 ...
+ * 			Find 1st idx of 9? Find last idx of 9?
+ * 			So it is not just about finding, but which position? any? first? last?
+ *
+ * 		Final note: remember (e.g. in 0 0 0 0 0 0 1 1 1 1 1) the last zero followed by the first one. So you could be asked to last, and solve it usign first.
+ */
+
+========================================
+لازم تستوعب  معنى الاسفار وبعد كدة وحايد  او العكس  
+ احنا    معنا   داله كان   ودى هترجع اصفر او واحد ف  
+ف لو انا اقدر اعيش ب  10 سندوتشات مثلا يبقا  اكيد    اقدر اعيش   ب 11  او 12  ف  دايما بعد العشره هيكون  كله وحايد  
+ف هتلاقى الشكل العام بقى  
+00000011111111111
+وانت دايما هيطلب منك  اول واحد او اخر   صفر   

@@ -1,0 +1,38 @@
+
+=========================================
+//code to generate all permutation recsion? 
+
+vector<int>permutation;
+int  prem_cnt = 0, prem_num = 4;
+bool is_visited[4];
+void get_prem(int i=0) {
+	if (i == prem_num) {                    //finally ew have 24 perutation
+		prem_cnt++;                                  //you cna print primtation here
+		return;
+	}
+	for (int j = 0; j < prem_num; j++) {
+		if (is_visited[j]) continue;
+
+			permutation.push_back(j);
+			is_visited[j] = 1;
+			get_prem(i + 1);
+			is_visited[j] = 0;
+			permutation.pop_back();
+
+	}
+
+}
+
+
+=========================================
+vector<int>v = { 1,2,3 };
+	int cnt = 0;
+		do {
+
+			cnt++;
+
+		} while (next_permutation(all(v));
+==========================================
+// اخرك  20رقم طول الفكترو 
+
+// مع اى حاجة الكومبلكستى بتاعتها  هى المضروب  اخرك   20  

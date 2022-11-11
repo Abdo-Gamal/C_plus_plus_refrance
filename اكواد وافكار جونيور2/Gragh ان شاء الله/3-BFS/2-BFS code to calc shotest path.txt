@@ -1,0 +1,38 @@
+﻿
+O()
+==============================================================================================
+vector<int> BFS(int s, vector<vector<int> > & adjList) {
+	vector<int> len(sz(adjList), OO);
+	queue< pair<int, int> > q;
+	q.push(MP(s, 0)), len[s] = 0;
+
+	int cur, dep;
+	while(!q.empty()) {
+		pair<int, int> p = q.front();	 q.pop();
+		cur = p.first, dep = p.second;
+
+		rep(i, adjList[cur]) if (len[adjList[cur][i]] == OO) //دى عشان لو فى اكتر من اب للحاجة هاخد اول واح وصلها 
+			q.push(MP(adjList[cur][i], dep+1)), len[adjList[cur][i]] = dep+1;
+	}
+
+	return len;	            //cur is the furthest node from s with depth dep
+}
+
+
+In main:
+int n, e;
+
+	cin>>n>>e;
+
+	vector<vector<int> > adj(n);
+
+	lp(i, e) {
+		int from, to;
+		cin>>from>>to;
+		adj[from-1].push_back(to-1);
+ 	}
+
+==============================================================================================
+
+
+

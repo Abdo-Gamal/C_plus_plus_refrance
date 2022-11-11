@@ -1,0 +1,31 @@
+
+المود  ف العموم لو الرقم موجدب   هتترح   الرقم الى بعد المود من الرقم الى قبل المود  
+لو الرقم سالب    هتزود  الرقم الى بعد المود  على الرقم الى  قبل المود لحاد  مرقم يكون اقل من الى بعد المود 
+ex  -16%12 =-4
+
+===========================================
+
+let a = 27, n = 12, then r = a % n?
+◼ 27 / 12 = (3+2*12)/12 = 3/12 + 2 = 2.25
+◼ q (quotient), the Integer division part is 2
+◼ r (remainder) of division is 3
+
+◼ r = 27 % 12 = 3 => Remainder from division
+◼ a = nq + r (q multiple of n + r [< n])
+◼ % operator is finally:       r= a- n*(a/n)
+◼ |r| < n
+
+===========================================
+
+تانى طريقه  المود نفسها  
+===========================================
+modulus is expensive
+% and / are time expensive operations
+◼ If you can avoid them, avoid them
+◼ One scenario, when you are sure results can be
+fixed with little +/- of mod value
+◼ we can directly do: a = (a%n + n)%n
+◼ 1 addition and 2 mod operations
+◼ maybe we can fix results with e.g. 2 comparison/add
+◼ while(a >= n) a -= n;
+◼ while(a < 0) a += n

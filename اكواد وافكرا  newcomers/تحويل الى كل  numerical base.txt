@@ -1,0 +1,24 @@
+ll to_base10(string s, ll base) {
+
+	ll num_base10 = 0;
+	for (int i = 0; i < s.size(); i++) {
+		if (s[s.size() - 1 - i] >= 'A')num_base10 += pow(base, i) * (s[s.size() - 1 - i] - 'A' + 10);//  assci for num start from 56 i think
+		
+		else num_base10 += pow(base, i) * (s[s.size() - 1 - i] - '0');// assci for num start from 49
+	}
+	return num_base10;
+
+}
+
+string from_base10(int n, int base) {
+	string ans = "";
+	while (n) {
+		int temp = n % base;
+		if (temp > 9) ans += ('A' + (temp - 10));
+		else ans += temp + '0';
+		n /= base;
+	}
+	reverse(all(ans));
+	return ans;
+
+}

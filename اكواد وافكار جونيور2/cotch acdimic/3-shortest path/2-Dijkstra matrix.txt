@@ -1,0 +1,50 @@
+int  n, m;
+vector<vector<int>>grid;
+bool vaild(int i, int j) {
+    return i >= 0 && i < n&& j >= 0 && j < m;
+}
+int dijkstra(int sr,int sc,int tr,int tc) {
+    vector<vector<int>>dis(n, vector<int>(m, OO));
+    priority_queue< pair<int, pair<int,int>>,vector<pair<int, pair<int, int>>>,greater<pair<int, pair<int, int>>> >q;
+    dis[sr][sc] = grid[sr][sc];
+    q.push({ dis[sr][sc], {sr,sc} });
+    while (!q.empty())
+    {
+        int c = q.top().first;
+        int ur = q.top().second.first;
+        int uc = q.top().second.second;
+        q.pop();
+        if (ur == tr && uc == tc)break;
+        if (c != dis[ur][uc])continue;
+
+        for (int i = 0; i < 4; i++) {
+            int vr = ur + dx4[i];
+            int vc = uc + dy4[i];
+            if (vaild(vr,vc) && dis[vr][vc] > dis[ur][uc] + grid[vr][vc]) {
+                dis[vr][vc] = dis[ur][uc] + grid[vr][vc];
+                q.push({ dis[vr][vc]  ,{vr,vc} });
+            }
+        }
+    }
+    return dis[tr][tc];
+}
+
+
+int main() {
+
+    Fast();
+    int t; cin >> t;
+    while (t--)
+    {
+        cin >> n >> m;
+        grid = vector<vector<int>>(n+1,vector<int>(m+2));
+
+        for (int i = 0; i < n; i++) 
+            for (int j = 0; j < m; j++)
+                cin >> grid[i][j];
+        
+        cout << dijkstra(0, 0, n-1, m-1)<<"\n";
+    }
+  
+   
+}

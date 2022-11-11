@@ -1,0 +1,25 @@
+(a^1+a^2+a^3+a^4+a^5+a^6)= (a^1+a^2+a^3)+( a^4+a^5+a^6)= (a^1=a^2+a^3)+( (a^1*a^3)+(a^2*a^3)+(a^3*a^3))
+=(a^1+a^2+a^3)+a^3(a^1+a^2+a^3)= (a^1+a^2+a^3)*[1+a^3]	
+=(a^1+a^2+a^3)*[1+a^3+a^1+a^2-(a^1+a^2)]	
+//lets try odd power
+(a^1+a^2+a^3+a^4+a^5+a^6+a^7)=a^1+ (a^2+a^3+a^4+a^5+a^6+a^7)=a+a(a^1+a^2+a^3+a^4+a^5+a^6)
+=a(1+(a^1+a^2+a^3+a^4+a^5+a^6));
+
+=======================================================================================
+ll sumPow(ll a,int k) {              //returna^1+a^2+a^3...a^k in           O(k)
+	if (k == 0)return 0;
+
+	if (k % 2)                       //saad  say==1
+     return a * (1 + sumPow(a,k-1));
+	ll half = sumPow(a, k /2);
+	return(half * (1 + half - sumPow(a, k / 2 - 1)));
+}
+=======================================================================================complexty 
+level1= 1 opration  (opration =total call);
+level2= 2 opration  
+level3= 4opration  
+level4= 8 opration  
+ف  كل  الكول الى عندى   بقسم على اتنين   ولاحظ ان البرامتر الاول للداله ملهوش لزمه هنا   
+number of level = max level when k/2/2/2=k/2^i  ....then max= log k base 2
+
+complexty= 2^(log2(k))=o( k)

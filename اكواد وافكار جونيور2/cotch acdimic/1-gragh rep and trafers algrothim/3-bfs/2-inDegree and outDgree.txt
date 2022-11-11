@@ -1,0 +1,54 @@
+vector < vector<pair<int, int>>>adj;
+vector<bool>vist;
+vector<int>inDeg, outDeg;
+vector <pair<pair<int, int>,int>>ans;
+
+void BFS(int s) {
+    queue<pair<int,int>> q;
+    q.push({ s,INT_MAX}), vist[s] = 1;
+
+     while (q.empty()==0)
+     {
+        int  u = q.front().first; 
+        int mn = q.front().second;
+        q.pop();
+        if (inDeg[u] == 1 && outDeg[u] == 0)
+            ans.push_back({ {s,u},mn });
+        for (auto it : adj[u]) {
+            int v = it.first;
+            int c = it.second;
+            if (vist[v] == 0)
+                q.push({ v,min(mn,c) }), vist[v] = 1;
+        }
+
+     }
+    
+   
+}
+const int max_string = 20;
+int main() {
+
+    Fast();
+   int n,m;
+   cin >> n >> m;
+       adj = vector < vector<pair<int, int>>>(n + 3);
+       vist = vector<bool>(n + 3);
+       inDeg = outDeg = vector<int>(n + 3);
+   
+       for (int i = 0; i < m; i++) {
+           int  u, v, c; cin >> u >> v >> c;
+           adj[u].push_back({ v, c });
+           outDeg[u]++;
+           inDeg[v]++;
+       }
+       for (int i = 1; i <= n; i++) {
+           if (inDeg[i] == 0 && outDeg[i] == 1&&vist[i] == 0) {  // tank
+               BFS(i);
+           }
+       }
+
+       cout << ans.size() << "\n";
+       for (int i = 0; i < sz(ans); i++)
+           cout << ans[i].first.first << " " << ans[i].first.second << " " << ans[i].second << "\n";
+   
+}

@@ -1,0 +1,16 @@
+﻿string s;
+vector<string> ans;
+void gen(int x, string cur = "") {
+
+	if (x == sz(s))
+		return;
+
+	cur += s[x];
+	ans.push_back(cur);
+	
+	
+	gen(x + 1, cur);
+	cur.pop_back();
+	gen(x + 1, cur);
+
+}

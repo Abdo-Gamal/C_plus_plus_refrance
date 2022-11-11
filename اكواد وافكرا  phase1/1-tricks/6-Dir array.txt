@@ -1,0 +1,36 @@
+﻿Do you remember code that moves in maze?
+
+	bool findEnd(int r, int c)		// Recursion State: r, c
+	{
+		// Try the 4 neighbor cells
+		if(findEnd(r, c-1)) return true;  	// search up
+		if(findEnd(r, c+1)) return true; 	// search down
+		if(findEnd(r-1, c)) return true;  	// search left
+		if(findEnd(r+1, c)) return true;  	// search right
+
+		// Can't find a way for it!
+		return false;
+	}
+
+What if we do 8 moves? 16 moves? The better is recording how state is changed, and save this in array
+int cr[] = {0, 0, -1, 1};
+int cc[] = {-1, 1, 0, 0};
+
+In Some problems, you need to order them, e.g. Left, Up, Right, Bottom.
+Exercise: How to do it for 8 directions? How array will be for knight move in a chess?
+
+	bool findEnd(int r, int c)		// Recursion State: r, c
+	{
+		for(int d = 0; d < 4; ++d)
+			if(findEnd(r + cr[d], c + cc[d])) return true; 	// change r, c with change in row and change in column
+
+		// Can't find a way for it!
+		return false;
+	}
+///////////////(*)
+valid(-----){}
+for (int k = 0; k < 4; k++) {
+			while (valid(x + dx4[k] , y + dy4[k])) {
+				x += dx4[k], y += dy4[k]; 
+				
+			}

@@ -1,0 +1,37 @@
+﻿Another (critical) example
+◼ Given an array containing N integers, you need to find the
+length of the smallest)num of element) contiguous subarray that contains at
+least K distinct elements in it.
+◼ As we said, P1=P2 = 0. Shift P2, then P1, P2, P1….etc
+◼ But what makes a window ok?
+◼ As long as we don’t have k distinct numbers = OK
+◼ How to know current count?
+◼ Maintain a set & map datastructure of the current numbers
+◼ P2 adds its number, P1 remove its number
+Code--------------------------------------------------------------------------
+
+	int arr[1000], n,k;
+	map<int, int>cnt;
+	set<int>s;
+	cin >> n>>k;
+	for (int i = 0; i < n; i++)cin >> arr[i];
+
+	int l = 0, r = 0;
+	ll ans=OO,sum=0;
+	while (l < n) {
+
+		while (r<n &&s.size()<k) {
+			s.insert(arr[r]);
+			cnt[arr[r]]++;
+			r++;
+		}
+		if (s.size() >= k) {
+			ans = min(ans, ll(r - l));
+		}
+		if (cnt[arr[l]] == l)	s.erase(arr[l]);
+
+			cnt[arr[l]]--;
+		     l++;
+
+	}
+---------------------------------------------------------------------

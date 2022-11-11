@@ -1,0 +1,50 @@
+void find(int a) {
+ 
+	ll start = 0, end = n - 1;
+	int ans = -1;
+	while (start <= end) {
+		ll mid = (start + start) / 2;
+ 
+		if (v[mid] == a ) {
+			printf("%s\n", "found");
+			return;
+		}
+		if (v[mid] >a) {
+ 
+			end = mid - 1;
+		} else
+			start = mid + 1;
+	}
+	printf("%s\n", "not found");
+ 
+}
+--------------------------------------------------------------------
+void lower(int a) {
+ 
+	ll start = 0, end = n - 1;
+	int ans = -1;
+	while (start <= end) {
+		ll mid = (start + end) / 2;
+		if (v[mid] < a) {
+			ans = mid;
+			start = mid + 1;
+		} else
+			end = mid - 1;
+	}
+	printf("%d\n", ans);
+}
+-----------------------------------------------------------------------
+int upper(int a) {
+ 
+	ll start = 0, end = n - 1;
+	int ans = -1;
+	while (start <= end) {
+		ll mid = (start + end) / 2;
+		if (v[mid] > a ) {
+			ans = mid;
+			end = mid - 1;
+		} else
+			start = mid + 1;
+	}
+	return ans;
+}

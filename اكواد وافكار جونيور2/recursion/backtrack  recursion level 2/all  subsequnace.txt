@@ -1,0 +1,14 @@
+﻿int n;
+void Solve(int n, string cur = "") {
+
+	if (n == 0) {
+		cout << cur << "\n";
+		return;
+	}
+
+	Solve(n - 1, cur + "0");
+	Solve(n - 1, cur + "1");
+
+}
+
+

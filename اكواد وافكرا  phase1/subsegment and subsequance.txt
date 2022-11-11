@@ -1,0 +1,26 @@
+﻿subarray(substring):
+-------------------
+EX: arr[]={1,2,3};
+all subarrayis :-
+1
+1 2
+1 2 3
+2 
+2 3
+3 
+
+
+=====================================================================================
+subsegment :(==subarray)
+-----------------------
+A sequence b is a subsegment of a sequence a if b can be obtained from a by deletion of 
+several (possibly, zero or all) elements from the ((beginning)) and several
+ (possibly, zero or all) elements from the ((end)).
+
+===================================================================================
+subsequence :
+-------------
+a subsequence of a given String, that is generated 
+by deleting some character of
+ a given string without changing its order.
+===================================================================================

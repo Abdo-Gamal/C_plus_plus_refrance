@@ -1,0 +1,97 @@
+﻿/*
+Gray Code:  is a binary numeral system where two successive values differ in only one bit  الفرق بين عدد الوحايد   بين كل اتنين رى بعض  هو واحد 
+
+0000		0000	0
+0001		0001	1
+0010		0011	2
+0011		0010	1
+0100		0110	2
+0101		0111	3
+0110		0101	2
+0111		0100	1
+1000		1100	2
+1001		1101	3
+1010		1111	4
+1011		1110	3
+1100		1010	2
+1101		1011	3
+1110		1001	2
+1111
+
+
+Build it incrementally, Let's see for len = 1     //(مش متعارض مع الgray code)
+0
+1
+
+Great. For len = 1 we have correct List. For length 2, we know we need to( add) prefix 0 and 1 so doubling list   
+00
+01
+10
+11
+Great, Len = 2 also works well.
+
+For length 3:                          
+
+000
+001
+010
+011
+100
+101
+110
+111
+Great, Len = 3 also works well.
+
+Failed. Note. We know 1st 4 numbers are correct. As the bits count did not change. Same for 2nd 4 numbers. All incremented 1.
+Problem when moved from 4th to 5th. The point, they will always be 0111111 and 100000.
+What about reversing 2nd list, so we got the biggest 111111 one beside end of 1st block 011111.
+
+
+So all what we need. Given answer of list N-1. To generate N. use 0N + 1N' where N' is reverse list.
+If we built the list incrementally including from N=2 we got.
+0000		0000	0
+0001		0001	1
+0010		0011	2
+0011		0010	1
+0100		0110	2
+0101		0111	3
+0110		0101	2
+0111		0100	1
+1000		1100	2
+1001		1101	3
+1010		1111	4
+1011		1110	3
+1100		1010	2
+1101		1011	3
+1110		1001	2
+=====================================================================================================================
+By observation, in gray code, every bit is Xor of its bit and next one.  يعنى   هنحوش اول bit    من الرقم  ونعمة  ^مع نفسة(الاصل)
+ */
+=====================================================================================================================
+void printNumber(int n, int len)
+{
+	if(!len)
+		return ;
+
+	printNumber(n>>1, len-1);	// remove last bit
+	cout<<(n&1);						// print last bit
+}
+
+int grayCode(int i) {
+	return i ^ (i>>1);
+}
+
+void printAllSubsetsGray(int len)
+{
+	for (int i = 0; i < (1<<len)-1; ++i)
+	{
+		printNumber(i, len );
+		cout<<"\t\t";
+
+		printNumber( grayCode(i), len );
+
+		cout<<"\t"<<__builtin_popcount(grayCode(i));
+		cout<<"\n";
+	}
+}
+=====================================================================================================================

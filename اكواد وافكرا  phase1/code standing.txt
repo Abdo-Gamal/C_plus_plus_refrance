@@ -1,0 +1,170 @@
+#define _CRT_SECURE_NO_WARNINGS
+/*                   ??????? ??? ??? ????? ??????                    */
+/*       ??? ???? ??? ???? ???? ??? ??? ???? ??? ??? ??? ????      */
+#include <bits/stdc++.h>
+#include<unordered_map>
+#include<iomanip>
+#include<fstream>
+using namespace std;
+#define endl '\n'
+#define ll long long
+#define ull unsigned long long
+#define dll double
+#define PI acos(-1)
+#define watch(x) cerr<<#x<<" = "<<x<<" \n"
+#define sz(n) n.size()
+#define M_Sayed fast()
+#define all(v) v.begin(),v.end()
+#define allr(v) v.rbegin(),v.rend()
+#define RT(v) return cout<<v,0
+#define MP					make_pair
+int dx[] = { 0, 1, 0, -1, 1, 1, -1, -1 };
+int dy[] = { 1, 0, -1, 0, 1, -1, 1, -1 };
+const double EPS = (1e-7);
+const ll  mod = (1e9 + 7), OO = 1e9;
+ll Ceil(ll x, ll y)
+{
+    return (x + y - 1) / y;
+}
+void run()
+{
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    //freopen("output.txt", "w", stdout);
+#else
+    //freopen("input", "r", stdin);
+    //freopen("output", "w", stdout);
+#endif
+}
+void fast()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+ll sum = 0, n,m, c = 0;
+struct str
+{
+    int a,b;
+    string s;
+};
+bool ok(str &a,str&b )
+{
+    if(a.a>b.a)return 1;
+    if(a.a==b.a)
+    {
+        if(a.b<b.b)return 1;
+        if(a.b==b.b) return a.s<b.s;
+    }
+    return 0;
+}
+int main()
+{
+    M_Sayed;
+    //run();
+    int t=1;
+    cin>>t;
+    for(int test=1; test<=t; test++)
+    {
+        cin >> n>>m ;
+        cout<<"Case "<<test<<":\n";
+        string pr,ct;
+        vector<ll>con(m);
+        ll ak=0;
+        for(auto &i:con)
+        {
+            cin>>i;
+            ak+=i;
+        }
+        vector<vector<str>>alcont(m);
+        vector<pair<ll,string>>upsolved;
+        for(int a=0; a<n; a++)
+        {
+            cin>>pr;//practi..
+            //cout<<pr <<" =  ";
+            ll upso=0;
+            ak=0;
+            for(int b=0; b<m; b++)
+            {
+                ll nu=0;
+                ll st=0;
+                ll up=0;
+                cin>>ct;
+            vector<int>problems(26);
+                for(int i=1; i<sz(ct)-1; i++)
+                {
+                    if(isalpha(ct[i])&&ct[i+1]=='(')
+                    {
+                        if(ct[i+2]=='A'&&ct[i+3]=='C')
+                        {
+                            //cout<<ct[i]<<": ";
+                            problems[ct[i]-'A']=1;
+                            nu++;
+                            ll k=0,wr=0;
+                            int j=i+5;
+                            while(isdigit(ct[j]))
+                            {
+                                wr*=10;
+                                wr+=ct[j]-'0';
+                                j++;
+                            }
+                            j++;
+                            while(isdigit(ct[j]))
+                            {
+                                k*=10;
+                                k+=ct[j]-'0';
+                                j++;
+                            }
+                            i=j;
+                            st+=(wr-1)*20+k;
+                        }
+                    }
+                    if(ct[i]=='/')
+                    {
+                        bool h=0;
+                        for(int j=i+2; j<sz(ct); j++)
+                        {
+                            if(!isalpha(ct[j])&&h)
+                            {
+                                up++;
+                                h=0;
+                            }
+                            else if(isalpha(ct[j]))
+                            {
+                                h=!problems[ct[j]-'A'];
+                            }
+                        }
+                    }
+                }
+                alcont[b].push_back({nu,st,pr});
+                //cout<<con[b]-nu<<" "<<up<<endl;
+                ak+=con[b]-nu;
+                upso+=(up);
+                //cout<<ak<<" "<<upso<<endl;
+                //cout<<st<<" ";
+            }
+            //cout<<((-upso)*100)/ak<<endl;
+            upsolved.push_back({(-upso)*100/ak,pr});
+        }
+        map<string,ll>stan;
+        vector<pair<ll,string>>final_standing;
+        for(auto i:alcont)
+        {
+            sort(all(i),ok);
+            ll point=10000;
+            for(int j=0; j<sz(i); j++)
+            {
+                stan[i[j].s]+=point;
+                point=round(point-(point*0.1));
+            }
+        }
+        sort(all(upsolved));
+        cout<<"#Contests Standing\n";
+        for(auto i:stan)final_standing.push_back({-i.second,i.first});
+        sort(all(final_standing));
+        for(auto i:final_standing)cout<<i.second<<" "<<-i.first<<"\n";;
+        cout<<"#UpSolve Standing\n";
+        for(auto i:upsolved)cout<<i.second<<" "<<-i.first<<"%\n";;
+    }
+
+}

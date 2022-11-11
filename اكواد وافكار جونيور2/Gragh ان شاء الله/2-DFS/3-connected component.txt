@@ -1,0 +1,29 @@
+﻿
+O(number of edge +number of node)
+==============================================================================================
+
+
+int ConnectedComponenetsCnt()
+{
+	int cnt = 0;
+	lp(i, n)
+	{
+		if(!visited[i])	// Then no one reach this isolated node yet and its neighbors.
+		{
+			dfs(i);
+			cnt++;
+		}
+	}
+	return cnt;
+}
+
+
+==============================================================================================
+
+
+
+
+
+
+
+

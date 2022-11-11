@@ -1,0 +1,35 @@
+﻿clear() — to clear the stream
+str() — to get and set string object whose content is present in stream.
+operator << — add a string to the stringstream object.
+operator >> — read something from the stringstream object,
+
+
+==============================================================
+Examples:
+Input : Asipu Pawan Kumar
+Output : 3
+
+Input : Geeks For Geeks Ide
+Output : 4
+
+int countWords(string str) 
+{ 
+    // breaking input into word using string stream 
+    stringstream s(str); // Used for breaking words 
+    string word; // to store individual words 
+  
+    int count = 0; 
+    while (s >> word) 
+        count++; 
+    return count; 
+} 
+  
+// Driver code 
+int main() 
+{ 
+    string s = "geeks for geeks geeks "
+               "contribution placements"; 
+    cout << " Number of words are: " << countWords(s); 
+    return 0; 
+} 
+=================================================================================

@@ -1,0 +1,15 @@
+﻿
+
+================================================================================
+double Solve(double arr[], int len) {
+	if (len == 1)
+			return arr[0];
+
+		double sub_result = Solve(arr, len - 1);
+		// Now this was average of len-1. So sum / (len-1)
+		sub_result = sub_result * (len-1);  // بضرب فى الى  قسمت فية قبل كدة
+
+		return (sub_result + arr[len - 1] ) / len;
+}
+
+================================================================================

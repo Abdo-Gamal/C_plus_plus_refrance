@@ -1,0 +1,45 @@
+there are two connection 
+1-the gragh must be one component 
+2-number of edge (e)=number of node -1 
+3-no cycle 
+#if any two condation exist the graph is tree 
+====================================================================
+
+
+int n, m;
+vector<vector<int>>adjList;
+vector<int>vist;
+void  dfs(int u) {
+    vist[u] = 1;
+
+    for (auto v : adjList[u]) {
+        if (vist[v] == 0) {
+            dfs(v);
+        }
+       
+    }
+}
+
+int main() {
+    Fast();
+   
+         cin >> n >> m;
+        adjList = vector<vector<int>>(n+2);
+        vist= vector<int>(n+2,0);
+        int u, v,cnt=0;
+        for (int i = 0; i < m; i++) {
+            cin >> u >> v;
+            adjList[u].push_back(v);
+            adjList[v].push_back(u);
+        }
+        if (m != n - 1) cout << "NO\n";
+        
+        else {
+            for (int i = 1; i <= n; i++) { if (vist[i] == 0)dfs(i), cnt++; }
+            if (cnt == 1)cout << "YES\n";
+            else             cout << "NO\n";
+        }
+    
+}
+
+============================================================================

@@ -1,0 +1,29 @@
+﻿int n, m, cnt = 0;
+char maze[1000][1000];
+bool vaild(int i, int j) {
+	return i >= 0 && i < n && j >= 0 && j < m;
+}
+void countSEPath(int r, int c) {
+
+	if (maze[r][c] == 'E') {
+		cnt++;
+	}
+	dx4[4] = { 0, 0, 1, -1 };
+	dy4[4] = { 1, -1, 0, 0 };
+	for (int d = 0; d < 4; d++) {
+
+		int nr = r + dx4[d];
+		int nc = c + dy4[d];
+		if (vaild(nr, nc) && (maze[nr][nc] == '.' || maze[nr][nc] == 'E')) {
+
+			if (maze[nr][nc] != 'E')
+				maze[nr][nc] = 'X';
+			countSEPath(nr, nc);
+
+			if (maze[nr][nc] != 'E')
+				maze[nr][nc] = '..';
+		}
+
+	}
+
+}

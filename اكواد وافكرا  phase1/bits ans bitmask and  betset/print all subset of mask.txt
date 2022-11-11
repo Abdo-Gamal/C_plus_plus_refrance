@@ -1,0 +1,37 @@
+﻿// What about trying the given mask - 1 till zero! Wrong 1s are added! Simply remove them
+// 110101000 -1 = 110100111 & 110101000 = 110100000
+void getAllSubMasks(int mask) {
+
+	for(int subMask = mask ; subMask ; subMask = (subMask - 1) & mask)
+		printNumber(subMask, 32);	// this code doesn't print 0
+
+	// For reverse: ~subMask&mask = subMask^mask
+}
+
+
+=====================================================================(or)
+
+vector<int> genAllSubmask(int mask) {
+	vector<int> v;
+	for (int subMask = mask;; subMask = (subMask - 1) & mask) {
+		v.push_back(subMask);
+		if (subMask == 0)
+			break;
+	}
+	return v;
+}
+=========================================================================
+
+-----------------------------------------------------
+هو بيجيب الsubmask 
+لو الmask بتاعك كان 
+00111
+هيجبلك
+00001
+00010
+00100
+00101
+00110
+00011
+00000
+------------------------------------------------------

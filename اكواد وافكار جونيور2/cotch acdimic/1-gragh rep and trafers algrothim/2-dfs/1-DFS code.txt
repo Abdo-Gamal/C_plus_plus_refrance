@@ -1,0 +1,25 @@
+﻿
+O(number of edge +number of node)=O(e)
+==============================================================================================
+int n, e;
+vector< vector<int> > adj;
+vector<bool> visited;
+
+void dfs(int node)
+{
+	visited[node] = true;
+
+	    for (int i = 0; i < adj[node].size();i++)                           // rep from 0 to size().
+	{
+                          int child = adj[node][i];
+		if (!visited[child])	// To avoid cyclic behavior
+			dfs(child);
+	}
+
+
+	//topsort.push_back(node);	// DAG // Other way Indegree / Outdegree   
+}
+==============================================================================================
+
+==============================================================================================
+

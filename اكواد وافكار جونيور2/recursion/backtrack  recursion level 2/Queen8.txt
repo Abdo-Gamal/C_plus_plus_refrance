@@ -1,0 +1,23 @@
+﻿const int MAX = 8;
+int ithRowqueen[MAX];
+bool vist_col[MAX], diag_right[2 * MAX + 1], diag_left[2 * MAX + 1];
+
+void Quenne8(int r) {
+
+	if (r == 8) {
+		//print
+		return;
+	}
+	for (int c = 0; c < 8; c++) {
+
+		if (!vist_col[c] && !diag_right[r + c] && !diag_left[MAX + c - r]) {
+			ithRowqueen[r] = c;
+			vist_col[c] = diag_right[r + c] = diag_left[MAX + c - r] = 1;
+			Quenne8(r + 1);
+			vist_col[c] = diag_right[r + c] = diag_left[MAX + c - r] = 0;
+
+		}
+
+	}
+
+}

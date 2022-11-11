@@ -1,0 +1,76 @@
+﻿
+/**
+ * What about an implicit start and end states?
+ *
+ * Say we are given set of integers, and we want to divide them to 2 equal parts in summation.
+ *
+ * E.g. 1 2 4 5 3 6 1 0
+ * 		1+5+3+2 = 4+6+1+0 = 11
+ *
+ * This problem is solved efficiently using DP, but let's see how meet in middle approaches it.
+ *
+ * A direct brute force will try 2^n states, for each state extract sum of 0's and sum of 1's and compare
+ *
+ * E.g. if mask is 00101100: then we have (1, 2, 5, 1, 0)=9 and (4, 3, 6)=13	-> Not equal set
+ *
+ * Notice, we need the set sum = (1+2+4+5+3+6+1+0)/2 = 11
+ *
+ * How could we think in meet in middle? How to find start & end states?
+ *
+ * Let's divide the numbers to 2 halves: (1, 2, 4, 5) and (3, 6, 1, 0)
+ *
+ * Let's generate 2^4 states for the first half, and save in map pair of the 0's sum and 1's sum
+ *
+ * Now, let's do same for the second half. For each set we have a pair of the 0's sum and 1's sum
+ *
+ * Say that set was 0011, then we have sum (3+6=9, 1+0=1)
+ *
+ * We know this is valid division IFF, if its complement = (11-9, 11-1)
+ * 		So search map for pair (2, 10) -> if exist, we found a solution.
+ *
+ * What happened
+ * 		O(2^n) time -> 2 x O(2^(n/2)) time  + O(2^(n/2)) memory
+ *
+ *
+ * 	Homework: What if we want to divide the numbers to 4 equal parts?
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Given array of numbers, could you find 4 numbers their sum = 0? You could use same number more than once.
+ *
+ * E.g. arr = 1, 5, 6, -2, 3, -9, 10, -10, -1, -15
+ *
+ * 		sol = 5+6-2-9  or 10-10+1+-1	or 	5+5+5-15
+ *
+ *
+ * 	A direct solution is n^4: 4 loops tries every thing.
+ *
+ * 	Thinking in meet in middle -> pair + pair = 4 numbers
+ *
+ * 	First try every pair of numbers, save their sum in map (1+5, 1+6, 1-2, 1+2.......,-1-15).
+ * 	Now, try again every pair of numbers, find their complement in map.
+ *
+ * 	E.g. assume, in 2nd time, we have pair sum 6, then IFF map has -6, we have 4 numbers that have 0 sum
+ */
+

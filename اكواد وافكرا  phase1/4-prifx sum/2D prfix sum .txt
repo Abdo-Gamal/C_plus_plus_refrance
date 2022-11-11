@@ -1,0 +1,58 @@
+﻿// sum((i, j) (k, l)) where (k, l) is the bottom right
+  int sum_range(int i, int j, int k, int l, vector<vector<int>> & S) {
+    return S[k][l] - S[k][j-1] - S[i-1][l] + S[i-1][j-1];
+  }
+=================================================================================
+  void accumSum2D() {
+    // 1-based matrix
+    // Append extra top row and col with zero
+    vector<vector<int>> A =
+        { { 0, 0, 0, 0, 0, 0 },
+          { 0, 1, 2, 2, 4, 1 },
+          { 0, 3, 4, 1, 5, 2 },
+          { 0, 2, 3, 3, 2, 4 },
+          { 0, 4, 1, 5, 4, 6 },
+          { 0, 6, 3, 2, 1, 3 }, };
+
+    // Accumulate each row
+    for (int i = 1; i < (int) A.size(); i++)
+      for (int j = 1; j < (int) A[0].size(); j++)
+        A[i][j] += A[i][j-1];
+
+    // Accumulate each col
+    for (int j = 1; j < (int) A[0].size(); j++)
+      for (int i = 1; i < (int) A.size(); i++)
+          A[i][j] += A[i-1][j];
+
+    // 1, 5, 2
+    // 3, 2, 4
+    cout << sum_range(2, 3, 3, 5, A) << "\n";
+  }
+====================================================================================(*)
+int n, m, q;
+ll sum_range(int i, int j, int k, int l, vector<vector<ll>> &S) {
+	return S[k][l] - S[k][j - 1] - S[i - 1][l] + S[i - 1][j - 1];
+}
+
+scanf("%d%d%d", &n, &m, &q);
+	vector<vector<ll> > mtrix(n + 1, vector<ll>(m + 1));
+
+	for (int i = 1; i <= n; i++)
+		for (int j = 1; j <= m; j++)
+			scanf("%lld", &(mtrix[i][j]));
+
+	for (int i = 1; i <= n; i++)
+		for (int j = 1; j <= m; j++)
+			mtrix[i][j] += mtrix[i][j - 1];
+
+	
+		for (int j = 1; j <= m; j++)
+               for (int i = 1; i <= n; i++)
+			mtrix[i][j] += mtrix[i - 1][j];
+
+	while (q--) {
+		int x1, y1, x2, y2;
+		scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
+		printf("%lld\n", sum_range(x1, y1, x2, y2, mtrix));
+	}
+=====================================================================================

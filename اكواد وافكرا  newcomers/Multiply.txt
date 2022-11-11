@@ -1,0 +1,34 @@
+void multipy(string s1, string s2) {
+
+    vector<int>ans(1e6);
+
+    int i, j, tmp;
+
+
+    int l1 = s1.size();
+    int l2 = s2.size();
+
+    reverse(all(s1));
+    reverse(all(s2));
+    for (i = 0; i < l1; i++)
+    {
+        for (j = 0; j < l2; j++)
+        {
+            ans[i + j] += (s1[i] - '0') * (s2[j] - '0');
+        }
+    }
+    for (i = 0; i < l1+l2; i++)
+    {
+        tmp = ans[i] / 10;
+        ans[i] = ans[i] % 10;
+        ans[i + 1] = ans[i + 1] + tmp;
+    }
+   
+   while (i > 0 && ans[i] == 0)i--;//as  we revwese num a in c++ index 0 start from left and in normal 0 start from right
+   
+    for (; i >= 0; i--)
+    {
+        cout << ans[i];
+    }
+
+}

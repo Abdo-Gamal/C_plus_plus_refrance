@@ -1,0 +1,35 @@
+   int cnt = 0;
+    for (int i = 1; i <=20; i++) {
+        for (int j = i+1; j <=20; j++) {
+            for (int k = j+1; k<=20; k++) {
+                for (int l= k+1; l < 20; l++) {
+                    cnt++;
+
+                }
+
+            }
+           
+        }
+    }
+    cout << cnt;//c(20,4)
+=========================================
+vector<int>combination;
+int  cnt = 0,n=29,  m= 4;
+void get_comb(int i=0,int last_visit=0) {
+
+          if (i == m) {                    //finally we have  4845 combination	cnt++;                                  //you cna print combination here
+            return;
+               }
+       for (int j = last_visit+1; j < n; j++) {
+        combination.push_back(j);	
+        get_comb(i + 1,j);	
+          combination.pop_back();
+
+     }
+
+}
+
+
+=========================================
+
+==========================================

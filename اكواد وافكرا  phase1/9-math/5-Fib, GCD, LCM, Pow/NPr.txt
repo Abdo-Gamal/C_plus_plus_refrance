@@ -1,0 +1,11 @@
+1.	const int N = 1e6;
+2.	const int mod = 1e9 + 7;
+1.	// NPR as the rule may be overfloat
+2.	ll NpR(ll n, ll r){
+3.	ll ans = 1;
+4.	for (ll i = (n - r) + 1; i <= n; i++){
+5.	ans *= i;
+6.	ans %= mod;
+7.	}
+8.	return ans;
+9.	}

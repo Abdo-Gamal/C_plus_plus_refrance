@@ -1,0 +1,7 @@
+struct edge{
+int from,to,weight;
+bool operator <(edge other)const{
+return weight>other.weight;لو الفنكشن رجعت ترو مبيحصلش سواب  
+}
+}
+ديما بشوف فحاله التساوي هعمل اي

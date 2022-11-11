@@ -1,0 +1,46 @@
+﻿//space O(n^2)
+//time O(n*m)
+int grid[(int)1e3][(int)1e3], dp[(int)1e3][(int)1e3];
+int n, m;
+ll minoFAllPath() {
+
+    //We will walk a column of a column "from the last column" and we will start from the bottom to the top 
+
+    dp[n - 1][m - 1] = grid[n - 1][m - 1];
+   for (int c = m-1; c>=0; c--) {
+       for (int r = n - 1; r>=0; r--) {
+
+           int a = OO, b = OO;// b   for check  if  there exist  below elment   // a for check  if  there exist   right element  
+
+           if (c == m - 1 && r == n - 1)continue;// as we calc it 
+
+           if (c + 1 < m) {
+               a = dp[r][c + 1];
+           }
+
+           if (r + 1 < n) {
+               b= dp[r+1][c];
+           }
+           dp[r][c] = min(a, b)+ grid[r][c];
+        }
+
+    }
+   return dp[0][0]; 
+}
+
+
+/**------------------------->>  Main  <<------------------------**/
+int main() {
+
+    Fast();
+   
+    cin >> n>>m;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> grid[i][j];
+
+        }
+
+    }
+    cout << minoFAllPath();
+}

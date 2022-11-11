@@ -1,0 +1,52 @@
+﻿char adj[107][109];
+bool visited[103][109];
+int n;
+bool vaild(int i, int j) {
+	return i >= 0 && i < n&& j >= 0 && j < n&& adj[i][j] != '.'&& !visited[i][j];
+}
+void dfs(int i, int j)
+{
+	visited[i][j] = 1;
+
+	for (int r = 0; r < 4; r++) {
+		int ii = i + dx4[r], jj = j + dy4[r];
+
+		if (vaild(ii, jj) ) {
+			dfs(ii, jj);
+		}
+	}
+
+
+}
+
+/**------------------------->>  Main  <<------------------------**/
+int main() {
+
+    Fast();
+    int t;
+    cin >> t;
+
+    for (int x = 1; x <= t; x++) {
+
+
+        mem(visited, 0);
+        cin >> n;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                cin >> adj[i][j];
+
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (visited[i][j]==0 && adj[i][j] == 'x') {
+                    dfs(i, j);
+                    cnt++;
+
+                }
+            }
+        }
+        //Case 1: 2
+        cout << "Case " << x << ": " << cnt << "\n";
+    }
+
+}

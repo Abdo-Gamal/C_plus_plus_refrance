@@ -1,0 +1,33 @@
+﻿Say we have 2D array R*C, and we want to convert it to 1D array of R*C elements
+
+	then for any (i, j) zero based: we have i rows before us, each of C elements. In current row, j elements.
+	then (i, j) = i * C + j			(note j < C)
+
+	what if we have index X in 1 D, and want to convert it to its 2D?
+	we know X = i * C + j
+		then X%C = (i * C % C + j % C)%C = j         //i*c%c=0 && as j<c then j%c=j
+			 X/C = i*C / C + j/C = i              //j/c=0 as j<c  
+
+
+What about X*Y*Z?(راجع*)
+
+	Then (i, j, k) = i * Y * Z + j * Z + k	-> Each term * Multiplication of next dimensions كل متغير اضربة فى كل الابعاد الى اقل منة 
+
+	What about Index?
+		You have 2 ways: Think left or right?
+
+	From Right?( اسهل )
+		Index%Z = i * Y * Z + j * Z + k = 0 + 0 + k
+		Index/Z = i * Y + j + 0		= Index2
+
+		then
+			Index2%Y = 0 + j
+			Index2/Y = i
+
+    (anther away*)From left
+		Index % (Y*Z) = 0 + j*Z + k
+		Index / (Y*Z) = i + 0 + 0
+
+		and so on
+
+	Coding wise, the processing from left and ranking (i, j, k) are similar

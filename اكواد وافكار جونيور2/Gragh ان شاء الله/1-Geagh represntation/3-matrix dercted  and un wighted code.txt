@@ -1,0 +1,19 @@
+﻿
+=============================================================================================
+const int N = 100;                                    //unwighted // adjacency matrix for bool 
+bool adjMatrixBool[N][N];
+// Assume all input is ZERO based. Node values [0 - n-1]
+
+	/*
+	 	3
+		0 1 0
+		1 1 0
+		0 1 1
+	 */
+	cin>>n;
+	lp(i, n) lp(j, n)	{                     //notation
+		int b;
+		cin>>b;
+		adjMatrixBool[i][j] = b;
+	}
+=============================================================================================

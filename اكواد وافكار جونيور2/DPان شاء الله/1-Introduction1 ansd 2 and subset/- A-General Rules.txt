@@ -1,0 +1,39 @@
+﻿
+
+// General Rules:
+
+// 1- Recursive Function
+// 2- Sub-calls Overlap
+// 3- Small Search Space, so putting in memory is doable
+
+// Do we need to apply DP for merge sort? NEVER, a call will never be repeated! like most of D & C problems.
+
+// Dynamic Programming most typical cases: Minimization, Maximization and Counting. But could have adhock usages.
+
+// In fact, above code(fib) is not called DP, it is call Memoization (NOT Memorization).
+	// It is a technique when we have a recurive function and save calls)
+
+
+// DP is to build bottom up according to recurrence while Memoization is top-down
+
+
+
+
+int dp_fib(int n)
+{
+	int fib[MAX];
+	fib[0] = fib[1] = 1;	// base case
+
+	for(int i = 2; i <= n; ++i)
+		fib[i] = fib[i-1] + fib[i-2];	// bottom up according to recurrence
+
+	return fib[n];
+}
+
+
+// Writing Memoization is much more natural, although there are cases when DP is a must
+// Most of our tutorial is for Memoization
+
+
+
+

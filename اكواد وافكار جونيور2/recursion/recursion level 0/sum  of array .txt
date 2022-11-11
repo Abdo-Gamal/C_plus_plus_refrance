@@ -1,0 +1,18 @@
+﻿
+
+========================================================
+int arr_sum(int arr[], int len) {
+	if (len == 1)
+		return arr[0];
+
+	int sub_result = arr_sum(arr, len - 1);
+	return sub_result + arr[len - 1];
+}
+========================================================or
+int Solve(int arr[], int len) {
+	if (len == 1)
+		return arr[0];
+
+	return Solve(arr, len - 1) + arr[len - 1];
+}
+======================================================

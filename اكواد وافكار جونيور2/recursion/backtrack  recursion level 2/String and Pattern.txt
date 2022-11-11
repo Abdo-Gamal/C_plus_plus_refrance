@@ -1,0 +1,56 @@
+﻿string str, ptr;
+pair<char, string> pir[30];
+ 
+bool Solve(int i,int jj )
+{
+ 
+    if (i==ptr.size()&&jj==str.size()) {
+ 
+        map< char, string>mp;
+        for (int x = 0; x < ptr.size(); x++)
+        {
+ 
+            if (  mp.find(pir[x].first)==mp.end()) {
+                mp[pir[x].first] = pir[x].second;
+            }
+            else{
+                if (mp[pir[x].first] != pir[x].second)
+                    return 0;
+            }
+        }
+        return 1;
+    }
+    if (i == ptr.size()) {
+       
+        return 0;
+    }
+    string tem = "";
+    for (int j= jj; j < str.size(); j++) {
+        tem += str[j];
+  
+        pir[i].first = ptr[i];
+        pir[i].second = tem;
+ 
+        if (Solve(i + 1,j+1))
+            return true;
+     
+    }
+ 
+    return 0;
+}
+/**------------------------->>  Main  <<------------------------**/
+ 
+int main() {
+    Fast();
+ 
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        cin >> str >> ptr;
+      
+  
+        cout << (Solve(0,0) == 1 ? "YES\n" : "NO\n");
+    }
+       
+}

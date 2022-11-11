@@ -1,0 +1,54 @@
+string s, F, S;
+vector<vector<int>>mem;
+int solve(int i, int j) {
+    if (i > j)return 0;
+    if (mem[i][j] != -1)return mem[i][j];
+
+    if (s[i] == s[j])return mem[i][j] = solve(i + 1, j - 1);
+    else {
+        int po1 = solve(i+1, j) + 1;
+        int po2 = solve(i, j-1) + 1;
+        return mem[i][j]=min(po1,po2);
+    }
+
+}
+void print(int i, int j) {
+    if (i > j)return ;
+
+    if (s[i] == s[j]) {
+        F += s[i];
+        if (i != j)//if not the last midel char 
+            S = s[i] + S;
+        print(i + 1, j - 1);
+    }
+    else {
+        int pot = solve(i, j);//or mem [i][j]
+        int po1 = solve(i + 1, j) + 1;
+        int po2 = solve(i, j - 1) + 1;
+        if (pot == po1) {
+            F += s[i];
+            S = s[i]+S;
+            print(i + 1, j);
+        }
+        else {
+            F += s[j];
+            S = s[j]+S;
+            print(i , j-1);
+        }
+    }
+
+}
+int main() {
+
+    Fast();
+
+    while (cin >> s)
+    {
+        int n = s.length();
+        S = F = "";
+        mem = vector<vector<int>>(n, vector<int>(n , -1));
+        cout << solve(0, n - 1)<<" ";
+        print(0, n - 1);
+        cout << F << S << "\n";
+    }
+}

@@ -1,0 +1,31 @@
+﻿
+
+=========================================================================================
+
+// Search space analysis
+
+// int F(int a)
+//		1 <= a <= n									Search space size : n
+
+// int F(int a, int b)
+//		1 <= a, b <= n								Search space size : n^2
+
+// int F(int a, int b, int vis[]):
+//		1 <= a, b <= n
+//		vis is boolean
+//		visLen <= m									Search space size : n^2 * 2^m
+
+// int F(string cur)
+//		cur string of chars A, B, C, D
+//		curLen <= n									Search space size : 4^n
+
+// int F(string cur)
+//		cur string of chars A, B, C, D
+//		curLen <= n
+//		One of characters them repeats curLen-1 times (e.g. AAAB, AABA, ABAA, BAAA, AAAC, AACA...)
+//													Search space size : 10 * n	- CONSIDER space limitations
+
+
+
+===================================================================================
+

@@ -1,0 +1,8 @@
+if  (ai+bi )%n=ci  where a ,b,c is prmetion  then 
+
+sumatin  of (ai)+sumatin  of (bi)=sumatin  of (ci) is a ,b,c is prmation then sumatin  of any of them equal n(n-1)/2
+s+s=s==>2s=s  then  s must be=0  %n
+
+s =0 when   n is odd  not  even as  if  n is even  then   
+s=n(n-1)/2=n/2(n-1) = p*(n-1)   : p is res of n/2   then     p*(n-1)  not divisable by n  
+======================================================================================================

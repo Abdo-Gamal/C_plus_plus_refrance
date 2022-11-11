@@ -1,0 +1,90 @@
+﻿
+
+===================================================================================
+
+// Could we do recursion calls as we want? NO, you have stack limit size.
+// Say your function call reserve 1 integer (4 bytes) and a call need 2 pointers (8 bytes) for saving some return addresses
+// Say you have 1.5MB stack size, then you could do maximum 1.5MB / 12 bytes ~= 144617 call
+int dep = 0;
+
+void stackTest1()
+{
+	cout<<dep++<<"\n"<<flush;
+	stackTest1();
+}
+
+void stackTest2(int a = 1)
+{
+	cout<<dep++<<"\n"<<flush;
+	stackTest2(a);
+}
+
+void stackTest3()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[50];	// be careful from your created items. E.g. Integrs, Strings, Structs.
+	stackTest3();
+}
+
+void stackTest4()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[100];	// be careful from your created items. E.g. Integrs, Strings, Structs.
+	stackTest4();
+}
+
+void stackTest5()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[50];
+	vector<int> v(50);	// Its internal array on heap not on stack
+	stackTest5();
+}
+
+void stackTest6()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[50];
+	vector<int> v(1000);	// Its internal array on heap not on stack. Then watch from heap too
+	stackTest6();
+}
+
+void stackTest7()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[1000];
+	stackTest7();
+}
+
+void stackTest8()
+{
+	cout<<dep++<<"\n"<<flush;
+	int arr[1000000];	// So big for my MACHINE stack limit
+	stackTest8();
+}
+
+void stackTest9(int a[])	// this is array reference. it behaves as if it is just an integer
+{
+	cout<<dep++<<"\n"<<flush;
+
+	stackTest9(a);
+}
+
+
+
+int arr[1000000];
+
+
+
+
+int main()
+{
+
+
+	stackTest9(arr);
+
+	return 0;
+}
+
+===================================================================================
+

@@ -1,0 +1,52 @@
+﻿///////////////////////////////////////////////////////////////////
+// دى بتستخدام غالبا عشان اعدد تكرار رقم
+// دى بتتكون  من  
+//key ودة الرقم الاول, value ودة الرقم التانى
+//كل key   مختلف عن التانى 
+//بتشيل ارقام    key لحاد  عشرة اس 18  
+//بترجع وبتشتغل  iterator
+//#include<map>;
+// اى  حاجة فى ال map  بتاخد  log(n)
+///////////////////////////////////////////////////////////////////
+   //key ,value
+ or// index,value
+map<int,int>mp;
+mp[5]++;
+//////////////////
+map<string,int>mp;
+mp["abdo"]++;
+/////////////////////////////////////////////////////(iterator)
+map<string,int>::iterator it;   // لازم تكتب نفس التعريف الى فوق بالنسبة لل key  ,value
+
+it=mp.begin();
+cout<<it.first<<"\n";  // key
+cout<<it.seconf<<"\n";  // value
+///////////////////////////////////////////////////////////////(function)
+// erease
+map.erase(key);  // erase by key 
+
+//count 
+if(mp.count("abdo")==0)
+cout<<"not found";
+else  
+cout<<"found";
+
+//,find
+if(mp.find("abdo")==mp.end())
+cout<<"not found";
+else  
+cout<<"found";
+////////////////////////////////////////////////////////////////////////(iterator)
+
+map<string,int>::iterator it; 
+for( it=mp.begin();it!=mp.end();it1++;)
+{
+
+string key =it.first;
+int value=it.second;
+cout<<key<<" "<< value;
+
+}
+//
+for( auto it:mp){
+cout<<it.first<<" "<<it.second<<"\n";

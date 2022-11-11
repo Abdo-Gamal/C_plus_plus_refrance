@@ -1,0 +1,17 @@
+vector<vector<int>>edgeMat;
+int main() {
+
+    Fast();
+    int n, m;
+    cin >> n >> m;
+      edgeMat= vector<vector<int>>(n,vector<int>(m,INT_MAX) );
+
+    for (int i = 0; i < m; i++) {
+        int u, v, c;         //from to withgt
+        cin >> u >> v >> c;
+        edgeMat[u][v] = min(edgeMat[u][v],c);
+        edgeMat[v][u] = min(edgeMat[v][u], c);
+
+    }
+ 
+}

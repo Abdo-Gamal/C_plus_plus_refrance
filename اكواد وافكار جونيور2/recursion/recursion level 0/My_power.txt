@@ -1,0 +1,9 @@
+﻿ll Solve(int base, int pow) {
+
+	if (pow == 0)
+		return 1;
+
+	return Solve(base, pow - 1) * base;
+
+}
+========================================================================

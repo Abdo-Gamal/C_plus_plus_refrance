@@ -1,0 +1,11 @@
+﻿1- type1 subset 0101000 zero and ones
+   type2 change coin  198403 number 
+
+2-- consec ranges
+
+(ab)(acda)(fg)
+
+3-nested range  (دة الى ف الفلدر هنا )
+((a)(b) (d)(d)(g))
+
+ 

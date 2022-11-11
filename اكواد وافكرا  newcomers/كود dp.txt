@@ -1,0 +1,24 @@
+int n, a, b, c, dp[4400];
+
+int CutRibbon(int x)
+{
+	if(!x) return 0;
+	if(x < 0) return -OO;
+
+	int &ret = dp[x];
+	if(~ret) return ret;
+
+	return ret = 1 + max({CutRibbon(x - a), CutRibbon(x - b), CutRibbon(x - c)});
+}
+
+inline void Solve()
+{
+	cin >> n >> a >> b >> c;
+	memset(dp, -1, sizeof dp);
+
+	cout << CutRibbon(n) << endl;
+}
+
+/////////// see it ween you need
+~(-1)=0
+else = any number no interst 

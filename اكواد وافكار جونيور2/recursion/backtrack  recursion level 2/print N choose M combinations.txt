@@ -1,0 +1,31 @@
+﻿// print N choose M combinations
+هنا الترتيب مش مهم   
+يعنى 
+1 2 3 == 2 1 3 
+
+===================================================================================
+// i=؟؟
+//curlen=0;
+
+void comb(int i, int n, int m, int cur[], int curLen)
+{
+	if(curLen == m)
+	{
+		for (int j = 0; j < m; ++j)
+			cout<<cur[j];
+		cout<<"\n";
+		return;
+	}
+
+	if(i == n)	// we reached end, and have current combination is not correct
+		return;
+
+	// take it
+	cur[curLen] = i;
+	comb(i+1, n, m, cur, curLen+1);
+
+	// don't take it
+	comb(i+1, n, m, cur, curLen);   //العنصر بيتمسح   عشان انت بتحط رقم فى نفس المكان الى فات 
+}
+===================================================================================
+

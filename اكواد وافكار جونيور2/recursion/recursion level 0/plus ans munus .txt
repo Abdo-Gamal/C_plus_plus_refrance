@@ -1,0 +1,24 @@
+﻿vector<int> v;
+int n, x;
+bool Solve(int idx = 1, int res = v[0]) {
+	if (idx == n) {
+		return res == x;
+	}
+
+	return (Solve(idx + 1, res + v[idx]) || Solve(idx + 1, res - v[idx]));
+
+}
+/**------------------------->>  Main  <<------------------------**/
+int main() {
+
+	cin >> n >> x;
+	v.resize(n);
+	for (int i = 0; i < n; i++)
+		cin >> v[i];
+
+	cout << (Solve() ? "YES" : "NO");
+}
+===============================================================================
+الكود دة بيعمل زى كود الbitmask  
+بالضبط   
+بيحط رقم شوية ارقام  سالب  وارقام  موجب 

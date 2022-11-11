@@ -1,0 +1,29 @@
+﻿===============================================================================
+bool is_prime(int x, int div = 3) {
+
+	if (x == 2)
+		return 1;
+	if (x < 2 || x % 2 == 0)
+		return 0;
+
+	if ((ll) sqrt(x) < div)
+		return 1;
+	if (x % div == 0)
+		return 0;
+
+	is_prime(x, div + 1);
+
+}
+
+int count(int st, int end) {
+
+	if (st > end)
+		return 0;
+
+	int res = count(st + 1, end);
+	if (is_prime(st)) {
+		res++;
+	}
+	return res;
+}
+===============================================================================

@@ -1,0 +1,40 @@
+
+
+struct edge {
+	int from, to, w;
+
+	edge(int from, int to, int w): from(from), to(to), w(w) {}
+
+	bool operator < (const edge & e) const {
+		return w > e.w;
+	}
+};
+
+int Dijkstra2(vector< vector< edge > > adjList, int src, int dest = -1)	// O(E logV)
+{
+	int n = sz(adjList);
+	vi dist(n, OO), prev(n, -1);
+	dist[src] = 0;
+
+	priority_queue<edge> q;
+	q.push( edge(-1, src, 0) );
+
+	while( !q.empty() ) {
+		edge e = q.top();	q.pop();
+
+		if(e.w > dist[e.to])	continue;	// some other state reached better
+
+		prev[ e.to ] = e.from;
+
+		rep(j, adjList[e.to]) {
+			edge ne = adjList[e.to][j];
+			if( dist[ne.to] > dist[ne.from] + ne.w ) {
+				ne.w = dist[ne.to] = dist[ne.from] + ne.w;
+				q.push( ne );
+			}
+		}
+	}
+
+	return dest == -1 ? -1 : dist[dest];
+}
+

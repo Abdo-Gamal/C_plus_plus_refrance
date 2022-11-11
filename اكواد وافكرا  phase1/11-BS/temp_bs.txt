@@ -1,0 +1,47 @@
+bool can(ll x) {
+
+	
+}
+ //  if  can contain "arr[md]<=x"   it work as   lowe_bound "not identity" find last value equal me  if exist and if not exist  find first value large than me 
+void BS(ll start = 0, ll end = 2e9) {
+	ll ans = 1;
+	while (start <= end) {
+
+		ll mid = (end + start) >> 1;
+
+		if (can(mid)) {    
+
+			ans = mid;
+                                                 start = mid + 1;
+			
+		} else {
+			
+                               end = mid - 1;
+		}
+	}
+	printf("%I64d\n", ans);
+
+}
+--------------------------------------------------------------
+ //  if  can contain "arr[md]<=x"   it work as   lowe_bound "identity" find first value equal me  if exist and if not exist  find first value large than me 
+void BS(ll start = 0, ll end = 2e9) {
+	ll ans = 1;
+	while (start <= end) {
+
+		ll mid = (end + start) >> 1;
+
+		if (can(mid)) {    
+
+			ans = mid;
+                                                end = mid - 1;
+			
+		} else {
+                                      start = mid + 1;
+                            
+		}
+	}
+	printf("%I64d\n", ans);
+
+}
+
+===================================================================================================================

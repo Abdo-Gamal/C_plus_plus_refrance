@@ -1,0 +1,8 @@
+like frq:-
+--------
+
+unordered_map<int, unordered_map<char, int>>mp;
+forr(i, n)  mp[v[i]][s[i]]++; 
+if (mp[v[i]][t[i]] == 0) { b = 0; break; }
+			else mp[v[i]][t[i]]--;
+=====================================================================================

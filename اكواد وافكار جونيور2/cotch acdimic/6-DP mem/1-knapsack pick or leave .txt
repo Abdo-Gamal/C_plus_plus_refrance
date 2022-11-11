@@ -1,0 +1,30 @@
+int n, k;
+vector<int>w, v;
+vector<vector<int>>mem;
+int solve(int i, int remk) {
+    if (i == n)return 0;
+    if (mem[i][k] != -1)return mem[i][k];
+
+    int po1 = (remk>=w[i])?solve(i + 1, remk - w[i]) + v[i]:0;
+    int po2 = solve(i + 1, remk);
+    return mem[i][remk] = max(po1, po2);
+
+}
+int main() {
+
+    Fast();
+
+    int t; cin >> t;
+
+    while (t--)
+    {
+        cin >> k >> n;
+        v.resize(n);
+        w.resize(n);
+        mem=vector<vector<int>>(n,vector<int>(k+1,- 1));
+        for (int i = 0; i < n; i++)cin >> w[i]>>v[i];
+        cout << solve(0, k) << "\n";
+
+    }
+
+}

@@ -1,0 +1,23 @@
+bool comp(pair<ll,ll> &a,pair<ll,ll>&b)
+{
+    if(a.F<b.F)
+        return true;
+    else if(a.F==b.F && a.S>=b.S)
+        return true;
+    else
+        return false;
+}
+
+///// you can change of it/
+
+///////////////////////////////// 
+if you don not  make  comp 
+for(int i = 0;i<n;i++)
+for(int j = i+1;j<n;j++)
+if(arr[i]>arr[j])swap(arr[i],arr[j]);
+if you make comp  
+instade of
+if(arr[j]<arr[i])   //first j seconed i inorder
+make
+if(cmp(arr[j],arr[i]))
+//////////////////////////////////////

@@ -1,0 +1,52 @@
+﻿
+===================================================================================
+
+
+/*
+
+ .SX..
+ ..X.E
+ ....X
+ X.XX.
+ */
+
+int n, m;
+char maze[100][100]; // filled with S (for start), E (for end), . (could pass) and X (block can't path)
+bool vis[100][100];
+bool valid(int i, int j) {
+	return i >= 0 && i >= 0 && i < n && j < m;
+}
+bool findEnd2(int r, int c)	// Recursion State: r, c	and FULL visted array
+		{
+	if (!valid(r, c) || maze[r][c] == 'X' || vis[r][c] == 1)
+		return false;		// invalid position or block position
+
+	vis[r][c] = 1;	// we just visited it, don't allow any one bacl to it
+
+	if (maze[r][c] == 'E')
+		return true;	// we found End
+
+	// Try the 4 neighbor cells
+
+	if (findEnd2(r, c - 1))
+		return true;
+	if (findEnd2(r, c + 1))
+		return true;
+	if (findEnd2(r - 1, c))
+		return true;
+	if (findEnd2(r + 1, c))
+		return true;
+           
+	vis[r][c] = 0;	// undo marking, other paths allowed to use it now
+	// Can't find a way for it!
+	return false;
+}
+
+
+===================================================================================
+
+فى  الاخر  بنعمل  
+vis[r][c] = 0  
+عشان  احنا بنوصل لدى لما  كل ال 
+call  يرجع  صفر
+ف  يعتبر مرحناش للنقطة دى اصلا 

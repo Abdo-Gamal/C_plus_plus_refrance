@@ -1,0 +1,29 @@
+int n,l;
+vector<int>cuts;
+vector<vector<int>>mem;
+int solve(int sc, int ec,int sx,int ex) {
+    //sc,ec index of cuts  from 0 to  n-1
+    //sx,ex is the length of  segment  from 0 to l 
+    if (sc > ec)return 0;// the array of  cut is end there no cuts 
+    if (sx == ex)return 0;// the len of segment is equal to 1 you can not cut it  
+    if (mem[sc][ec] != -1)return mem[sc][ec];
+
+    int ret = INT_MAX;
+    for (int i = sc; i <= ec; i++)
+        ret = min(ret,solve(sc,i-1,sx,cuts[i]) + solve(i + 1, ec,cuts[i]+1, ex) + ex - sx + 1);
+       return mem[sc][ec]=ret;
+
+}
+int main() {
+
+    Fast();
+
+    while (cin >> l, l)
+    {
+        cin >> n;
+        cuts = vector<int>(n);
+        mem = vector<vector<int>>(n, vector<int>(n , -1));
+        for (int i = 0; i < n; i++)cin >> cuts[i];
+        cout << "The minimum cutting is "<<solve(0, n - 1, 1, l) << ".\n";
+    }
+}

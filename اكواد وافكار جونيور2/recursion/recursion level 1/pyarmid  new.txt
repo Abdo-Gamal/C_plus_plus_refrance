@@ -1,0 +1,18 @@
+﻿void print(int i, int j) {
+	if (i == n)
+		return;
+
+	if (j < (n - 1 - i)) {
+		cout << " ";
+		print(i, j + 1);
+	} else if ((j - (n - 1 - i)) < ((2 * i) + 1)) {
+		cout << "*";
+		print(i, j + 1);
+	} else {
+		cout << "\n";
+		print(i + 1, 0);
+
+	}
+}
+
+// i=0;j=0;

@@ -1,0 +1,66 @@
+﻿//O(MlogN).
+# define MAXNODE 10009
+struct DUS
+{
+    //size maxnode
+    //reank= groubsize
+  vector<int>  parent, groubSize;
+  int numGroub;
+
+
+  //  same as make_set
+  DUS(int  n) {
+      numGroub = n;
+      parent = vector<int>(n);
+      groubSize = vector<int>(n);;
+      for (int i = 0; i <  n;i++) {
+          parent[i] = i;
+          groubSize[i] = 1;
+      }
+  }
+    
+
+    int find_set(int v) {
+        if (v == parent[v])
+            return v;
+        return parent[v] = find_set(parent[v]);
+    }
+    void link(int a, int b) {
+
+       
+            if (groubSize[a] < groubSize[b])
+                swap(a, b);
+
+            parent[b] = a;
+            if (groubSize[b] == groubSize[a])
+                groubSize[b] ++;
+        
+    }
+    int union_sets(int a, int b) {
+        a = find_set(a);
+        b = find_set(b);
+        if (a != b) {
+            link(a, b);
+            numGroub--;
+        }
+        return a != b;
+    }
+    ////////////////////////////////optianl func 
+    int groubSize(int x) {
+
+        int groubleader = find_set(x);
+        return groubSize[groubleader];
+    }
+    bool groubSize(int x,int y) {
+        return find_set(x) == find_set(y);
+    }
+
+    vector<vector<int>> connectedComponent() {
+        vector<vector<int>>  list(sz(parent));
+        for (int i = 0; i < sz(parent); i++) {
+            list[find_set(i)].push_back(i);
+        }
+        return list;
+    }
+
+};

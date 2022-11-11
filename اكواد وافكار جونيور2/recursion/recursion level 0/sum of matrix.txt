@@ -1,0 +1,90 @@
+﻿==================================================================================
+int mat1[100][100], mat2[100][100];
+int r, c;
+void sum(int i, int j) {
+	i += j / c;
+	j %= c;
+	if (i == r) {
+		return;
+	}
+	mat1[i][j] += mat2[i][j];
+	return sum(i, j+1);
+
+}
+int main() {
+	Fast();
+
+	cin >> r >> c;
+	for (int i = 0; i < r; i++)
+		for (int j = 0; j < c; j++)
+			cin >> mat1[i][j];
+
+	for (int i = 0; i < r; i++)
+		for (int j = 0; j < c; j++)
+			cin >> mat2[i][j];
+
+	sum(0, 0);
+
+	for (int i = 0; i < r; i++) {
+		for (int j = 0; j < c; j++) {
+			cout << mat1[i][j] << " ";
+		}
+		cout << "\n";
+	}
+}
+===============================================================================or
+int y, save;
+ 
+int mat3[100][100];
+void sum(int mat1[][100], int mat2[][100], int x, int y) {
+	if (x < 0) {
+		return ;
+	}
+	else
+	{
+		mat3[x][y] = mat1[x][y] + mat2[x][y];
+ 
+		if (y >= 0) {
+ 
+			return sum(mat1, mat2,x, y - 1);
+		}
+		else {
+			y = save;
+			return sum(mat1, mat2, x - 1, y);
+		}
+	}
+	
+ 
+}
+int main() {
+	int x, y;
+	int mat1[100][100], mat2[100][100];
+	cin >> x >> y;
+	save = y;
+	for (int i = 0; i < x; i++) {
+		for (int j = 0; j < y; j++) {
+			cin >> mat1[i][j];{}
+		}
+ 
+	}
+ 
+	for (int i = 0; i < x; i++) {
+		for (int j = 0; j < y; j++) {
+			cin >> mat2[i][j];
+		}
+	}
+	//mat3[100][100] = { 1 };
+	sum(mat1 , mat2, x - 1, y - 1);
+ 
+	for (int i = 0; i < x; i++) {
+		for (int j = 0; j < y; j++) {
+			cout << mat3[i][j] << " ";
+		}
+		cout << "\n";
+	}
+ 
+ 
+ 
+	
+}
+====================================================================================

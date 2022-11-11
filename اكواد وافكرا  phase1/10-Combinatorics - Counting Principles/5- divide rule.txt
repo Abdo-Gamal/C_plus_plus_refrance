@@ -1,0 +1,14 @@
+A food table with 3 chairs. Given 3 persons, in
+how many ways we can seat them?
+◼ 1 2 3, 1 3 2, 2 1 3, 2 3 1, 3 1 2, 3 2 1 => 6 ways
+◼ Wrong! 123 same as 231 same as 312 [by making 1 shift]
+◼ So given 1 seating, we can generate 3 similar seatings
+◼ so answer is 6 / 3 = 2 .. or generally n! / n = n-1!
+◼ Division rule: solution = m / d, where each d 
+
+
+======================================================
+
+
+
+======================================================

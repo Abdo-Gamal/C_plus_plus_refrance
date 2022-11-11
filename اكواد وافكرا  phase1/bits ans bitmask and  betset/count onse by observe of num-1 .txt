@@ -1,0 +1,17 @@
+﻿
+//count number of one
+---------------------------------------------------------------------------------------
+int countNumBits2(int mask) {	//	O(bits Count)		__builtin_popcount
+	int ret = 0;
+	while (mask) 	{
+		mask &= (mask-1);
+		++ret;	// Simply remove the last bit and so on
+	}
+	return ret;
+}
+
+==================================================================================
+Ex:
+int  x=7
+int cnt=__builtin_popcount(x);
+//result is 3

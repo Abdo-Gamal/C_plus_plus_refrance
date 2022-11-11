@@ -1,0 +1,70 @@
+﻿O(expontioal )
+المثال دة احنا اخدنا شبه ف الركرجن واكان اسمه   
+flood fill 
+والاردر بتاعه هو  لينير 
+ودة كان بيشوف  ف مسار ولا لا  دة كل الى بيعمله   
+والفرق الوحيد   بينه وبين الى احنا فيه دولقتى ان احنا بنعمل  
+undo 
+======================================================================
+int n, m, cnt = 0;
+char maze[1000][1000];
+bool vaild(int i, int j) {
+	return i >= 0 && i < n && j >= 0 && j < m;
+}
+void countSEPath(int r, int c) {
+
+	if (maze[r][c] == 'E') {
+		cnt++;
+                               return;
+	}
+	dx4[4] = { 0, 0, 1, -1 };
+	dy4[4] = { 1, -1, 0, 0 };
+	for (int d = 0; d < 4; d++) {
+
+		int nr = r + dx4[d];
+		int nc = c + dy4[d];
+		if (vaild(nr, nc) && (maze[nr][nc] == '.' || maze[nr][nc] == 'E')) {
+
+			if (maze[nr][nc] != 'E')
+				maze[nr][nc] = 'X';
+			countSEPath(nr, nc);
+
+			if (maze[nr][nc] != 'E')
+				maze[nr][nc] = '.';
+		}
+
+	}
+
+}
+
+===================================================================================not work
+
+int n, m;
+char maze[1000][1000];
+bool vaild(int i, int j) {
+    return i >= 0 && i < n&& j >= 0 && j < m;
+}
+int countSEPath(int r, int c) {
+
+    if (maze[r][c] == 'E') {
+        return 1;
+    }
+    int cnt = 0;
+    for (int d = 0; d < 4; d++) {
+
+        int nr = r + dx4[d];
+        int nc = c + dy4[d];
+        if (vaild(nr, nc)==1 && (maze[nr][nc] == '.' || maze[nr][nc] == 'E')) {
+
+            if (maze[nr][nc] != 'E')
+                maze[nr][nc] = 'X';
+           cnt+= countSEPath(nr, nc);
+
+            if (maze[nr][nc] != 'E')
+                maze[nr][nc] = '.';
+          
+        }
+
+    }
+    return cnt;
+}

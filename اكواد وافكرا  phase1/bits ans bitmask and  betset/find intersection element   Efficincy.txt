@@ -1,0 +1,27 @@
+﻿// Efficiency
+int setBit1(int num, int idx) {
+	return num | (1<<idx);
+}
+int getBit(int num, int idx) {
+  return ((num >> idx) & 1) == 1;		// 110100, idx = 4  -->  110 & 1 = 0
+}
+
+void intersection(int A[60], int len1, int B[60], int len2)  // 60 مفروض القيمة متعديش ...
+{
+	int mask1 = 0;
+	int mask2 = 0;
+	for (int i = 0; i < len1; ++i)
+		mask1 = setBit1(mask1, A[i]);                // كدة بحول القيمة الى  مكان عندى فى الماسك
+
+	for (int i = 0; i < len2; ++i)
+		mask2 = setBit1(mask2, B[i]);
+
+	int inter = mask1 & mask2;	// In O(1) noes intersection
+
+	for (int i = 0; i < max(len1, len2); ++i) {
+		if(getBit(inter, i))
+			cout<<i<<" ";                                   // i  هوهنا الرقم
+	}
+	cout<<"\n";
+}
+=============================================================================

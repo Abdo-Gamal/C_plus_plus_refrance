@@ -1,0 +1,30 @@
+int n;
+const int NN = 3e4 + 1;
+vector<vector<ll>>mem= vector<vector<ll>>(NN, vector<ll>(5 , -1));
+vector<int>coin={1,5,10,25,50};
+ll solve(int remMony,int curCoin) {
+
+    if (remMony == 0)return 1;
+    if (curCoin == 5)return 0;
+
+    if (mem[remMony][curCoin] != -1)return mem[remMony][curCoin];
+    ll po1 = (remMony >= coin[curCoin]) ? solve(remMony - coin[curCoin], curCoin) : 0;
+    ll po2=  solve(remMony, curCoin+1) ;
+    return mem[remMony][curCoin]=po1+po2;
+
+}
+int main() {
+
+    Fast();
+    
+    while (cin >> n)
+    {
+        //There are 6 ways to produce 17 cents change.
+        //There is only 1 way to produce n cents change.
+        ll ans = solve( n,0);
+        if(ans ==1)
+            cout << "There is only 1 way to produce "<<n<<" cents change." << "\n";
+        else
+        cout << "There are " << ans <<" ways to produce "<<n<<" cents change." << "\n";
+    }
+ }

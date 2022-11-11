@@ -1,0 +1,57 @@
+
+string s, t;
+int res[300];
+
+void big_print(int num[])
+{
+	int i=250;
+	while (i>0&&num[i]==0)
+		i--;
+	
+	for (; i >= 0; i--)
+	{
+		cout << num[i];
+	}
+	cout << "\n";
+}
+//Work with leading zeros
+void big_product(string a, string b)
+{
+	int len_a = sz(a)-1;
+	int len_b = sz(b)-1;
+
+	if (len_a < len_b)
+	{
+		big_product(b, a);
+		return;
+	}
+
+	int i, j;
+
+	int cursor = 0, pos = 0;
+
+	for (i = 0; i <= len_b; pos = 0, cursor++, i++)
+	{
+		for (j = 0; j <= len_a; j++, pos++)
+		{
+			res[pos + cursor] += (b[i]-'0') * (a[j]-'0');
+			if (res[pos + cursor] >= 10)
+			{
+				res[pos + cursor + 1] += res[pos + cursor] / 10;
+				res[pos + cursor] %= 10;
+			}
+		}
+	}
+}
+int main() {
+	Fast(); //File();
+	while (cin >> s >> t) {
+		reverse(all(s));
+		reverse(all(t));
+	 memset(res,0, sizeof(int) * 300);
+		big_product(s, t);
+		big_print(res);
+
+	}
+
+}

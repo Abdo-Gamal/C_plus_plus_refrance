@@ -1,0 +1,47 @@
+
+◼ Imagine putting 0 after each group except last
+ex.
+ pick 15 cans from the following 5 group
+هتتخيل ان  عندك  15 واحد  و4 اصفار    
+ف الاماكن المختلفه للاصفار هى دى الناتج    
+ او هى دى كل الاحتملات  
+وهنا   قلت  4 اصفار عشان  بنحط اصفار بعدد الجوب    ناقص واحد الى هو     5  ناقص  واحد 
+ق السوال ممكن يبقا بالشكل دة  
+
+New problem: Given string of 19 ones, how
+many 4 bits to choose to flip to 0? C(19, 4)
+
+Theorem: The number of ways to fill r slots from n categories with repetition allowed is:
+◼ C(r +n−1, r) = C(r +n−1, n-1)
+◼ n = 5, r = 15 => C(19, 15) = C(19, 4)
+ملحوظه 
+C(19, 15) = C(19, 4)  as  C(n, k) = C(n, m-k)
+=====================================================
+How many non-negative integer solutions are
+
+there to the equation a + b + c + d = 100.
+◼ n = 4, r = 100 => C(103, 100) = C(103, 3)
+
+هتتخليل انك كتبت الميه على هيئه  وحايد  ميت واحد ورى بعض   
+وهنقسمه لاربع اقسام كل قسم  هيكون بيعبر عن متغير  
+a or b  ...etc 
+ف عدد طرق  توزيع ال تلت اصفار  هو الناتج الى عاوزة 
+الى هو  
+How many non-negative integer solutions 
+
+=========================================================
+ex2:
+
+How many integer solutions are there to:
+◼ a + b + c + d = 100,
+◼ where a ≥ 3, b ≥ 0, c ≥ 2 and d ≥ 1?
+◼ (A+3) + (B+0) + (C+2) + (D+1) = 100
+
+◼ We now have 6 values already reserved, remaining are
+free? so n = 4, r = 100-6
+
+ex3
+
+◼ What if: a ≥ − 3, b ≥ 5, c ≥ − 2 and d ≥ − 1?
+◼ (A-3) + (B+5) + (C-2) + (D-1) = 100
+◼ A + B + C + D = 100 + 3 - 5 + 2 + 1 = 101

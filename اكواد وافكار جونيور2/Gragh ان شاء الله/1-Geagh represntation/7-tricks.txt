@@ -1,0 +1,9 @@
+﻿
+=============================================================================================
+Trick:
+vector<int>	adjMatrixAll[N][N];		// Keep all edges for a given pair of nodes
+
+map< pair<int, int>, int> adjMatrixMap;	// Imagine graph of 100000 node, but total number of edges is 50000!
+
+
+=============================================================================================

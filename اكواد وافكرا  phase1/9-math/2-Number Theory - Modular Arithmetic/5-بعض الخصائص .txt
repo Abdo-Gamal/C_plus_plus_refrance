@@ -1,0 +1,34 @@
+a%n = 0 => a divisible by n
+◼ If a%n == b%n => (a-b)%n = 0
+◼ largest n such that a%n = b%n is n = b-a
+==================================================
+ (a % n) %n = a % n
+◼ (n ^ x) % n = 0 for any x >= 0
+◼ -a%n != a%n => (3 %12 = 3 vs -3 %12 = 9)
+◼ ((-a%n)+(a%n))%n = 0
+◼ (a+b) % n = (a%n + b%n) % n
+◼ (a+b+c+d)%n?
+◼ You can take mod of every one and sum
+◼ or ((((a%n+(b%n))%n+c%n)%n+d%n)%n
+◼ x % (a+b) != x % a + x %b
+◼ x%10 [the last digit]. x/10 [remove last digit]
+======================================================
+◼ a % (2^n) = a & (n-1) => E.g. a%4 = a&3
+======================================================
+(a*b) % n = (a%n * b%n) % n
+
+◼ (a^b) % n = ((a%n)^b) % n
+
+◼ (a^b) % n => assume b even and x = b/2
+◼ ( (a^x) % n * (a^x) % n)%n
+◼ (1/a) % n ? modular multiplicative inverse
+◼ ( (a*b) % n * (1/a)%n) %n = b % n
+◼ a % 0 is undefined
+◼ When -ve result => result = (result + n)%n
+
+======================================================overflow 
+You are sure final results <= n, but intermediate results
+overflow. Take intermediate % x (x > n)
+◼ 1001 - 1111 + 153 = 43 ...let x = 44
+◼ ( (1001%44 + ((-1111%44)+44)%44 + 153%44 )%44
+◼ (33+33+21)%44 = 87%44 = 43

@@ -1,0 +1,61 @@
+﻿
+ 
+TC: RGBStreet
+http://community.topcoder.com/stat?c=problem_statement&pm=6680
+
+
+const int MAX = 21;
+int r[MAX];
+int g[MAX];
+int b[MAX];
+int n;
+
+const int OO = (int)1e6;
+
+int mem[MAX][4];
+
+int minCost(int i, int lasColor)
+{
+	if(i == n)
+		return 0;
+
+	int &ret = mem[i][lasColor];
+
+	if(ret != -1)
+		return ret;
+
+	ret = OO;
+
+	if(lasColor != 0)
+		ret = min(ret, r[i] + minCost(i+1, 0));
+
+	if(lasColor != 1)
+		ret = min(ret, g[i] + minCost(i+1, 1));
+
+	if(lasColor != 2)
+		ret = min(ret, b[i] + minCost(i+1, 2));
+
+	return ret;
+}
+
+
+class RGBStreet {
+public:
+
+	int estimateCost(vector <string> houses)
+	{
+		rep(i, houses)
+		{
+			istringstream iss(houses[i]);
+			iss>>r[i]>>g[i]>>b[i];
+		}
+		n = sz(houses);
+
+		clr(mem, -1);
+
+		return minCost(0, 3);
+	}
+	
+};
+
+//////////////////////////////////////////////////////////////////////////////

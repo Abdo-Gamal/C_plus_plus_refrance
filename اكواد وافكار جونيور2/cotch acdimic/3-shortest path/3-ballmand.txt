@@ -1,0 +1,39 @@
+#define cost first
+#define  from second.first
+#define  to second.second
+
+int n, m;
+vector < pair<int, pair<int, int>>>edges;
+pair<bool, ll>ballman(int src,int tar) {
+    vector<int>dis(n, OO);
+    bool hasCycle = 0;
+    dis[src] = 0;
+    for (int i = 0; i < n; i++) {
+        bool isUpdated = 0;
+        for (auto e : edges) {
+            if (dis[e.to] > dis[e.from] + e.cost) {
+                dis[e.to] = dis[e.from] + e.cost;
+                  isUpdated = 1;
+            }
+        }
+        if (isUpdated == 0)break;
+        if (i == n - 1)
+            hasCycle = 1;
+    }
+    return { hasCycle ,dis[tar] };
+}
+int main() {
+
+    Fast();
+
+        cin >> n >> m;
+        for (int i = 0; i < m; i++) {
+            int u, v, c;
+            cin >> u >> v >> c;
+            edges.push_back({ c,{--u,--v} });
+        }
+        int src, tar;
+        auto ans = ballman(--src, --tar);
+        if (ans.first == 1)cout << "has cycle \n";
+        else cout << ans.second << "\n";
+}

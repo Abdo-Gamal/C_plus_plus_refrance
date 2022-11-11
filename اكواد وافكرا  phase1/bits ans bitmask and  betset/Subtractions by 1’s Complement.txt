@@ -1,0 +1,58 @@
+﻿
+
+--------------------------------------------------------------------------------------
+Subtractions by 1’s Complement:
+
+The algorithm to subtract two binary number using 1’s complement is explained as following below:
+
+Take 1’s complement of the subtrahend
+Add with minuend
+If the result of above addition has carry bit 1, then add it to the least significant bit (LSB) of given result
+If there is no carry bit 1, then take 1’s complement of the result which will be negative
+Note that subtrahend is number that to be subtracted from the another number, i.e., minuend.
+
+Example (Case-1: When Carry bit 1):  Evaluate 10101 - 00101
+
+According to above algorithm, take 1’s complement of subtrahend 00101, which will be 11010, then add both of these. So, 10101 + 11010 =1 01111 . Since, there is carry bit 1, so add this to the LSB of given result, i.e., 01111+1=10000 which is the answer.
+
+Example (Case-2: When no Carry bit):  Evaluate 11110 with 1110
+
+According to above algorithm, take 1’s complement of subtrahend 11110, which will be 00011. Then add both of these, So,   11001 + 00011 =11100 . Since there is no carry bit 1, so take 1’s complement of above result, which will be 00011, and this is negative number, i.e, 00011, which is the answer.
+
+Similarly, you can subtract two mixed (with fractional part) binary numbers. Note that you always add Carry bit the the least significant bit (LSB) of the result, whenever you get carry bit 1. LSB of fractional binary number is last (rightmost) bit of mixed or fractional binary numbers.
+
+Additions by 1’s Complement:
+
+There are difference scenario for addition of two binary numbers using 1’s complement. These are explained as following below.
+
+Case-1: Addition of positive and negative number when positive number has greater magnitude: 
+
+When positive number has greater magnitude, then take simply 1’s complement of negative number and the end-around carry of the sum is added to the least significant bit (LSB).
+
+Example:  Add  1110 and -1101.
+
+So, take 1’s complement of 1101, which will be 0010, then add with given number. So,   1110+0010=1 0000 , then add this carry bit to the LSB, 0000+1=0001 , which is the answer.
+
+Note that if the register size is big then fill the same value of MSB to preserve sign magnitude for inputs and output.
+
+
+Case-2: Addition of positive and negative number when negative number has greater magnitude: 
+
+When the negative number has greater magnitude, then take 1’s complement of negative number and add with given positive number. Since there will not be any end-around carry bit, so take 1’s complement of the result and this result will be negative.
+
+Example:  Add 1010 and -1100 in five-bit registers.
+
+Note that there are five-bit registers, so these new numbers will be 01010 and -01100.
+Now take 1’s complement of 01100 which will be 10011 and add   01010+10011=11101 . Then take 1’s complement of this result, which will be 00010 and this will be negative number, i.e., -00010, which is the answer.
+
+Case-3: Addition of two negative numbers:
+
+You need to take 1’s complement for both numbers, then add these 1’s complement of numbers. Since there will always be end-around carry bit, so add this again to the MSB of result. Now, take 1’s complement also of previous result, so this will be negative number.
+
+Alternatively, you can add both negative number directly, and get this result which will be negative only.
+
+Example:  add -1010 and -0101 in five bit-register.
+
+These five bit numbers are -01010 and -00101. Add complements of these numbers, 10101+11010 =1 01111 . Since, there is a carry bit 1, so add this to the LSB of result, i.e., 01111+1=10000 . Now take the 1’s complement of this result, which will be 01111 and this number is negative, i.e, -01111, which is answer.
+
+Note that  end-around-carry-bit  addition occurs only in 1’s complement arithmetic operations but not in 2’s complement arithmetic operations.

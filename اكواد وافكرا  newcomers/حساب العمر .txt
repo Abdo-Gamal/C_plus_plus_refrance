@@ -1,0 +1,33 @@
+int od,om,oy;
+int curd, curm, cury;
+int ansd=0, ansm=0, ansy = 0;
+void Solve()
+{
+
+    cin >> od>>om>>oy;
+    cin >> curd >> curm >> cury;
+
+    ansy = cury - oy;
+    ansm = curm - om;
+    if (ansm < 0) {
+        ansm = ansm + 12; ansy--;
+    }
+
+    ansd = curd - od;
+    if (ansd < 0  ) {
+
+        if (ansm == 0) {
+            ansm += 12;
+            ansy--;
+        }
+        ansd = ansd + 30; ansm--;
+    }
+    //0 Day 10 Months 64 Years
+   /* if (ansy < 0) {
+        ansy =ansd=ansm= 0;
+    }*/
+
+    cout << ansd<< (ansd > 1 ? " Days " : " Day ") <<
+        ansm << (ansm > 1 ? " Months " : " Month ") <<
+        ansy<< (ansy > 1 ? " Years" : " Year");
+}

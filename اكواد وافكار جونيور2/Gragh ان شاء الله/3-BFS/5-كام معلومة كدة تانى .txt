@@ -1,0 +1,23 @@
+﻿bfs work only on gragh un wighted
+==============================================================================================
+
+
+// All is done by 1 BFS
+// 1-1, 1-m
+// m-1 -> Reverse it, start with target and go to sources
+بيقلك   لو  خلى ال   نود الى هبداء منها  مجموعه من النود  ف  قبل مبداء هعملهم بوش كلهم ف ال  كيو 
+// m-m -> Set all start nodes in Q, and find targets
+
+
+// Testing a graph for bipartiteness
+
+// Edge Split, Vertex Split Tricks
+
+
+
+// N=5
+// 3	3
+// 3 - 6, 6 - 7, 7 - 8
+// in(3) = 3, out(3) = 8
+// sp(1, 3) = sp( in(1), out(3)) = (1, 8)
+==============================================================================================

@@ -1,0 +1,36 @@
+﻿
+
+===================================================================================
+
+// How to avoid stack problems
+// 1- If must do it in recursion, then avoid any unnecessary local data. Move to global as possible
+// 2- Move to iterative procedure
+// 3- Implement your own stack calls!
+
+void generateTernary_myStack(int len)
+{
+	stack< pair<int, string> > st;	// create stack consist of recursion state
+	st.push( make_pair(len, "") );
+
+	while(!st.empty())
+	{
+		int len = st.top().first;
+		string cur = st.top().second;
+		st.pop();
+
+		if(len == 0) {
+			cout<<cur<<"\n";
+			continue;
+		}
+
+		st.push(make_pair(len-1, cur + "0"));
+		st.push(make_pair(len-1, cur + "1"));
+		st.push(make_pair(len-1, cur + "2"));
+
+	}
+}
+
+
+
+===================================================================================
+

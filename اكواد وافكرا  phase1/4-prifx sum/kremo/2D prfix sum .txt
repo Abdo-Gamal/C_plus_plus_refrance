@@ -1,0 +1,13 @@
+﻿*subarray 
+-is set of element  from array under condation  L<=R
+-nuber of  subarray is qual n(n+1)/2
+
+*prfix subarray
+-is  subarray  but left =0
+
+*sufix subarray
+-is  subarray  but R=n-1
+
+
+
+

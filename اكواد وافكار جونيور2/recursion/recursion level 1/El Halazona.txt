@@ -1,0 +1,48 @@
+﻿vector<vector<int>> arr;
+vector<vector<bool>> vis;
+int n, cnt = 0, idx = 0;
+bool valid(int i, int j) {
+	return i >= 0 && j >= 0 && i < n && j < n;
+}
+void solve(int x = 0, int y = 0) {
+
+	if (!valid(x, y) || vis[x][y] == 1) {
+		idx++;
+		idx %= 4;
+		return;
+	}
+	cout << arr[x][y] << " ";
+	cnt++;
+	cnt %= n;
+	if (!cnt)
+		cout << "\n";
+
+	vis[x][y] = 1;
+
+	for (int i = 0; i < 4; i++) {
+		solve(x + dx4[idx], y + dy4[idx]);
+
+	}
+
+}
+/**------------------------->>  Main  <<------------------------**/
+
+int main() {
+	Fast();
+
+	cin >> n;
+	arr = vector<vector<int>>(n, vector<int>(n));
+	vis = vector<vector<bool>>(n, vector<bool>(n));
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cin >> arr[i][j];
+
+		}
+	}
+
+	solve();
+
+}
+
+===================================================================================

@@ -1,0 +1,27 @@
+vector<int> par, sz;
+int findParent(int u) {   //averge O(1) // find parent for node  and update parent  
+    if (u == par[u])return u;
+   return par[u]=findParent(par[u]);
+}
+
+void join(int a,int b) {   //averge O(1)
+     a=findParent(a);
+     b= findParent(b);
+     if (a != b) {
+         if(sz[a] > sz[b])  // all time sz of a small than sz of b
+             swap(a, b);
+         par[a] = b;         // put set(a) under the sz(b)
+         sz[b] += sz[a];
+     }
+}
+int main() {
+
+        Fast();
+        int n, q;
+        cin >> n >> q;
+        par.resize(n);
+        iota(all(par), 0); // == for(int i=0;i<n;i++)par[i]=i;
+        sz.resize(n, 1);// itial ever node is alone 
+
+
+}

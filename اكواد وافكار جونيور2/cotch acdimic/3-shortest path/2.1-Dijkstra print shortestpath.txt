@@ -1,0 +1,66 @@
+
+int n, m;
+vector <vector<pair<int, int>>>adj;
+vector<int>par;
+int dijkstra(int src, int tar) {
+    // dis :for tell us the distance form source to  other node 
+    //q :tell us the  best option  "best node can go to  it "
+    vector<ll>dis(n, lOO);//intial i can not  access any node 
+    priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>> >q;
+    dis[src] = 0;
+    q.push({ 0,src });
+    while (!q.empty())
+    {
+        int u = q.top().second;
+        int c = q.top().first;//smalest cost 
+        q.pop();
+        if (u == tar)return 1;
+
+        // c the path may be choose  and  dis[u] the path i take to go to u if c!=dis[u]
+        //this mean c is bad path as arrive to  u from anothr path by small cost  
+        //"small cost as i use poirty queque and first cost is smallest cost "
+        if (c != dis[u]) //bad path
+            continue;
+
+        //push    all edge connect to  choosen node(u) in queue if  it is good path
+        // and save dist between  u  and all conect node not  vist  or
+        // cost is small than save in dis[v]
+        for (auto p : adj[u]) {
+            int v = p.second;
+            ll vc = p.first;
+            if (dis[v] > dis[u] + vc) {
+                dis[v] = dis[u] + vc;
+                q.push({ dis[v],v });
+                par[v] = u;
+            }
+        }
+    }
+    return -1;
+}
+void printPath(int u, int v) {
+    if (v == u)cout << u + 1 << " ";
+    else {
+        printPath(u, par[v]);
+        cout << v + 1 << " ";
+    }
+}
+int main() {
+
+    Fast();
+
+        cin >> n >> m ;
+
+        adj = vector<vector<pair<int, int>>>(n);
+        par = vector<int>(n);
+        for (int i = 0; i < m; i++) {
+            int u, v, c; cin >> u >> v >> c;
+            if (u == v)continue;
+            adj[--u].push_back({ c,--v });
+            adj[v].push_back({ c,u });
+
+        }
+        int ans = dijkstra(0, n-1);
+        if (ans == -1) {cout << -1; return -1;}
+        printPath(0, n - 1);
+    
+}

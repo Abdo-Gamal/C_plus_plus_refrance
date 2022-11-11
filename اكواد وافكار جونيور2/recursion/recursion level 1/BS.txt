@@ -1,0 +1,18 @@
+﻿int n, x;
+vector<int> v;
+int Solve(int st = 0, int end = n - 1) {
+
+	if (st > end)
+		return -1;
+	int mid = (st + end) / 2;
+	if (v[mid] >= x) {
+		if (x == v[mid])
+			return mid;
+		Solve(st, mid - 1);
+	} else
+		Solve(mid + 1, end);
+
+}
+
+
+===================================================================================

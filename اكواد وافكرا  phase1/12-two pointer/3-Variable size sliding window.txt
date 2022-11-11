@@ -1,0 +1,45 @@
+﻿EX:
+Find a range with property
+◼ Given an array having N positive integers, find the
+contiguous subarray having sum as max as possible, but
+<= M(value)
+solve
+◼ Let p1 = p2 = 0
+◼ Keep moving p2 as much as the window is ok
+◼ Once window is !ok = stop p2
+◼ keep moving p1 as long as window is !ok
+◼ Once window is ok = stop p1 and back to p2 again
+◼ For any ok window (here sum <= M), do your evaluations
+◼ Remember this strategy :)
+as a trace
+Let A = {2, 4, 3, 9, 6, 3, 1, 5}, M = 10
+◼ P1 = 0, P2 = 0,                    Y = 2 = 2 <= 10. P2++
+◼ P1 = 0, P2 = 1,                   Y = 2+4 = 6 <= 10. P2++
+◼ P1 = 0, P2 = 2,                   Y = 2+4+3 = 9 <= 10. P2++
+◼ P1 = 0, P2 = 3,                   Y = 2+4+3+9 = 18 > 10. P1++
+◼ P1 = 1, P2 = 3,                   Y = 4+3+9 = 16 > 10. P1++
+◼ P1 = 2, P2 = 3,                   Y = 3+9 = 12 > 10. P1++
+◼ P1 = 3, P2 = 3,                   Y = 9 = 9 <= 10. P2++
+◼ P1 = 3, P2 = 4,                   Y = 9+6 = 15 > 10. P1++
+◼ P1 = 4, P2 = 4,                   Y = 6 = 6 <= 10. P2++
+◼ P1 = 4, P2 = 5,                   Y = 6+3 = 9 <= 10. P2++
+◼ P1 = 4, P2 = 6,                   Y = 6+3+1 = 10 .. max stop
+Code:
+------------------------------------------------------------------------
+int arr[1000], n,m;
+	cin >> n>>m;
+	for (int i = 0; i < n; i++)cin >> arr[i];
+	int l = 0, r = 0;
+	ll ans,sum=0;
+	while (l < n) {
+
+		while (r<n&&sum+arr[r]<=m) {
+			sum += arr[r];
+			r++;
+		 }
+		ans = max(ans, sum);
+		sum -= arr[l];
+		l++;
+
+	}
+===================================================================================

@@ -1,0 +1,13 @@
+1.	const int N = 1e6;
+2.	const int mod = 1e9 + 7;
+3.	// NCR 
+4.	ll nCr(ll n, ll r){
+5.	ll ans = 1;
+6.	ll div = 1; // r! 
+7.	for (ll i = r + 1; i <= n; i++){
+8.	ans = ans * i;
+9.	ans /= div;
+10.	div++;
+11.	}
+12.	return ans;
+13.	}

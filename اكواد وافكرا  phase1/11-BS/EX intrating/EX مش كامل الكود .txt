@@ -1,0 +1,28 @@
+﻿
+
+bool ok(int l) {
+	l--;
+	bool flag = 0;
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
+			if (valid(i+l , j+l ) && (gr[i + l][j + l] - gr[i + l][j - 1] - gr[i - 1][j + l] + gr[i - 1][j - 1]) <= l_b)
+				return 1;
+
+		}
+	}
+	return 0;
+}
+int solve(int end=n,int st=1) {
+	ans = 0;
+	while (st <= end) {
+		mid = (st + end) / 2;
+
+		if (ok(mid)) {
+			ans = mid;
+			st = mid + 1;
+		}
+		else end = mid -1;
+	}
+	return ans;
+}
+----------------------------------------------------------------------------------

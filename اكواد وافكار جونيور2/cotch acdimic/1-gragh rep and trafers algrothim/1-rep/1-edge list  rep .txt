@@ -1,0 +1,21 @@
+
+struct edge {
+
+    int from, to, wight;
+};
+vector<edge>edgelist;
+
+
+int main() {
+
+    Fast();
+    int n, m;
+    cin >> n >> m;
+    for (int i = 0; i < m; i++) {
+        int u, v, c;              //from to withgt
+        cin >> u >> v >> c;
+        edgelist.push_back({ u,v,c });
+     edgelist.push_back({ v,u,c });
+    }
+ 
+}

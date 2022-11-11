@@ -1,0 +1,6 @@
+int binary[32];
+for(int bit = 31; bit >= 0; bit--){
+binary[bit] = (n >> bit) & 1;
+}
+
+i dont understand it 

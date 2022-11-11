@@ -1,0 +1,50 @@
+﻿============================================================================
+1-هنرتبهم   
+2-هندى لكل   واحد فيهم  رقم صغير  حسب مكانو بعد الترتيب 
+3-هتعمل الكلام دة على كل الابعاد الى عندك    x-y-z...
+=============================================================================
+/*
+ *  {300,10000,-5,-100,300}
+ *   start 0,step=1 ==> {2 ,3,1,0,2}
+ * (or)  start 2,step2 ==>{6,8,4,2,6}
+ */
+vector<int> Coordinate_Compression(vector<int> x, int start = 0, int step = 1) {
+
+	set<int> unique(x.begin(), x.end());
+	map<int, int> valPosMap;
+	int idx = 0;
+	for (auto val : unique) {
+		valPosMap[val] = start + step * idx;
+		idx++;
+	}
+
+	for (auto &x_pos : x)
+		x_pos = valPosMap[x_pos];
+	return x;
+}
+=============================================================================(الاكثر استخداما)
+
+//دة بيحتفظ بالاصل بتاعى 
+// iToV like  frq(reverse of this map)  i is the  new val  ans  value is  the  old
+void Coordinate_Compression(vector<int> &axis, vector<int> &iToV,
+		map<int, int> &vToI, int start = 0, int step = 1) {
+
+	for (auto &x_pos : axis)
+		vToI[x_pos] = 0;
+	iToV.resize(start + step * vToI.size());
+	int idx = 0;
+
+	for (auto &entey : vToI) {
+		entey.second = start + step * idx;
+		iToV[entey.second] = entey.first;
+		idx++;
+	}
+	for (auto &x_pos : axis)
+		x_pos = vToI[x_pos];
+
+}
+==========================================================================================
+
+
+
+

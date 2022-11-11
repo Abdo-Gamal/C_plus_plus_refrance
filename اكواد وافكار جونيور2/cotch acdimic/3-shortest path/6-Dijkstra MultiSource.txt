@@ -1,0 +1,55 @@
+
+int n, m,q;
+vector <vector< pair<ll, int>>>adj;
+vector<ll>coin , dis;
+void Dijkstra() {
+   
+    
+    priority_queue < pair<ll, int>, vector<pair<ll, int>>, greater < pair < ll , int >> > q;
+    dis = vector<ll>(n, OO);
+    for (int i = 0; i < n; i++) {
+        dis[i] = coin[i];
+        q.push({ dis[i] ,i });
+    }
+    while (!q.empty())
+    {
+        int u = q.top().second;
+        ll uc = q.top().first;
+        q.pop();
+
+        if (uc != dis[u]) continue;
+        for (auto p : adj[u]) {
+            int v = p.second;
+            ll c = p.first*2;
+            if (dis[v] > dis[u] + c) {
+                dis[v] = dis[u] + c;
+                q.push({ dis[v],v });
+               
+            }
+        }
+    }
+  
+}
+int main() {
+
+    Fast();
+  
+  
+        cin >> n >> m;
+        adj.resize(n);
+        coin.resize(n);
+        dis.resize(n);
+        for (int i = 0; i < m; i++) {
+            ll u, v, c;
+            cin >> u >> v >> c;
+            adj[--u].push_back({ c,--v });
+            adj[v].push_back({ c,u});
+        }
+        for (int i = 0; i < n; i++) {
+            cin >> coin[i];
+        }
+        Dijkstra();
+        for (int i = 0; i < n; i++)
+            cout << dis[i] << " ";
+        cout << "\n";
+}

@@ -1,0 +1,19 @@
+﻿-------------------------------------------------- Modulus -------------------------------------------------------------------حلو 
+	 the remainder of division of one number by another
+	 a % b = a - b * [a/b]		-> sometimes problem solution depends on the equation
+	 7 % 3 = 3 - 3 * 2 = 1
+
+	 Distributive Property over +, -, *
+		(a+b+c)%X = (a%X + b%X + c%X)%X			REMEMBER the last %X
+
+	What about negative a?
+			postiveMode = (a%X + X)%X		-> get smallest negative, add 1 cycle, MOD again
+                           ex*  -4%3=-1-->-1+3=2-->2%3=2
+	MOD is expensive! That is, in case a tight order problem, code TLE(time limit) due to MOD!  تاخد وقت جامد  عشان مرتبطة ب القسمة ف لو حابب استخدمها كل متحتاج او استخدام شرط احسن  
+
+		if(a > MOD || a < 0)	do MOD operation
+
+		Or more efficiently, if possible
+		if(a > MOD)	a -= MOD;	// given that you are sure we are far by ONLY 1 cycle
+		if(a < 0)	a += MOD;
+

@@ -1,0 +1,41 @@
+int main() {
+
+    Fast();
+
+        int n; cin >> n;
+        vector<vector<ll>>dis(n, vector<ll>(n, LOO));
+        for (int i = 0; i < n; i++)
+            dis[i][i] = 0;
+      
+        ll sum = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int c; cin >> c;
+                dis[i][j] = dis[j][i] =c;
+                sum += c;
+            }
+        }
+        for (int k = 0; k < n; k++)
+            for (int u = 0; u < n; u++)
+                for (int v = 0; v < n; v++)
+                    dis[u][v] = min(dis[u][v], dis[u][k] + dis[k][v]);
+
+        int k; cin >> k;
+        while (k--)
+        {
+            int u, v, c;
+            cin >> u >> v >> c;
+            u--, v--;
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    sum -= dis[i][j];
+                    dis[i][j] = min({dis[i][j], dis[i][u] +c+ dis[v][j],dis[i][v] + c + dis[u][j] });
+                    sum += dis[i][j];
+                }
+            }
+            cout << sum / 2<<" ";// divide by 2 ans two away road  enter in input
+        }
+
+}
+
+

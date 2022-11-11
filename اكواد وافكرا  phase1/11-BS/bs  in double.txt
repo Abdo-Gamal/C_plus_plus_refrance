@@ -1,0 +1,21 @@
+﻿int f(int n) {return 0;}
+
+double BS_double(double st, double ed, double value) {
+
+	while ( fabs(ed-st)>EPS)
+	{
+		double mid = st+(ed - st) / 2;
+		if (function(mid) < value)st = mid;
+		else ed = mid;
+	}return st;}
+---------------------------------------------------------------(or)
+bool can(int m) {return 0;}
+
+double BS_double(double st, double ed, double value) {
+
+	forr (i,100) //   loop as you want
+	{double mid = st+(ed - st) / 2;
+		if (function(mid) < value)st = mid;
+		else ed = mid;}
+	if (can(end))return st; return -1;}
+========================================================================

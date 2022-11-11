@@ -1,0 +1,45 @@
+﻿	// STL : Standard Template Library
+	// Data , Algorithm , 
+	// queue , dequeue , priority_queue
+ 
+ 
+	/*
+//  stl هى عبار ان  مكتبة جاهزة   الحجات الى فيها بتسهلى عملية الادخال  والبحث وغيرة 
+//#include<queue>  // for queue , priority_queue
+	queue
+	used for ?
+	decleration
+	push
+	pop
+	back  // last
+	front // first
+	size
+	empty
+	*/
+//شبة الطبور  بالضبط 
+	queue <int> q;
+ 
+	q.push(1); // o(1)
+ 
+	q.push(2);
+ 
+	q.push(3);  // 1 2 3
+ 
+ 
+	//q.pop(); // o(1)   هيحزف اول رقم دخل   الى هو الواحد
+ 
+ 
+	cout << q.front() << endl; // first elemnt 
+ 
+	cout << q.back() << endl; // last elemnt 
+ 
+	cout << q.size() << endl;
+ 
+	cout << q.empty() << endl;
+ 
+	while (!q.empty()){   
+		cout << q.front() << " ";
+		q.pop();
+	}
+// طريقة احسن للحزف   انى اعرفها تانى  دى اسرع
+// q=queue <int>();

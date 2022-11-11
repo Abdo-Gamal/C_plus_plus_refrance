@@ -1,0 +1,15 @@
+﻿string s;
+int n;
+void gen(int x) {
+	if (x == n) {
+ 
+	cout << s << "\n";
+		return;
+	}
+	s += '0';
+	gen(x + 1);
+	s.pop_back();
+	s += '1';
+	gen(x + 1);
+	s.pop_back();
+}

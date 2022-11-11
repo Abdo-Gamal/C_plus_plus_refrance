@@ -1,0 +1,68 @@
+﻿// bitset 
+ ---------------------------------------------------------------------------
+	/* 
+		used for ? 
+		decleration 
+		operators
+		any
+		count
+		reset
+		flip
+		reset
+		set
+		to_string
+		to_ullong
+	*/
+ ----------------------------------------------------------------------------
+	bitset<32>a1;  // intialize with 32 '0' in binary represention
+	bitset<32>a2(30); // decimal convert 30 to binary 
+	bitset<6>a3("010101");  // binary 
+ 
+ 
+	cout << a1 << endl;
+	cout << a2 << endl;
+	cout << a3 << endl;
+ 
+	// operators  == , !=  , ^ , & , | , << , >> , ~  
+ ------------------------------------------------------------------------
+	// functions any , count , reset 
+ 
+	if (a1.any()){ 
+		// return bool true if found any bit with '1'
+	}
+	cout << a1.count() << endl; // return numbers of ones 
+ 
+	a1.flip(); // flip all bits 1 to 0 and 0 to 1
+ 
+	a1.flip(3); // flip specific bit 
+ ------------------------------------------------------------------------
+	a1.reset(); // make all bits 0 
+ 
+	a1.reset(3); // reset specific bit
+ ------------------------------------------------------------------------
+	a1.set(); // make all bit is 1
+ 
+	a1.set(3,1); // make spcific bit is 1
+
+	a1.set(3, 0); // make specif bit is 0
+ ------------------------------------------------------------------------
+ 
+                                                             // كدة هتعام مع الرقم على انو زى الاسترنج
+	// iterate in bitset  
+	// Note : index start from right not left
+	// a1[0] mean first right of bitset variable 
+ 
+	// 010101  will print 101010     ((( الرقم بيكون موجود  معكوس يعنى الاندكس الصفر فى اليمين مش الشمال))))
+
+	for (int i = 0; i < a3.size(); i++){
+		cout << a3[i];
+	}
+	cout << endl;
+ ------------------------------------------------------------------------
+	string x = a3.to_string();
+ 
+	cout << x << endl;
+	cout << a3.to_ulong() << endl;
+	cout << a3.to_ullong() << endl;
+
+------------------------------------------------------------------------

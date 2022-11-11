@@ -1,0 +1,143 @@
+bool valid(int i, int j) {
+	return 0 <= i && i < h && 0 <= j && j < w&& arr[i][j] == '*';
+}
+
+void
+solve(int i, int j) {
+	int x=i, y = j;
+	  cnt3 = 1;
+	coun = 0;
+		for (int k = 0; k < 4; k++) {
+			ok = 0;
+			while (valid(x + dx4[k] , y + dy4[k])) {
+				x += dx4[k], y += dy4[k]; 
+				cnt3++;
+				ok = 1;
+			}
+			x = i, y = j;
+		  coun += (ok == 1);
+		}
+	
+	if (!okk)
+		okk = (coun == 4);
+	ans = max(ans, cnt3);
+
+
+}
+void Solve() {
+
+	cin >> h >> w;
+
+	for (int i = 0; i < h; i++) {
+
+		for (int j = 0; j < w; j++) {
+			cin >> arr[i][j];
+			if (arr[i][j] == '*')
+				cnt++;
+		}
+	}
+
+	for (int i = 0; i < h; i++) {
+
+		for (int j = 0; j < w; j++) {
+
+			if (arr[i][j] == '*') {
+				cnt2 = cnt3 = 1;
+					 solve(i, j);
+				
+				
+			}
+		}
+	}
+	cout << ((ans == cnt && okk) ? "YES\n" : "NO\n");
+
+}
+
+/**------------------------->>  Main  <<-------------------------**/
+
+int main() {
+
+	Fast();
+	File();
+
+	Solve();
+
+}
+////////////////////////////////-----or-----//////////////////////////////////////////////////////////
+
+/**------------------>>  Initialization gap  <<------------------**/
+
+int h, w, cnt = 0, cnt2, cnt3, ans = -1, coun;
+bool okk = 0, ok;
+char arr[504][504];
+
+bool valid(int i, int j) {
+	return 0 <= i && i < h && 0 <= j && j < w && arr[i][j] == '*';
+}
+
+bool solve(int i, int j, int dx, int dy, int &cnt) {
+	bool ok = 0;
+	while (valid(i + dx, j + dy)) {
+		ok = 1;
+		cnt++;
+		i += dx;
+		j += dy;
+	}
+	return ok;
+}
+void Solve() {
+	cin >> h >> w;
+
+	for (int i = 0; i < h; i++) {
+
+		for (int j = 0; j < w; j++) {
+			cin >> arr[i][j];
+			if (arr[i][j] == '*')
+				cnt++;
+		}
+	}
+
+	for (int i = 0; i < h; i++) {
+
+		for (int j = 0; j < w; j++) {
+
+			if (arr[i][j] == '*') {
+				cnt2 = cnt3 = 1;
+				coun = 0;
+				ok = solve(i, j, 1, 0, cnt3);
+				coun += (ok == 1);
+				ok = solve(i, j, 0, 1, cnt3);
+				coun += ok == 1;
+				ok = solve(i, j, -1, 0, cnt3);
+				coun += ok == 1;
+				ok = solve(i, j, 0, -1, cnt3);
+				coun += ok == 1;
+				if (!okk)
+					okk = (coun == 4);
+				ans = max(ans, cnt3);
+			}
+		}
+	}
+	cout << ((ans == cnt && okk) ? "YES\n" : "NO\n");
+
+}
+
+/**------------------------->>  Main  <<-------------------------**/
+
+int main() {
+	Fast();
+	File();
+
+	Solve();
+
+}
+/////////////////////////////////////main things //////////////////////////////////////////////
+
+bool valid(int i, int j) {
+	return 0 <= i && i < h && 0 <= j && j < w&& arr[i][j] == '*';
+}
+///////
+while (valid(x + dx4[k] , y + dy4[k])) {
+				x += dx4[k], y += dy4[k]; 
+
+////////

@@ -1,0 +1,21 @@
+﻿int n;
+string s;
+int  ans[1000][1000];
+int Solve(int strart, int end) {
+
+
+    if (end <= strart)return 0;
+    int& ret = ans[strart][end];
+    if (~ret)return ret;
+   
+    int cost;
+    if (s[strart] == s[end])  cost=Solve(strart + 1, end - 1);
+    
+    else cost = min({ Solve(strart + 1, end - 1) ,Solve(strart, end - 1) ,Solve(strart+1, end ) })+1; //replace  add remove
+        
+
+    
+        return ret=cost;
+
+
+}

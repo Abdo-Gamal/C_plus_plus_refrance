@@ -1,0 +1,37 @@
+﻿
+
+==========================================================================================
+vector< vector<int> > adjList1;					// boolean relation
+
+// Let's keep edge with min cost;
+
+	/*
+		3
+		2	1 2
+		1	2
+		2	0 1
+	 */
+	cin>>n;
+	adjList1 = vector< vector<int> >(n);
+	lp(i, n)
+	{
+		int cnt;
+		cin>>cnt;
+		lp(j, cnt)
+		{
+			int to;
+			cin>>to;
+			adjList1[i].push_back(to);
+		}
+	}
+==========================================================================================
+cin>>n>>e;                                           //n->node  , e->edages
+	adjList2 = vector< vector< int> >(n);
+	lp(i, e)
+	{int from, to;
+          cin>>to>>from;
+      adjList2[from].push_back( to);
+
+}
+==========================================================================================
+

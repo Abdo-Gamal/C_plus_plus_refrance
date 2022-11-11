@@ -1,0 +1,23 @@
+﻿
+// len = 3: 000, 001, 010, 011, 100, 101, 110, 111
+
+void printAllSubsets(int len)	// Remember we did it recursively! This is much SIMPLER!
+{
+	for (int i = 0; i < (1<<len); ++i)
+		printNumber(i, len);
+
+	// For reversed order. Either reverse each item or work from big to small
+	//for (int i = (1<<len); i >= 0 ; --i)
+	//	printNumber(i, len);
+}
+=======================================================================
+//حطها  من فوف فى الكود  
+void printNumber(int n, int len)
+{
+	if(!len)
+		return ;
+
+	printNumber(n>>1, len-1);	// remove last bit
+	cout<<(n&1);						// print last bit
+}
+=====================================================================

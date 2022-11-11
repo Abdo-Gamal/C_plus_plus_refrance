@@ -1,0 +1,6 @@
+#ifdef ONLINE_JEDGE
+	//freopen("input.in", "r", stdin);
+	//freopen("output.out", "w", stdout);
+#else
+	freopen("mex.in", "r", stdin);
+#endif

@@ -1,0 +1,12 @@
+﻿// Let's count bits
+
+int countNumBits1(int mask) {	// O(bits Length)
+	int ret = 0;	//1101001 -> 110100 -> 11010 -> 1101 -> 110 -> 11 -> 1 -> 0
+	while (mask) {
+		if(mask&1)
+			ret++;
+		mask >>= 1;             //look at >>= not >>
+	}
+	return ret;
+}
+======================================================================

@@ -1,0 +1,43 @@
+﻿==========================================================================
+//return 0 if a--b   and  return -1 if a>b else 1
+int com_double(double a, double b) {
+
+	if (fabs(a - b) <=1e-10)return 0;
+	else return (a < b ? -1 : 1);
+}
+
+==========================================================================
+ceil(x, y) = (x+y-1)/y
+round(x, y) = (x+y/2)/y [if x > 0] and  (x-y/2)/y [x < 0]
+==========================================================================
+To round to multiple of a specified amount
+round(x, m) = round(x / m) * m
+round(48.2 seconds, 15) = 45 seconds
+round(2.1784 dollars, 0.01 (1 cent) ) = 2.18 dollars
+==========================================================================
+If we have 2 jackets, 2 jeans & 2 shoes, I can have 2x2x2 = 23 = 8 different clothing styles
+Exponential function: y = bx
+b (base), x (exponent):  real,integer,+ve,-ve
+Popular values: 2, 10, e [e is Euler's number ~= 2.7]
+a 64 bit integer stores 264 numbers … a very big number 
+2-x = (½)x = 0.5x  and 2x = (½)-x = 0.5-x
+In C++: pow(2, 3) = 23 = 8 
+Exponential indicates growing fast
+==========================================================================
+It is the inverse operation to exponentiation
+y = bx   ==>  logby = x
+log101000 = how many 10 multiplications = 1000? 3
+log216 = how many 2 multiplications = 16? 4
+log100.001 = how many 10 divisions = 1/1000? -3
+b=[10, e, 2] => (common, natural, binary) log
+Math notations: lg(x), ln(x), lb(x)
+In c++: log10(x), log(x), log2(x)
+log is strictly increasing for b > 1
+log is strictly decreasing for 0 < b < 1
+==========================================================================
+  
+==========================================================================
+ ف  نفسه    base   ان  كام  مرة اضرب ال    logb (x)  معنى ال  
+x   عشان  يطلع ال            
+==========================================================================
+

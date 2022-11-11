@@ -1,0 +1,38 @@
+﻿
+
+===================================================================================
+bool Solve(int arr[], int end, int start = 0) {    //end=sz(arr)-1
+
+	if (start >= end )
+		return true;
+
+	if (arr[end ] != arr[start]) {
+		return  false;
+	}
+
+	 Solve(arr, end - 1, start + 1);
+
+}
+===================================================================================(or) 
+// لسة  اوز افهم هو   بيحل اية  لما بنادم  arr+1
+
+bool Solve(int arr[], int end) {    //end=sz(arr)-1
+
+	if (end <= 0)
+		return true;
+	if (arr[0] != arr[end]) {
+		return false;
+	}
+
+	return Solve(arr + 1, end - 2);
+
+}
+-----------------------
+Ex: arr={1,2,3,2,1}
+firt call :st=0,end=4           arr[]={1,2,3,2,1}   arr[0]=1,arr[end]=1
+secant call:st=st=0,end=2         arr[]={2,3,2,1}      arr[0]=2,arr[end]=2
+etc..
+
+
+
+===================================================================================

@@ -1,0 +1,50 @@
+int main() {
+
+    Fast();
+  
+         int n, m,q;
+        cin >> n >> m>>q;
+        vector<vector<ll>>dis(n, vector<ll>(m, LOO));
+        vector<vector<int>>nxt(n, vector<int>(n,-1) );
+
+        for (int i = 0; i < n; i++) {
+            dis[i][i] = 0;
+            nxt[i][i] = i;
+        }
+        for (int i = 0; i < m; i++) {
+            ll u, v, c;
+            cin >> u >> v >> c;
+            u--, v--;
+            dis[u][v] = min(dis[u][v], c); 
+            nxt[u][v] = v;
+            dis[v][u] = min(dis[v][u], c);
+            nxt[v][u] = u;
+        }
+        for (int k = 0; k < n; k++) {
+            for (int u = 0; u < n; u++) {
+                for (int v = 0; v < n; v++) {
+                    if (dis[u][v] > dis[u][k] + dis[k][v]) {
+                        dis[u][v] = dis[u][k] + dis[k][v];
+                        nxt[u][v] = nxt[u][k];
+
+                    }
+                }
+            }
+          
+        }
+        while (q--)
+        {
+            int u, v;
+            cin >> u >> v;
+            if (dis[u][v] >= LOO)cout << -1<<"\n";
+            else {
+                cout << u+1; 
+                while (u != v)
+                {
+                    u = nxt[u][v];
+                    cout << " " << u+1;
+                }
+                cout << "\n";
+            }
+        }
+}

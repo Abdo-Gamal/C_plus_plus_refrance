@@ -1,0 +1,43 @@
+﻿
+
+const int MAX = 104;
+int n, w;
+ll weights[MAX];
+ll benfit[MAX];
+ll Mem[MAX][(int)(1e5+7)] ;
+ll knapsack(int i, int reminder)	// i send value  and  see the minum  w can i make to get this value
+{
+    if (reminder < 0)return 1e13;   // when  the  rem munus  this  can not be ans
+    if (i == n)return (reminder ==0ll?0:1e13);
+    ll& ret = Mem[i][reminder];
+    if (~ret ) return ret;
+
+    ll choice1 = knapsack(i + 1, reminder);
+
+     ll choice2 = knapsack(i + 1, reminder - benfit[i]) + weights[i];
+
+    return ret = min(choice1, choice2);
+}
+
+
+/**------------------------->>  Main  <<------------------------**/
+
+int main() {
+    Fast();
+
+    cin >> n >> w;
+    for (int i = 0; i < n; i++) {
+        cin >> weights[i] >> benfit[i];
+
+    }
+
+    mem(Mem, -1);   //  i put it  above the loop
+
+    for (int i = 1e5; i >= 0; i--) {
+            ll ans = knapsack(0, i);
+
+            if (ans <= w) {
+                return cout << i,0 ;
+            }
+    }
+}

@@ -1,0 +1,24 @@
+﻿ll Solve(ll n, ll r) {
+	if (r <= 0 || n <= r)
+		return 1ll;
+ 
+	ll res1 = Solve(n - 1, r);
+	ll res2 = Solve(n - 1, r - 1);
+	return res1 + res2;
+ 
+}
+/**------------------------->>  Main  <<------------------------**/
+ 
+int main() {
+	Fast();
+	ll n, r;
+	cin >> n >> r;
+	if (r > n) {
+		cout << 0;
+		return 0;
+	}
+	cout << Solve(n, r);
+}
+
+======================================================================
+ncr(n,r)=pascal(n,r)  bascal base 0   //فكرة الحل 

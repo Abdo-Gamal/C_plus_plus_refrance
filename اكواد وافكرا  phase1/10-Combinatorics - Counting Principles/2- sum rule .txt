@@ -1,0 +1,14 @@
+
+======================================================
+words: {bbb, bbc, bcb, bcc, cbb, cbc, ccb, ccc}
+
+◼ How many words either start with bb or c?
+
+◼ 2 + 4 [Notice, no intersection between that]
+
+◼ |A ∪ B| = |A| + |B| => [A and B are disjoint]
+
+◼ |A ∪ B ∪ C ∪ D ...| = |A| + |B| + |C| + |D| + ... 
+
+
+======================================================

@@ -1,0 +1,46 @@
+﻿// Flood Fill...given maze where cells are . or X. You start at 0, 0..how many cells you could reach?
+/*
+..X.
+.X.X
+..X.
+
+...x.
+..x..
+.x...
+x....
+
+
+....X...
+....XXXX
+..X.....
+.X....XX
+..X.X.X.
+..X...X.
+...X..XX
+*/
+// A reachable block is called connected components. Each set of positions reachable together are connected component.
+
+===================================================================================
+int n, m;
+char maze[100][100];
+bool vis[100][100];
+bool valid(int i, int j) {
+	return i >= 0 && i >= 0 && i < n && j < m;
+}
+int cnt = 0;
+void cntReachalbleCells(int r, int c) {
+	if (!valid(r, c) || maze[r][c] == 'X' || vis[r][c] == 1)
+		return;		// invalid position or block position
+
+	vis[r][c] = 1;	// we just visited it, don't allow any one back to it
+	cnt++;
+
+	// Try the 4 neighbor cells
+	cntReachalbleCells(r, c - 1);
+	cntReachalbleCells(r, c + 1);
+	cntReachalbleCells(r - 1, c);
+	cntReachalbleCells(r + 1, c);
+}
+
+===================================================================================
+

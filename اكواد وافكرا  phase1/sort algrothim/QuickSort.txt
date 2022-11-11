@@ -1,0 +1,75 @@
+﻿
+// A utility function to swap two elements  
+void swap(int* a, int* b)  
+{  
+    int t = *a;  
+    *a = *b;  
+    *b = t;  
+}  
+  
+/* This function takes last element as pivot, places  
+the pivot element at its correct position in sorted  
+array, and places all smaller (smaller than pivot)  
+to left of pivot and all greater elements to right  
+of pivot */
+int partition (int arr[], int low, int high)  
+{  
+    int pivot = arr[high]; // pivot  
+    int i = (low - 1); // Index of smaller element    //i=-1;
+  
+    for (int j = low; j <= high - 1; j++)  
+    {  
+        // If current element is smaller than the pivot  
+        if (arr[j] < pivot)  
+        {  
+            i++; // increment index of smaller element  
+            swap(&arr[i], &arr[j]);  
+        }  
+    }  
+    swap(&arr[i + 1], &arr[high]);  
+    return (i + 1);  
+}  
+  
+/* The main function that implements QuickSort  
+arr[] --> Array to be sorted,  
+low --> Starting index,  
+high --> Ending index */
+void quickSort(int arr[], int low, int high)  
+{  
+    if (low < high)  
+    {  
+        /* pi is partitioning index, arr[p] is now  
+        at right place */
+        int pi = partition(arr, low, high);  
+  
+        // Separately sort elements before  
+        // partition and after partition  
+        quickSort(arr, low, pi - 1);  
+        quickSort(arr, pi + 1, high);  
+    }  
+}  
+  
+
+  
+// Driver Code 
+int main()  
+{  
+    int arr[] = {10, 7, 8, 9, 1, 5};  
+    int n = sizeof(arr) / sizeof(arr[0]);  
+    quickSort(arr, 0, n - 1);  
+  
+    return 0;  
+}  
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//دة بيمسكاى عنصر   فليكن الاول  ويحاول  يحطة فى المكا الصح  وبعدين العنصر الى بعدة    وهكذا
+//يعنى  هشوف كام عنصر اصغر من الى معاية موجود   وحطة فى المكان بعدهم مثلا لو معاية 41  وفية 3 عناصر فى الارى اصغر منة  ف هحط العنصر دة فى المكان الرابع 
+//وحط العناصر الاصغر منة قبلة والى اكبر منة بعدة
+//وبعد كدة ارتب الارقام الى قبلة  بنفس الطريقة ورتب الارقام الى بعدة برضو بنفس الطريقة
+//كل العناصر الى قبل  i  
+//وكل العناصر الى بعدj اكبر منة 
+//دة  بيوفر مساحة عن الmarge   sort
+//لو كانت الارى  مترتبة    الكمبلكستى هيكون  O(nlog(n));//هام
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

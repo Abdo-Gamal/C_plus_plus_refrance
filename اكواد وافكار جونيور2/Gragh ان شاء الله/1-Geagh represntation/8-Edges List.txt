@@ -1,0 +1,15 @@
+﻿===========================================================================================
+
+struct edge {
+	int from, to, w;
+
+	edge(int from, int to, int w): from(from), to(to), w(w) {}
+
+	bool operator < (const edge & e) const {
+		return w > e.w;	          // Sort with smaller weight first
+	}
+};
+
+vector<edge> edgeList; // الى هيرجع 
+
+===========================================================================================

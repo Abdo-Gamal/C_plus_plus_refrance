@@ -1,0 +1,75 @@
+void spiralPrint(int m, int n, int a[R][C]) 
+{ 
+    int i, k = 0, l = 0; 
+  
+    /* k - starting row index  
+        m - ending row index  
+        l - starting column index  
+        n - ending column index  
+        i - iterator  
+    */
+  
+    while (k < m && l < n) { 
+        /* Print the first row from 
+               the remaining rows */
+        for (i = l; i < n; ++i) { 
+            cout << a[k][i] << " "; 
+        } 
+        k++; 
+  
+        /* Print the last column  
+         from the remaining columns */
+        for (i = k; i < m; ++i) { 
+            cout << a[i][n - 1] << " "; 
+        } 
+        n--; 
+  
+        /* Print the last row from  
+                the remaining rows */
+        if (k < m) { 
+            for (i = n - 1; i >= l; --i) { 
+                cout << a[m - 1][i] << " "; 
+            } 
+            m--; 
+        } 
+  
+        /* Print the first column from 
+                   the remaining columns */
+        if (l < n) { 
+            for (i = m - 1; i >= k; --i) { 
+                cout << a[i][l] << " "; 
+            } 
+            l++; 
+        } 
+    } 
+} 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////
+int n,m;
+long long arr[1001][1001];
+bool vis[1001][1001];
+void Solve() {
+
+	long long n, m;
+		cin >> n >> m;
+		for (long long i = 0; i < n; i++)for (long long j = 0; j < m; j++)cin >> arr[i][j];
+		long long r = 0, c = 0;
+		n--, m--;
+		while (r <= n && c <= m)
+		{
+			for (long long j = c; j <=m; j++)
+				if (!vis[r][j])cout << arr[r][j] << " ", vis[r][j] = 1;
+			for (long long i = r+1; i <=n; i++)
+				if (!vis[i][m])cout << arr[i][m] << " ",vis[i][m]=1;
+			for (long long j = m-1; j >=c; j--)
+				if(!vis[n][j])cout << arr[n][j] << " ",vis[n][j]=1;
+			for (long long i = n-1; i >r; i--)
+				if(!vis[i][c])cout << arr[i][c] << " ",vis[i][c]=1;
+			r++; c++;
+			n--, m--;
+		}
+
+
+
+
+}

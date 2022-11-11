@@ -1,0 +1,14 @@
+void num_digit() {
+
+    int n;
+    cin >> n;
+     double digits=0;            // be carfal must double 
+
+    for (int i = 1; i <= n; i++) {
+        digits += log10(i);
+
+    }
+    cout << "Number of digits of "<<n<<"!"<<" is "<<int(digits) + 1 << "\n";
+
+}
+

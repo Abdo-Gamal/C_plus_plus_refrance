@@ -1,0 +1,10 @@
+for(int i = 0;i<n;i++)
+for(int j = i+1;j<n;j++)
+if(cmp(arr[j],arr[i]))swap(arr[i],arr[j]);//  arr[j] first then arr[i] and true
+
+/////////////////////////////or 
+for(int i = 0;i<n;i++)
+for(int j = i+1;j<n;j++)
+if(cmp(arr[i],arr[j]) == false)//  arr[i] first then arr[j] and false
+swap(arr[i],arr[j]);
+///////////////////////

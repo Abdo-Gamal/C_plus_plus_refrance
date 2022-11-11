@@ -1,0 +1,20 @@
+﻿int n,ans,capcity ;
+vector<int> wight,val;
+int  gen(int capcity,int i) {
+
+    if (i == n|| capcity==0)
+        return 0;
+
+    if (capcity < wight[i])
+      return  gen(capcity, i + 1);
+
+  
+
+        int mx1 = val[i] + gen(capcity - wight[i], i + 1);
+        int  mx2 = gen(capcity, i + 1);
+
+        return max(mx1, mx2);
+
+  
+}
+

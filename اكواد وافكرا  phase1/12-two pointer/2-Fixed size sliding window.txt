@@ -1,0 +1,36 @@
+﻿EX:
+Given an array of N values, find M
+consecutive values that has the max sum?
+◼ A brute force to compute that is just O(NM)
+by starting from every index and compute M
+values. Matter of 2 nested loops
+◼ Observation: What is the relation between the
+first M values and 2nd M values?
+
+
+Let A = {1, 2, 3, 4, 5, 6, -3}, M = 4
+◼ 1st M values = 1+2+3+4 = 10
+◼ 2nd M values = 2+3+4+5 = 10-1+5 = 14
+◼ 3rd M values = 3+4+5+6 = 14-2+6 = 18
+◼ 4th M values = 4+5+6-3 = 18-3-3 = 12
+◼ So answer is max(14, 18, 12) = 18
+We create a window of fixed size M
+◼ cur window = last window - its first item + new mth item
+◼ Window start = pointer 1
+◼ Window end = pointer 2
+◼ P2 = P1+K-1
+Code:	
+int arr[1000], n;
+ll fun(int m) {
+	ll cur = 0,ans=0,p1=0;
+	for (int i = 0; i < n; i++) {
+		if (i+1 > m) {
+			ans = max(ans, cur);
+			cur = ans + arr[i] - arr[p1];
+			p1++;
+		}
+		else cur += arr[i];
+	}
+	return ans;
+}
+--------------------------------------------------------------------------

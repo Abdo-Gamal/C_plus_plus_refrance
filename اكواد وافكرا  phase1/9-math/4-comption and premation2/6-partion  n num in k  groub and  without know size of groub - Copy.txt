@@ -1,0 +1,29 @@
+What if we want to partition n persons to k non empty groups whatever groups sizes?
+{1, 2, 3, 4, 5} to 2 groups can be {1, 3, 5} {2, 4}
+
+ Let’s find its recurrence
+
+◼ If we have 6 students and want to split to 3 groups: g1..g3
+◼ For s1, either put it in g1, g2, g3 and keep the groups
+◼ Then we have 3 ways * Solution (5 students, 3 groups)
+◼ Or put s1 in first group and nothing more for g1
+◼ Then we have solutions (5 students, 2 groups)
+◼ Note, they must be non-empty groups
+◼ F(n, k) = k * F(n-1, k) + F(n-1, k);
+◼ Bases: (n == k, 1) and (k == 1, 1)
+
+This is called Stirling numbers of the second
+kind.
+◼ Let’s code it as top down instead of bottom
+up. Run this using (50, 50)
+code
+==================================================================
+long long  stirlings(long long n ,long long k) {
+  
+    if (n == k || k == 1) {
+        return 1;
+    }
+
+    return k * stirlings(n-1,k) + stirlings(n-1,k-1);
+}
+==================================================================

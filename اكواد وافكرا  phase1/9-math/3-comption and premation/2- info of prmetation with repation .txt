@@ -1,0 +1,16 @@
+
+
+Permutations with repetition
+=========================================================
+How many permutations of AAA? 6? 1?
+
+◼ How many permutations of AAABB?
+◼ Imagine it as A1A2A3B1B2 (where A1=A2=A3, B1=B2)
+◼ Now think in permutation: A1A2B1A3B2
+◼ This is as same as A3A1B1A2B2
+◼ Specifically, fixing all except As, 3! of it are same!
+◼ Now, assume on of these 3! is fixed but B’s are changed
+◼ 2! of them are same e.g. A3A1B1A2B2 = A3A1B2A2B1
+◼ Then 3! * 2! items are duplicate => 5! / (3! * 2!)
+
+◼ P(n) = n!..but P(n, [c1, c2...cm]) = n!/(c1!c2!...cm!) where c1 is repeated char

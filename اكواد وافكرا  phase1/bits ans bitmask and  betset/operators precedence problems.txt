@@ -1,0 +1,10 @@
+﻿// Be careful with operators precedence problems. http://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B#Operator_precedence
+=============================================================================================================================
+
+// X & 7 == 1 		is interpreted as 			X & (7 == 1)	---correct---> (X & 7) == 1
+// 1<<10 -1 		is interpreted as			= 1<<9	         ---correct---> (1<<10) - 1
+
+                     // Watch out from overflow
+   // 1 << 60 Fails. 1 is 32 bitInteger		   -->		1LL << 60
+
+

@@ -1,0 +1,26 @@
+﻿
+
+==========================================================================================
+
+vector< vector< pair<int, int> > > adjList2;// cost relation (node, cost): Select 1 of multiple edges
+/*
+		3
+		2	1 13	2 4
+		1	2 9		3 -4
+		2	0 -7	1 8
+	 */
+	cin>>n;
+	adjList2 = vector< vector< pair<int, int> > >(n);
+	lp(i, n)
+	{
+		int cnt;
+		cin>>cnt;
+		lp(j, cnt)
+		{
+			int to, cost;
+			cin>>to>>cost;
+			adjList2[i].push_back( make_pair(to, cost));
+		}
+	}
+
+==========================================================================================

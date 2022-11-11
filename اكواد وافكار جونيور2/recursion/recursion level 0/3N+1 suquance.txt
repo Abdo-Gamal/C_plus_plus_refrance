@@ -1,0 +1,12 @@
+﻿void Solve(int n) {
+
+	cout << n << " ";
+	if (n == 1)
+		return;
+
+	if (n % 2 == 0)
+		Solve(n / 2);
+	else
+		Solve(3 * n + 1);
+
+}

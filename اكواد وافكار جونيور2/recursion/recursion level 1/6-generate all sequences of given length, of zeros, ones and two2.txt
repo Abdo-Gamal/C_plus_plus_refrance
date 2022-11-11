@@ -1,0 +1,24 @@
+﻿
+// generate all sequences of given length, of zeros, ones and two2
+// E.g. for len = 2:	00, 01, 02, 10, 11, 12, 20, 21, 22
+===================================================================================
+
+void generateTernary(int len, string cur = "")
+{
+	if(len == 0)
+	{
+		cout<<cur<<"\n";
+		return;
+	}
+
+	// At each level, we branch three times...draw this tree
+	generateTernary(len-1, cur + "0");
+
+	generateTernary(len-1, cur + "1");
+
+	generateTernary(len-1, cur + "2");
+}
+
+
+
+===================================================================================

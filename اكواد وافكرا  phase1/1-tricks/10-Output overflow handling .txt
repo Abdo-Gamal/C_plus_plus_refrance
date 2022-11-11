@@ -1,0 +1,32 @@
+﻿
+1) Output overflow handling
+	In case result is maximum 29 digit, and operations are +, -, * ONLY there is a nice trick.
+		Calculate answer long long % 10^18                  اللونج بيشيل اخرة 18  خانة هخلية يشلهم
+			Then we have the last 18 digit correctly
+
+		Calculate answer for double                                 الdouble  بيشيل حالى 300 خانة  اول  13 منهم مش هيتقربة 
+			Then we have the first 13 digit correctly (why?)
+
+		Then use a code to merge them, e.g.
+
+		public static String MergeResults30DigitsMax(double doubleResult, long longResult)
+		{
+			String doubleStr = String.format("%.0f", doubleResult); //format to avoid 0's
+
+			if (doubleStr.length() <= 18)
+				return String.valueOf(longResult);	// then long maintain value by itself
+
+			doubleStr = doubleStr.substring(0, doubleStr.length() - 18);
+
+			// Cut last 18 digit of double and replace them with long
+			return doubleStr + String.format("%018d", longResult);	// format long due to trailing zeros
+		}
+
+	If result is up to 30 digit, code will probably work, except case when boundaries of numbers are 0000 or 99999 (e.g. can't handle 10^30)
+
+	For digits more than 30, using Big Integer is a must                      الكود بيقولة ملهوش لزمة    واخرك 30          خانة 
+الكود لو هتعملة  c++ 
+ انت هتعمل ال  farmat    بايدك              
+يعنى هتحول  لستنج وبعدين تمشى لوب    تاخد ال تاخد اول 13 خانة 
+
+

@@ -1,0 +1,30 @@
+﻿int n;
+vector<int> v ;
+int ans = -1;
+void STL(int i= 0,int old=-1,int cnt=0) {
+
+   ans = max(ans, cnt);
+    if (i == n)
+    {
+        return;
+    }
+    if (v[i] > old)
+       STL(i + 1, v[i], cnt + 1);
+
+     STL(i + 1, old, cnt);
+	
+}
+=========================================================================================
+int n;
+vector<int> v ;
+int solve(int idx=0, int lst=-1) {
+
+    if (idx == n)return 0;
+
+    int ret = 0;
+
+    ret = max(ret, solve(idx + 1, lst));
+    if (v[idx] > lst)ret = max(ret, solve(idx + 1, v[idx]) + 1 );
+    return ret;
+
+}

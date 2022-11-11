@@ -1,0 +1,15 @@
+﻿Checking Overflow
+	Say we would like to do a * b, but we want to ignore this operation if it exceeds MAX (e.g. MAX = 32 bit max)
+
+
+	Convert if(a * b > MAX) continue;
+			TO
+	Convert if(a > MAX / b) continue;
+
+	What about a * b * c?
+
+	if(a > MAX / b || a * b > MAX / c)	continue;	// Check ab, then abc
+
+	What about a * b + c?
+
+	if(a > MAX / b || a * b > MAX - c)	continue;	// Check ab, then abc

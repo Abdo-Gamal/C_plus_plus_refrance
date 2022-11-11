@@ -1,0 +1,32 @@
+﻿ll dp[4000][4000][2];
+int n;
+vector<ll>v;
+ll solve(int i, int j,int p=0) {
+
+	if (i>j ) {
+		return 0;
+	}
+
+	ll& ret = dp[i][j][p];
+	if (~ret)return ret;
+
+	if(p==0)
+	ret=max(solve(i + 1, j, !p) + v[i],solve(i, j-1,!p) + v[j]);
+	else ret=min(solve(i + 1, j, !p) - v[i], solve(i, j - 1, !p) - v[j]);
+
+	return ret;
+}
+
+/**------------------------->>  Main  <<------------------------**/
+int main() {
+
+	Fast();
+	cin >> n ;
+	v = vector<ll>(n + 2);
+	for (int i = 0; i < n; i++)
+		cin >> v[i];
+
+	mem(dp, -1);
+	cout << solve(0, n-1);
+
+}

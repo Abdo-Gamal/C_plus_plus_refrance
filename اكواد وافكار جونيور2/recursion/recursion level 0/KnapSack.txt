@@ -1,0 +1,32 @@
+﻿
+================================================================================
+vector<int> wi, vi;
+int my_wight, n;
+int Solve(int wight , int indx ) {
+
+	if (wight == 0 || indx == -1)
+		return 0;
+
+	if (wi[indx] > wight)
+		return Solve(wight, indx - 1);
+	int mx1 = vi[indx ] + Solve(wight - wi[indx ], indx - 1);
+	int  mx2 = Solve(wight, indx - 1);
+
+	return max(mx1, mx2);
+
+}
+/**------------------------->>  Main  <<------------------------**/
+int main() {
+	cin >> n >> my_wight;
+	wi.resize(n);
+	vi.resize(n);
+	for (int i = 0; i < n; i++) {
+		cin >> wi[i] >> vi[i];
+	}
+	cout << Solve(my_wight,n-1);
+}
+================================================================================
+الكود  بالضبط زى البت ماسك  
+يعنى  ممكن تعتبر  ان  
+ vi[indx ] + Solve(wight - wi[indx ], indx - 1)بتساوى واحد              --->يعنى بقلة خد العنصر دة وكمل   
+int  mx2 = Solve(wight, indx - 1)  بتساوى صفر   يعنى بقلة  متخدش العنصر دة   وكمل   

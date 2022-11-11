@@ -1,0 +1,28 @@
+هنا بجرب اخد العنصر او مخدهوش   
+ولو وصلت  لصلت  ان عدد العناصر اكتر من m 
+كدة دى كمبينشن غلط  ف ارجع  
+
+===============================================================================
+// print N choose M combinations
+void comb(int i, int n, int m, int cur[], int curLen)
+{
+	if(curLen == m)
+	{
+		for (int j = 0; j < m; ++j)
+			cout<<cur[j];
+		cout<<"\n";
+		return;
+	}
+
+	if(i == n)	// we reached end, and have current combination is not correct
+		return;
+
+	// take it
+	cur[curLen] = i;
+	comb(i+1, n, m, cur, curLen+1);
+
+	// don't take it
+	comb(i+1, n, m, cur, curLen);
+}
+===============================================================================
+

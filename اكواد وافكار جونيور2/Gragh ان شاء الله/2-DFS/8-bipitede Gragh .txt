@@ -1,0 +1,67 @@
+﻿//احننا هنعمل لكل نقطة لون   الولن دة بيعبر عن الصف الى هى فية   
+//لو فى انقطة موصلة بنفس اللون يبقا كدة  مفروض تتحزف او تتصرف فيها حسب المسئلة 
+//برباتيد جارف دة  جراف فيى كل نقطة متوصلة بنقطة قصادة مش فى نفس الصف بتاعها  
+
+=========================================================================================
+vector<int>color,v1,v2;
+vector<vector<int>>adj;
+int n, m;
+bool abdo = 1;
+bool dfs(int node, bool col)
+{
+    color[node] = col;
+    if (col == 1)v1.push_back(node);
+    else v2.push_back(node);
+ 
+    for (auto value : adj[node]) {
+        if (color[value] == -1)dfs(value, !col);
+        else if (color[value] == color[node]) {
+            abdo = 0; return 0;
+        }  // mean you should delete node make the gragh not bipidie
+ 
+    }
+    return 1;
+}
+/**------------------------->>  Main  <<------------------------**/
+int main() {
+
+    Fast();
+  
+      //bipitide gragh
+        
+     //bipitide gragh
+    cin >> n >> m;
+    adj = vector<vector<int>>(n + 2);
+    color = vector<int>(n + 3, -1);
+    for (int i = 0; i < m; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+ 
+    int del = 0, odd = 0;
+    for (int i = 1; i <= n; i++) {
+        
+        if (color[i] == -1) {
+            if (dfs(i, 0) == 0||abdo==0) {
+                cout << -1;
+                return 0;
+            }
+            
+        }
+    }
+ 
+    cout << sz(v1)<<"\n";
+    for (int i = 0; i < sz(v1); i++)
+        cout << v1[i] << " ";
+ 
+    cout << "\n";
+    cout << sz(v2) << "\n";
+    for (int i = 0; i < sz(v2); i++)
+        cout << v2[i] << " ";
+}
+ 
+
+=========================================================================================

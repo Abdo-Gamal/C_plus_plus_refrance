@@ -1,0 +1,37 @@
+
+int main() {
+
+    Fast();
+
+        int n,m,q;
+        int cnt = 0;
+        while (cin >> n >> m >> q, n || m || q)
+        {
+
+            vector<vector<int>>dis(n, vector<int>(n, OO));
+            for (int i = 0; i < n; i++)
+                dis[i][i] = 0;
+            for (int i = 0; i < m; i++) {
+                    int u,v, c; cin >> u>>v>>c;
+                    u--, v--;
+                    dis[u][v]= dis[v][u] = min(dis[u][v],c);
+               
+            }
+            for (int k = 0; k < n; k++)
+                for (int u = 0; u < n; u++)
+                    for (int v = 0; v < n; v++)
+                        dis[u][v] = min(dis[u][v], max(dis[u][k] ,dis[k][v]));
+            if (cnt)cout << "\n";
+            cout << "Case #"<<++cnt<<"\n";//Case #1
+            while (q--)
+            {
+                int u, v;
+                cin >> u >> v;
+                u--, v--;
+                if (dis[u][v] >= OO)cout << "no path\n";
+                else
+                cout << dis[u][v] << "\n";
+            }
+        }
+}
+

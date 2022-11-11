@@ -1,0 +1,24 @@
+
+int main() {
+
+    Fast();
+
+    int  n = 7489;//value whant to exchange 
+    int coin[] = { 1,5,10,25,50 };
+    vector<int>dp(n + 1, 0);
+    dp[0] = 1;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j <= n; j++) {
+
+            if (j + coin[i] <= n)dp[j + coin[i]] += dp[j];
+        }
+    }
+    int a; 
+    while (cin >> a, a) {
+        cout << dp[a] << "\n";
+    }
+
+  
+}
+
+

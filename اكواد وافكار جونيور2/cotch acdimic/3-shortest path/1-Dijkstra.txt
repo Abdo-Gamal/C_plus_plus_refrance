@@ -1,0 +1,54 @@
+int  n, m;
+vector<vector<pair<int, int>>>adj;
+
+int dijkstra(int src,int tar) {
+    // dis :for tell us the distance form source to  other node 
+    //q :tell us the  best option  "best node can go to  it "
+    vector<int>dis(n, OO);//intial i can not  access any node 
+    priority_queue<pair<int, int>,vector<pair<int,int>>,greater<pair<int,int>> >q;
+    dis[src] = 0;
+    q.push({ 0,src });
+    while (!q.empty())
+    {
+        int u = q.top().second;  
+        int c = q.top().first;//smalest cost 
+        q.pop();
+        if (u == tar)return c;
+
+        // c the path may be choose  and  dis[u] the path i take to go to u if c!=dis[u]
+        //this mean c is bad path as arrive to  u from anothr path by small cost  
+        //"small cost as i use poirty queque and first cost is smallest cost "
+        if (c != dis[u]) //bad path
+            continue;
+
+        //push    all edge connect to  choosen node(u) in queue if  it is good path
+        // and save dist between  u  and all conect node not  vist  or
+        // cost is small than save in dis[v]
+        for (auto p : adj[u]) {  
+            int v = p.second;
+            int vc = p.first;
+            if (dis[v] > dis[u]+vc) {
+                dis[v] = dis[u] + vc;
+                q.push({ dis[v],v });
+            }
+        }
+    }
+    return - 1;
+}
+
+
+int main() {
+
+    Fast();
+    cin >> n>>m;
+    adj= vector<vector<pair<int, int>>>(n);
+    for (int i = 0; i < m; i++) {
+        int u, v, c; cin >> u >> v >> c;
+        adj[--u].push_back({c,--v});
+
+    }
+    int src, tar;
+    cin >> src >> tar;
+      cout << dijkstra(--src, --tar);
+   
+}

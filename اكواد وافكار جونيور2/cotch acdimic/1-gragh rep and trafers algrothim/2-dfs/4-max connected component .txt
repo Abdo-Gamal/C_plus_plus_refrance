@@ -1,0 +1,49 @@
+
+int n, m,cnt;
+vector<vector<int>>adjList;
+vector<int>vist;
+int  dfs(int u) {
+    vist[u] = 1;
+
+    for (auto v : adjList[u]) {
+        if (vist[v] == 0) {
+            dfs(v);
+            cnt++;
+        }
+       
+    }
+    return cnt;
+}
+
+int main() {
+    //max connected commponent 
+    Fast();
+   
+    while (cin >> n >> m&&n||m)
+    {
+        adjList = vector<vector<int>>(n+2);
+        vist= vector<int>(n+2,0);
+
+        string s;
+        map<string, int>mp;
+        for (int i = 1; i <= n; i++) {
+            cin >> s;
+            mp[s] = i;
+        }
+        string u, v;
+        for (int i = 0; i < m; i++) {
+            cin >> u >> v;
+            adjList[mp[u]].push_back(mp[v]);
+            adjList[mp[v]].push_back(mp[u]);
+
+        }
+        int mx = 0;
+        for (int i = 1; i <= n; i++) {
+            cnt = 1;
+            if (vist[i] == 0) {
+                mx=max(mx,dfs(i));
+            }
+        }
+        cout << mx<<"\n";
+    }
+}

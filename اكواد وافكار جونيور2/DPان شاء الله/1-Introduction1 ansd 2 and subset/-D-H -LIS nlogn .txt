@@ -1,0 +1,25 @@
+﻿vector<ll>v;
+int n;
+void Solve(ll arr[], vector<ll>&dp) {
+
+    v.clear();
+
+    for (int i = 0; i < n; i++) {
+        ll num=arr[i];
+
+        int pos = lower_bound(all(v), num) - v.begin();
+
+        if (pos == v.size()) {
+            v.push_back(num);
+        }
+        else
+            v[pos] = num;
+
+        dp[i] = pos+1;  // num of elem beform me
+
+    }
+
+
+
+}
+====================================================================================

@@ -1,0 +1,51 @@
+// use it if  you do not care with source  make shotestPath
+////////////////////////////////////////////////////////////////////////////////
+int n, m;
+vector < pair<ll, pair<int, int>>>edges;
+ll ballman() {
+    vector<ll>dis(n, OO);
+    bool hasCycle = 0;
+    for(int i=0;i<n;i++)
+      dis[i] = 0;
+
+    for (int i = 0; i < n; i++) {
+        bool isUpdated = 0;
+        for (auto e : edges) {
+            if (dis[e.to] > dis[e.from] + e.cost) {
+                dis[e.to] = dis[e.from] + e.cost;
+                isUpdated = 1;
+            }
+        }
+        if (isUpdated == 0)break;
+        if (i == n - 1)
+            hasCycle = 1;
+    }
+    if (hasCycle == 1)return -OO;
+    ll mn = OO;
+    for (int i = 0; i < n; i++)
+        mn = min(mn, dis[i]);
+    return mn;
+}
+int main() {
+
+    Fast();
+    int t; cin >> t;
+    while (t--)
+    {
+        edges.clear();
+        cin >> n >> m;
+        ll mn=OO;
+        for (int i = 0; i < m; i++) {
+            int u, v, c;
+            cin >> u >> v >> c;
+            edges.push_back({ c,{--u,--v} });
+            mn = min(mn, (ll)c);
+        }
+        
+        ll ans = ballman();
+        if (ans == -OO)cout << "-inf";
+        else if (ans < 0)cout << ans;
+        else cout << mn;
+        cout << "\n";
+    }
+}

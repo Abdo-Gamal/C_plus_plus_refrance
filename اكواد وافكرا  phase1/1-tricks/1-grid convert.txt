@@ -1,0 +1,15 @@
+﻿-------------------------------------------------- Grid Conversion -------------------------------------------------------------------(فشيخ )
+
+Say we are given grid of characters, and you want to convert them to grid of numbers.
+	Say you are given characters S, E, ., #		to {.=0, S=1, E=2, #=3}
+
+...S.				00010
+##E.#		->		33203
+...#.				00030
+
+	for(int i = 0; i < r; i++)
+		for(int j = 0 ; j < c; j++)                                             // find return index of char(*) index base_zero
+			gridInt[i][j] = string(".SE#").find( gridChar[i][j] );		// order string according to your needs. No if else any more
+
+
+========================================================================================

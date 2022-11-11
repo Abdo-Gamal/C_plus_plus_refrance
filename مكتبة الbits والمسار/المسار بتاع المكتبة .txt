@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC
+ انت بعد متروح للمسار دة   هتلاقى ملفات  مكتوب عليها انهى اصدار  تختار الاكبر فيهم ثم هتلاقى جواه حاجة ملف اسمة   
+incude  
+حطة فيها 

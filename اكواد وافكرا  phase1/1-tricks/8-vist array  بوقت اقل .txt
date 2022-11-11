@@ -1,0 +1,13 @@
+﻿Say you have for every given test case, to mark some numbers in boolean visited array, and check who is marked later.
+	Unfortunately array is of Million number and you have many test cases. Code TLE due to memseting each test case. Using set to mark also TLE.
+
+Here is a nice trick. Instead of bool vis[], we will use int vis[], and we will never memset it, default zeros)
+	Say we are in t-th test case.
+		Mark a visited number with T:		vis[i] = T;
+		Check if a cell is visited with 	if(vis[i] == T)
+مش هصفر الاررى   كل الى هعملة انى 
+		Intially T = 1, which is default we do. Say in Test Case 1, we marked 2, 5: Then array of 10 is: {0, 0, 1, 0, 0, 1, 0, 0, 0, 0}
+		In Test T=2, every number != T is not visited, so whole array is FALSE for us.
+		Now mark 5, 7 and 8: {0, 0, 1, 0, 0, 2, 0, 2, 2, 0}	and so on
+
+///////////////////////////////////////////

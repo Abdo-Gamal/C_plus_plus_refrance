@@ -1,0 +1,22 @@
+﻿
+string str;
+ll memo[100][100];
+ll Solve(int i,int j) {
+     
+    if (i == j)return 1;
+    if (i + 1 == j) return 2 + (str[i] == str[j]);
+
+    ll& ret = memo[i][j];
+    if (~ret)return ret;
+    ret = 0;
+    if (str[i] == str[j])
+        ret += Solve(i + 1, j - 1) + 1;
+
+       ret += Solve(i + 1, j);
+       ret += Solve(i , j-1);
+       ret -= Solve(i + 1, j-1);
+
+       return ret;
+}
+
+

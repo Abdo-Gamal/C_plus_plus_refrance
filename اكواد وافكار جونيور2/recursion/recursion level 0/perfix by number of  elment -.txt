@@ -1,0 +1,32 @@
+﻿
+
+===================================================================================
+int Solve(int arr[], int len, int cnt) {
+	if (len == 0)
+		return 0;
+
+	int res = Solve(arr, len - 1, cnt);
+
+	if (cnt >= len)
+		return res + arr[len - 1];
+	else
+		return res;
+
+}
+
+===================================================================================(or)
+int prefix_sum_v2(int arr[], int cnt) {
+	if (cnt == 0)
+		return 0;
+
+	return arr[0] + prefix_sum_v2(arr+1, cnt - 1);    //change the poiner of array
+}
+===================================================================================(or)
+int Solve(int arr[], int len, int cnt) {
+	if (cnt == 0)
+			return 0;
+
+		return arr[cnt - 1] + Solve(arr, len - 1, cnt - 1);
+
+}
+===================================================================================

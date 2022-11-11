@@ -1,0 +1,112 @@
+/**       In the name of Allah, the Gracious, the Merciful.
+ *               Praise be to Allah, Lord of the Worlds.
+ *               **************************************
+ *
+ *    I have not failed, I have just found 1000 WAYS that won't work.
+ *                 __________________________________
+ *                  Author  : Abdo_Gamal_Ahmed_Gaber
+ *                  data    :  2022
+ *                 ________________________________
+ *
+ */
+ /**
+  *
+  *   Ready / Relax
+  *	Active as if you are in a conest
+  *	Challenge Spirit
+  *  Don't rush / Don't panic
+  *	Check your watch - Monitor your progress
+  *
+  *  We could think in Solving a problem as stages
+  *	1- Reading and correctly "understanding" problem statement
+  *	2- "Thinking" in a solution -> Verifying it
+  *	3- Coding
+  *	4- Debugging if necessary
+  *	5- Testing
+  */
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <bits/stdc++.h>
+
+#define pb		push_back
+#define MP		make_pair
+#define Open_Sesame Open()
+#define all(v) ((v).begin()), ((v).end())
+#define allr(s) s.rbegin(),s.rend()
+#define sz(s)               (int)s.size()
+#define format(n)cout<< fixed << setprecision(n)
+#define Ceil(x,y)             ((x+y-1)/y)
+#define Round(x,y)             ((x+y/2)/y)
+
+#define RT(x)           return cout<<x,0;
+#define mem(x,y)    memset(x,y,sizeof(x))
+#define vi                    vector<int>
+#define pii                 pair<int,int>
+#define watch(x) cout<<(#x)<<" = "<<x<<endl
+#define forr(i, n) for (int i = 0; i < int(n); i++)
+#define INF LLONG_MAX
+#define clr(dp,n) memset(dp,n,sizeof dp)
+#define ex(n) return cout<<n<<finl,0;
+template<class T>
+void Swap(T& a, T& b) {
+    T c(a); // c=a
+    a = b;
+    b = c;
+}
+template<typename T>
+constexpr auto pr(T x) {
+    return printf("%d", x);
+}
+#define for1(i,a,b) for(i=(a);i<(b);i++)
+#define for2(i,a,b) for(i=(a);i>(b);i--)
+#define  isPowerOfTwo(x)     ( x && !( x & (x - 1)))
+using namespace std;
+typedef long long ll;
+typedef unsigned long long ull;
+/**---------------------->>  Constants  <<-----------------------**/
+
+const double Pi = 2 * acos(0.0), Euler = 2.71828182845904523536, Epsln = 1e-9,
+GoldenR = (1 + sqrtl(5.0)) / 2;
+
+const ll MgcPrim = 2305843009213693951;
+const int MxsZ = (int)1e5 + 9, OO = 0x3f3f3f3f, ModB2 = (1 << 30) + 7, ModBT7 =
+(int)1e9 + 7, ModBT = (int)1e9;
+const int N = 1e7 + 5, mod = 1e9 + 7;
+const double PI = acos(-1), EPS = 1e-7;
+
+/**---------------------->>  Watch  <<-----------------------**/
+
+#ifndef BFS
+
+int dx8[8] = { 1, -1, 0, 0, 1, 1, -1, -1 }, dx4[4] = { 0, 0, 1, -1 };;
+int dy8[8] = { 0, 0, 1, -1, 1, -1, 1, -1 }, dy4[4] = { 1, -1, 0, 0 };;
+
+#endif // BFS
+
+/**----------------->>  input / output Files  <<-----------------**/
+
+void File() {
+
+    freopen("box.in", "r", stdin);
+    //freopen("output.txt", "w", stdout);
+
+}
+
+/**------------------>>  Fast input / output  <<-----------------**/
+
+void Fast() {
+    cin.sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+}
+/**------------------>>  Initialization gap  <<------------------**/
+
+/**------------------------->>  Main  <<------------------------**/
+
+int main() {
+
+    Fast();
+ 
+
+
+}

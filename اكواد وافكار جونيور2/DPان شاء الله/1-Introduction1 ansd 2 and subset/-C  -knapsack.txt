@@ -1,0 +1,29 @@
+﻿// W: 10, 4 , 20, 5, 7
+// P: 10, 15, 3 , 1, 4
+
+// knapsack size = 12
+//	  0   1   0   0  1
+
+const int MAX = 5;
+int n = 5;
+int weights[MAX] = { 10, 4, 20, 5, 7 };
+int benfit[MAX] = { 10, 15, 3, 1, 4 };
+int mem[MAX][MAX] = { -1 };
+// called with knapsack(0, intialWeight)
+int knapsack(int i, int reminder)	// aka 0/1 knapsack
+{
+    int& ret = mem[i][reminder];
+    if (i == n)
+        return 0;
+    if (ret != -1)
+        return ret;
+
+    int choice1 = knapsack(i + 1, reminder);
+    int choice2 = 0;
+
+    if (reminder >= weights[i])
+        choice2 = knapsack(i + 1, reminder - weights[i]) + benfit[i];
+
+    return ret=max(choice1, choice2);
+}
+

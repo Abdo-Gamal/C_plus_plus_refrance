@@ -1,0 +1,24 @@
+﻿int n, m;
+char arr[1004][1004];
+ll dp[1001][1001];
+bool valid(int i, int j) {
+    return i < n&& j < m;
+}
+ll Solve(int i, int j) {
+
+    if (i == n - 1 && j == m - 1)
+        return 1;
+    if (!valid(i, j)||arr[i][j]=='#')
+        return 0;
+
+    ll& ret = dp[i][j];
+    if (~ret)return ret;
+
+    int cnt = 0;
+     cnt += Solve(i + 1, j)% ModBT7;
+    cnt+= Solve(i, j + 1)% ModBT7;
+
+   
+    return ret= cnt% ModBT7;
+
+}
